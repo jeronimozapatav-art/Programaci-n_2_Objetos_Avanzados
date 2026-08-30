@@ -57,7 +57,7 @@
             
             <div class="space-y-4">
                 
-                <!-- MATERIA 1: POO I (BÁSICA) - ACTUALIZADA CON PLAN OFICIAL IU DIGITAL -->
+                <!-- MATERIA 1: POO I (BÁSICA) -->
                 <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
                     <button onclick="toggleDesplegable('materia-poo1')" class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
                         <div>
@@ -183,18 +183,18 @@
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
                 <span class="text-teal-400 font-mono text-lg">03.</span> Entregables Académicos
             </h3>
-            <p class="text-slate-400 text-sm">Haz clic sobre la tarjeta para desplegar la información completa y acceder a los archivos alojados en Google Drive, YouTube y GitHub.</p>
+            <p class="text-slate-400 text-sm">Haz clic sobre cualquier tarjeta para desplegar la información completa y acceder a los archivos de cada entregable.</p>
             
             <div class="grid md:grid-cols-2 gap-6">
                 
-                <!-- CARD TRABAJO 1 -->
+                <!-- CARD TRABAJO 1 (POO II) -->
                 <div onclick="abrirModal('modal-evidencia1')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4">
                     <div class="flex justify-between items-center">
-                        <span class="text-xs font-mono text-teal-400">Evidencia N.º 1</span>
+                        <span class="text-xs font-mono text-teal-400">POO II • Evidencia N.º 1</span>
                         <span class="text-xs font-mono text-slate-400">Ver más ↗</span>
                     </div>
                     <h4 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
-                        Evidencia de Aprendizaje 1: Diagrama de Clases UML
+                        Diagrama de Clases UML (Avanzado)
                     </h4>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Análisis de requerimientos, abstracción de entidades y modelado estructural de un sistema mediante diagramas de clases en UML.
@@ -203,7 +203,26 @@
                         <span class="px-2 py-1 bg-slate-700/50 rounded">Trabajo Colaborativo</span>
                         <span class="px-2 py-1 bg-slate-700/50 rounded">Diagrama UML</span>
                         <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">Documento Drive</span>
-                        <span class="px-2 py-1 bg-red-500/10 text-red-300 rounded">Explicación YouTube</span>
+                        <span class="px-2 py-1 bg-red-500/10 text-red-300 rounded">Video YouTube</span>
+                    </div>
+                </div>
+
+                <!-- CARD TRABAJO 2 (POO I - NUEVA TARJETA AGREGADA) -->
+                <div onclick="abrirModal('modal-poo1-actividades')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-mono text-teal-400">POO I • Entregables de Aprendizaje</span>
+                        <span class="text-xs font-mono text-slate-400">Ver más ↗</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                        Actividades y Evidencias de POO I
+                    </h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Compilación de las evidencias del semestre: Diagrama de Clases de Biblioteca (EA1), Actividad Práctica 2 y Caso de Estudio en Herencia y Polimorfismo (EA3).
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">UML Biblioteca</span>
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">Herencia & Polimorfismo</span>
+                        <span class="px-2 py-1 bg-blue-500/10 text-blue-300 rounded">PDF & Word</span>
                     </div>
                 </div>
 
@@ -212,7 +231,7 @@
 
     </main>
 
-    <!-- MODAL EMERGENTE TRABAJO 1 -->
+    <!-- MODAL EMERGENTE TRABAJO 1 (POO II) -->
     <div id="modal-evidencia1" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
             
@@ -241,7 +260,6 @@
                 <h5 class="font-bold text-slate-200 text-base">Recursos y Archivos de la Entregable:</h5>
                 
                 <ul class="space-y-3 font-mono text-xs">
-                    <!-- Enlace Google Drive -->
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
                             <span>📁</span>
@@ -250,7 +268,6 @@
                         <a href="https://drive.google.com/file/d/1qFYqp5D04FFw6FQ_eQ6fam6UZ11XKChm/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded border border-blue-500/30 hover:bg-blue-500/30 transition">Abrir Drive</a>
                     </li>
 
-                    <!-- Enlace YouTube -->
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
                             <span>🎥</span>
@@ -259,7 +276,6 @@
                         <a href="https://youtu.be/-TwFSgdjxvU" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-red-500/20 text-red-300 rounded border border-red-500/30 hover:bg-red-500/30 transition">Ver en YouTube</a>
                     </li>
 
-                    <!-- Enlace Repositorio / Word -->
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
                             <span>📄</span>
@@ -268,7 +284,6 @@
                         <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/EVIDENCIA%20DE%20APRENDIZAJE%201%20DIAGRAMA%20DE%20CLASES%20UML.docx" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Descargar Word</a>
                     </li>
 
-                    <!-- Enlace PNG -->
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
                             <span>🖼️</span>
@@ -281,6 +296,72 @@
 
             <div class="pt-4 border-t border-slate-700 flex justify-end">
                 <button onclick="cerrarModal('modal-evidencia1')" class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EMERGENTE TRABAJO 2 (POO I - NUEVO MODAL AGREGADO) -->
+    <div id="modal-poo1-actividades" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="cerrarModal('modal-poo1-actividades')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold">
+                &times;
+            </button>
+
+            <span class="text-xs font-mono text-teal-400">Detalles de las Entregables</span>
+            <h3 class="text-2xl font-bold text-slate-100">Actividades Prácticas de Programación Orientada a Objetos I</h3>
+            
+            <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
+                <p>
+                    Recopilación de trabajos prácticos y evidencias de aprendizaje desarrolladas en el marco de la asignatura POO I (Semestre 2). Incluye el diseño de diagramas para el sistema de biblioteca, ejercicios prácticos de desarrollo e implementación de herencia y polimorfismo.
+                </p>
+
+                <!-- Integrantes -->
+                <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70 space-y-2">
+                    <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">Equipo de Trabajo / Integrantes:</h6>
+                    <ul class="text-xs text-slate-300 space-y-1 font-mono">
+                        <li>• Franklin Dario Burbano Gaviria</li>
+                        <li>• Cristian Julian Monsalve Serna</li>
+                        <li>• Jeronimo Zapata Vargas</li>
+                    </ul>
+                </div>
+
+                <h5 class="font-bold text-slate-200 text-base">Archivos y Documentos de POO I:</h5>
+                
+                <ul class="space-y-3 font-mono text-xs">
+                    <!-- EA1 Diagrama Biblioteca PDF -->
+                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span>📕</span>
+                            <span class="text-slate-200">EA1: Diagrama de Clases - Sistema Biblioteca (PDF)</span>
+                        </div>
+                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA1_Grupo20_DiagramaDeClasesbiblioteca.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Ver Documento</a>
+                    </li>
+
+                    <!-- Actividad 2 DOCX Descargable -->
+                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span>📘</span>
+                            <span class="text-slate-200">Actividad 2: Guía Práctica de Programación 1 (DOCX)</span>
+                        </div>
+                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/actividad%202%20de%20Programacion%201.docx" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded border border-blue-500/30 hover:bg-blue-500/30 transition">Descargar Word</a>
+                    </li>
+
+                    <!-- EA3 Herencia y Polimorfismo PDF -->
+                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span>📕</span>
+                            <span class="text-slate-200">EA3: Caso de Estudio Herencia y Polimorfismo (PDF)</span>
+                        </div>
+                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA3.jeronimozapata_Herenciapolimorfismo.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Ver Documento</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pt-4 border-t border-slate-700 flex justify-end">
+                <button onclick="cerrarModal('modal-poo1-actividades')" class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition">
                     Cerrar
                 </button>
             </div>
