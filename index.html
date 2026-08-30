@@ -48,7 +48,7 @@
             </div>
         </section>
 
-        <!-- Información Académica de POO I y POO II (DESPLEGABLE / ACORDEÓN) -->
+        <!-- Información Académica de POO I y POO II (ACORDEÓN) -->
         <section id="poo-info" class="space-y-6">
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
                 <span class="text-teal-400 font-mono text-lg">02.</span> Contenido Completo de las Materias
@@ -59,7 +59,6 @@
                 
                 <!-- MATERIA 1: POO I (BÁSICA) -->
                 <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
-                    <!-- Encabezado que hace clic -->
                     <button onclick="toggleDesplegable('materia-poo1')" class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
                         <div>
                             <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">Semestre 2 • Asignatura Académica</span>
@@ -68,7 +67,6 @@
                         <span id="icono-poo1" class="text-teal-400 text-2xl font-bold transition-transform duration-300">+</span>
                     </button>
                     
-                    <!-- Contenido Desplegable -->
                     <div id="materia-poo1" class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed">
                         <p class="text-slate-400">
                             En esta asignatura se estudian los cimientos de la programación estructurada y la transición hacia el paradigma orientado a objetos, analizando problemas reales para convertirlos en representaciones informáticas.
@@ -94,7 +92,6 @@
 
                 <!-- MATERIA 2: POO II (AVANZADA) -->
                 <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
-                    <!-- Encabezado que hace clic -->
                     <button onclick="toggleDesplegable('materia-poo2')" class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
                         <div>
                             <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">Semestre 3 • Asignatura Académica</span>
@@ -103,7 +100,6 @@
                         <span id="icono-poo2" class="text-teal-400 text-2xl font-bold transition-transform duration-300">+</span>
                     </button>
                     
-                    <!-- Contenido Desplegable -->
                     <div id="materia-poo2" class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed">
                         <p class="text-slate-400">
                             Enfoque avanzado en el diseño de software modular, jerárquico y desacoplado, preparado para crecer de forma escalable mediante patrones de diseño y buenas prácticas de arquitectura.
@@ -135,7 +131,7 @@
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
                 <span class="text-teal-400 font-mono text-lg">03.</span> Entregables Académicos
             </h3>
-            <p class="text-slate-400 text-sm">Haz clic sobre la tarjeta para desplegar la información completa y acceder a los archivos alojados en GitHub.</p>
+            <p class="text-slate-400 text-sm">Haz clic sobre la tarjeta para desplegar la información completa y acceder a los archivos alojados en Google Drive, YouTube y GitHub.</p>
             
             <div class="grid md:grid-cols-2 gap-6">
                 
@@ -152,9 +148,10 @@
                         Análisis de requerimientos, abstracción de entidades y modelado estructural de un sistema mediante diagramas de clases en UML.
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
-                        <span>Trabajo Colaborativo</span>
-                        <span>Diagrama UML</span>
-                        <span>Documentación Word</span>
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">Trabajo Colaborativo</span>
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">Diagrama UML</span>
+                        <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">Documento Drive</span>
+                        <span class="px-2 py-1 bg-red-500/10 text-red-300 rounded">Explicación YouTube</span>
                     </div>
                 </div>
 
@@ -179,6 +176,7 @@
                     En esta evidencia de aprendizaje se abordó el diseño orientado a objetos a través del lenguaje unificado de modelado (UML). Se definieron clases, atributos con sus respectivas visibilidades (privado, público, protegido), métodos principales y las relaciones de asociación, agregación, composición y herencia entre las entidades del sistema.
                 </p>
 
+                <!-- Integrantes -->
                 <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70 space-y-2">
                     <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">Equipo de Trabajo / Integrantes:</h6>
                     <ul class="text-xs text-slate-300 space-y-1 font-mono">
@@ -188,22 +186,43 @@
                     </ul>
                 </div>
 
-                <h5 class="font-bold text-slate-200 text-base">Archivos del Repositorio:</h5>
+                <h5 class="font-bold text-slate-200 text-base">Recursos y Archivos de la Entregable:</h5>
                 
                 <ul class="space-y-3 font-mono text-xs">
+                    <!-- Enlace Google Drive -->
+                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span>📁</span>
+                            <span class="text-slate-200">Documentación de la Entregable (Google Drive)</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1qFYqp5D04FFw6FQ_eQ6fam6UZ11XKChm/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded border border-blue-500/30 hover:bg-blue-500/30 transition">Abrir Drive</a>
+                    </li>
+
+                    <!-- Enlace YouTube -->
+                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span>🎥</span>
+                            <span class="text-slate-200">Video Explicativo de la Entregable</span>
+                        </div>
+                        <a href="https://youtu.be/-TwFSgdjxvU" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-red-500/20 text-red-300 rounded border border-red-500/30 hover:bg-red-500/30 transition">Ver en YouTube</a>
+                    </li>
+
+                    <!-- Enlace Repositorio / Word -->
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
                             <span>📄</span>
                             <span>EVIDENCIA DE APRENDIZAJE 1 DIAGRAMA DE CLASES UML.docx</span>
                         </div>
-                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/EVIDENCIA%20DE%20APRENDIZAJE%201%20DIAGRAMA%20DE%20CLASES%20UML.docx" target="_blank" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Descargar Word</a>
+                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/EVIDENCIA%20DE%20APRENDIZAJE%201%20DIAGRAMA%20DE%20CLASES%20UML.docx" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Descargar Word</a>
                     </li>
+
+                    <!-- Enlace PNG -->
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
                             <span>🖼️</span>
                             <span>Diagrama sin título.png</span>
                         </div>
-                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.png" target="_blank" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Ver Imagen</a>
+                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.png" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Ver Imagen</a>
                     </li>
                 </ul>
             </div>
@@ -218,7 +237,6 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // Función para abrir/cerrar materias desplegables
         function toggleDesplegable(id) {
             const contenido = document.getElementById(id);
             const icono = document.getElementById('icono-' + id.replace('materia-', ''));
@@ -232,7 +250,6 @@
             }
         }
 
-        // Función para abrir/cerrar modal de entregables
         function abrirModal(id) {
             document.getElementById(id).classList.remove('hidden');
         }
