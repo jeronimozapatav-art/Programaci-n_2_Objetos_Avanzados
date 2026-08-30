@@ -3,115 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeronimo Zapata Vargas | Desarrollador de Software</title>
-    <!-- Tailwind CSS CDN para estilos profesionales rápidos -->
+    <title>Jeronimo Zapata Vargas | Desarrollo de Software</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-teal-300 selection:text-teal-900">
 
-    <!-- Navegación -->
     <header class="fixed top-0 w-full bg-slate-900/80 backdrop-blur border-b border-slate-800 z-50">
         <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
             <span class="text-xl font-bold tracking-tight text-teal-400">&lt;JeronimoZapata /&gt;</span>
             <div class="space-x-6 text-sm font-medium">
                 <a href="#sobre-mi" class="hover:text-teal-400 transition">Sobre mí</a>
-                <a href="#proyectos" class="hover:text-teal-400 transition">Proyectos</a>
-                <a href="#contacto" class="hover:text-teal-400 transition">Contacto</a>
+                <a href="#poo-info" class="hover:text-teal-400 transition">Conocimientos POO</a>
+                <a href="#proyectos" class="hover:text-teal-400 transition">Mis Trabajos</a>
             </div>
         </nav>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 pt-32 space-y-32">
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-24">
 
-        <!-- Hero Section -->
         <section id="hero" class="space-y-6">
             <span class="text-teal-400 font-mono text-sm">Hola, mi nombre es</span>
             <h1 class="text-5xl sm:text-7xl font-bold tracking-tight text-slate-100">
                 Jeronimo Zapata Vargas.
             </h1>
             <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-slate-400">
-                Estudiante de Tecnología en Desarrollo de Software.
+                Estudiante de Tecnología en Desarrollo de Software (3.ᵉʳ Semestre).
             </h2>
             <p class="max-w-xl text-slate-400 text-lg leading-relaxed">
-                Actualmente cursando el 3.ᵉʳ semestre. Enfocado en programación orientada a objetos (POO), desarrollo web frontend y arquitectura limpia. Me apasiona construir herramientas funcionales y seguir aprendiendo cada día.
+                Enfocado en el paradigma de Programación Orientada a Objetos, desarrollo web y buenas prácticas de arquitectura de software.
             </p>
-            <div class="pt-4">
-                <a href="#proyectos" class="inline-block px-6 py-3 border border-teal-400 text-teal-400 rounded hover:bg-teal-400/10 transition font-medium">
-                    Ver mis proyectos
-                </a>
-            </div>
         </section>
 
-        <!-- Sobre mí -->
         <section id="sobre-mi" class="space-y-6">
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
                 <span class="text-teal-400 font-mono text-lg">01.</span> Sobre mí
             </h3>
-            <div class="grid md:grid-cols-3 gap-8 text-slate-400 leading-relaxed">
-                <div class="md:col-span-2 space-y-4">
-                    <p>
-                        Hola, soy Jeronimo. Actualmente me encuentro en el tercer semestre de la carrera de Tecnología en Desarrollo de Software. Durante este tiempo me he dedicado a profundizar en los fundamentos de la programación, resolución de problemas y patrones de diseño orientados a objetos.
+            <div class="text-slate-400 leading-relaxed space-y-4 max-w-3xl">
+                <p>
+                    Actualmente me encuentro cursando el tercer semestre de la carrera de Tecnología en Desarrollo de Software. Me apasiona resolver problemas mediante código estructurado, limpio y mantenible.
+                </p>
+            </div>
+        </section>
+
+        <section id="poo-info" class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
+                <span class="text-teal-400 font-mono text-lg">02.</span> Fundamentos y Dominio de POO
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 space-y-4">
+                    <span class="text-xs font-mono text-teal-400 uppercase tracking-wider">Fundamentos</span>
+                    <h4 class="text-xl font-bold text-slate-100">Programación Orientada a Objetos Básica</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Comprensión del modelado del mundo real a través de estructuras lógicas fundamentales:
                     </p>
-                    <p>Aquí hay algunas tecnologías y conceptos con los que trabajo:</p>
-                    <ul class="grid grid-cols-2 gap-2 text-sm font-mono text-slate-300 pt-2">
-                        <li class="flex items-center gap-2"><span class="text-teal-400">▹</span> JavaScript / HTML / CSS</li>
-                        <li class="flex items-center gap-2"><span class="text-teal-400">▹</span> Programación en Objetos (POO)</li>
-                        <li class="flex items-center gap-2"><span class="text-teal-400">▹</span> Python</li>
-                        <li class="flex items-center gap-2"><span class="text-teal-400">▹</span> Git & GitHub</li>
+                    <ul class="text-slate-300 text-sm space-y-2 font-mono">
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Clases y Objetos:</strong> Plantillas para la creación de instancias con atributos y métodos.</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Encapsulamiento:</strong> Ocultamiento de datos internos mediante getters, setters y visibilidad (público/privado).</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Abstracción:</strong> Identificación de características esenciales reduciendo la complejidad del sistema.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 space-y-4">
+                    <span class="text-xs font-mono text-teal-400 uppercase tracking-wider">Programación 2</span>
+                    <h4 class="text-xl font-bold text-slate-100">POO Avanzada</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Aplicación de conceptos avanzados para construir software extensible, modular y reutilizable:
+                    </p>
+                    <ul class="text-slate-300 text-sm space-y-2 font-mono">
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Herencia y Polimorfismo:</strong> Reutilización de código mediante jerarquías y sobreescritura de métodos.</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Interfaces y Clases Abstraídas:</strong> Definición de contratos y comportamiento estándar para módulos.</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Manejo de Excepciones y Colecciones:</strong> Control de errores en tiempo de ejecución y gestión avanzada de estructuras de datos.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Proyectos -->
         <section id="proyectos" class="space-y-6">
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
-                <span class="text-teal-400 font-mono text-lg">02.</span> Mis Proyectos
+                <span class="text-teal-400 font-mono text-lg">03.</span> Mis Trabajos y Proyectos
             </h3>
             
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Tarjeta de Proyecto 1 -->
                 <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400/50 transition space-y-4">
                     <div class="flex justify-between items-center">
-                        <span class="text-xs font-mono text-teal-400">Proyecto Académico</span>
-                        <a href="#" target="_blank" class="text-slate-400 hover:text-teal-400">
-                            📁 GitHub
+                        <span class="text-xs font-mono text-teal-400">Proyecto Universitario</span>
+                        <a href="https://github.com/TU-USUARIO/TU-REPOSITORIO" target="_blank" class="text-slate-400 hover:text-teal-400 text-sm font-mono">
+                            📁 Ver Código
                         </a>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-100">Programación de Objetos Avanzados</h4>
+                    <h4 class="text-xl font-bold text-slate-100">Sistema de Gestión en POO</h4>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Proyecto enfocado en el diseño modular, manejo de clases, herencia y buenas prácticas de codificación en el desarrollo orientados a objetos.
+                        Aplicación desarrollada para aplicar conceptos de herencia, interfaces y estructuras de datos orientadas a objetos.
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
-                        <span>POO</span>
-                        <span>Estructura de Datos</span>
-                        <span>Algoritmos</span>
+                        <span>Python</span>
+                        <span>POO Avanzada</span>
+                        <span>Git</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contacto -->
-        <section id="contacto" class="text-center py-12 space-y-6 max-w-lg mx-auto">
-            <h3 class="text-2xl font-bold text-slate-200">
-                <span class="text-teal-400 font-mono text-lg">03.</span> ¿Qué sigue?
-            </h3>
-            <h4 class="text-4xl font-bold text-slate-100">Ponte en contacto</h4>
-            <p class="text-slate-400">
-                Estoy buscando oportunidades para realizar prácticas, colaborar en proyectos open source y seguir fortaleciendo mis habilidades de programación.
-            </p>
-            <div>
-                <a href="mailto:tuemail@ejemplo.com" class="inline-block px-8 py-4 border border-teal-400 text-teal-400 rounded hover:bg-teal-400/10 transition font-mono">
-                    Enviar mensaje
-                </a>
-            </div>
-        </section>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center py-8 text-slate-500 text-xs font-mono">
-        <p>Diseñado y construido por Jeronimo Zapata Vargas</p>
+    <footer class="text-center py-8 text-slate-500 text-xs font-mono border-t border-slate-800">
+        <p>Diseñado y desarrollado por Jeronimo Zapata Vargas</p>
     </footer>
 
 </body>
