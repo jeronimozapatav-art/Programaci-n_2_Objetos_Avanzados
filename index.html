@@ -53,40 +53,92 @@
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
                 <span class="text-teal-400 font-mono text-lg">02.</span> Contenido Completo de las Materias
             </h3>
-            <p class="text-slate-400 text-sm">Haz clic en el título de cada materia para desplegar su información completa y temas vistos:</p>
+            <p class="text-slate-400 text-sm">Haz clic en el título de cada materia para desplegar su información conceptual y unidades temáticas vistas:</p>
             
             <div class="space-y-4">
                 
-                <!-- MATERIA 1: POO I (BÁSICA) -->
+                <!-- MATERIA 1: POO I (BÁSICA) - ACTUALIZADA CON PLAN OFICIAL IU DIGITAL -->
                 <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
                     <button onclick="toggleDesplegable('materia-poo1')" class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
                         <div>
-                            <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">Semestre 2 • Asignatura Académica</span>
+                            <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">Semestre 2 • IU Digital de Antioquia</span>
                             <h4 class="text-xl font-bold text-slate-100">Programación Orientada a Objetos I (Básica)</h4>
                         </div>
                         <span id="icono-poo1" class="text-teal-400 text-2xl font-bold transition-transform duration-300">+</span>
                     </button>
                     
-                    <div id="materia-poo1" class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed">
+                    <div id="materia-poo1" class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-6 text-slate-300 text-sm leading-relaxed">
                         <p class="text-slate-400">
-                            En esta asignatura se estudian los cimientos de la programación estructurada y la transición hacia el paradigma orientado a objetos, analizando problemas reales para convertirlos en representaciones informáticas.
+                            Programa de formación estructurado en tres unidades académicas orientadas al dominio del lenguaje, paradigmas y principios fundamentales del modelado orientado a objetos.
                         </p>
                         
-                        <h5 class="font-bold text-slate-200 text-base pt-2">Ejes temáticos y conceptos desarrollados:</h5>
-                        <ul class="space-y-3 font-normal">
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
-                                <strong class="text-teal-300 font-mono">1. Abstracción y Clases:</strong> Identificación de entidades clave del mundo real, aislamiento de sus características fundamentales y definición de plantillas mediante atributos (datos) y métodos (funciones).
-                            </li>
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
-                                <strong class="text-teal-300 font-mono">2. Encapsulamiento y Control de Acceso:</strong> Protección del estado interno de los objetos. Aplicación estricta de modificadores de visibilidad (<code>private</code>, <code>public</code>, <code>protected</code>) y uso de métodos de acceso seguros (Getters y Setters).
-                            </li>
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
-                                <strong class="text-teal-300 font-mono">3. Instanciación y Ciclo de Vida del Objeto:</strong> Creación dinámica de objetos mediante métodos constructores, paso de parámetros e inicialización de memorias.
-                            </li>
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
-                                <strong class="text-teal-300 font-mono">4. Modelado Estructural UML:</strong> Representación gráfica estandarizada de diagramas de clases, especificando atributos, visibilidades, operaciones y relaciones básicas entre clases.
-                            </li>
-                        </ul>
+                        <!-- UNIDAD 1 -->
+                        <div class="space-y-3">
+                            <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
+                                Unidad 1: Fundamentos de Lenguajes, Paradigmas y POO Inicial
+                            </h5>
+                            <div class="grid md:grid-cols-2 gap-3 text-xs">
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Introducción a Lenguajes de Programación:</strong>
+                                    <span class="text-slate-400">Historia, evolución, diferencias estructurales entre intérpretes y compiladores.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Paradigmas de Programación:</strong>
+                                    <span class="text-slate-400">Paradigma imperativo (procedimental), declarativo y transición hacia el paradigma orientado a objetos.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Conceptos Clave de POO:</strong>
+                                    <span class="text-slate-400">Definición conceptual de Objetos, Atributos, Métodos, paso de Parámetros y pilares fundamentales.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Modelado Estructural UML:</strong>
+                                    <span class="text-slate-400">Identificación de objetos, diseño formal del Diagrama de Clases y sus componentes principales.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UNIDAD 2 -->
+                        <div class="space-y-3 pt-2">
+                            <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
+                                Unidad 2: Estructuración, Encapsulamiento y Control de Acceso
+                            </h5>
+                            <div class="grid md:grid-cols-2 gap-3 text-xs">
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Arquitectura de Código & Métodos:</strong>
+                                    <span class="text-slate-400">Programación modular ("divide y vencerás"), programación estructurada, tipos de métodos en Java y recursividad.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Ámbitos y Memoria:</strong>
+                                    <span class="text-slate-400">Diferenciación y análisis comparativo entre variables locales y variables globales.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Principio de Encapsulamiento:</strong>
+                                    <span class="text-slate-400">Beneficios, la encapsulación como agrupamiento e integridad en la protección de datos internos.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Visibilidad y Modificadores:</strong>
+                                    <span class="text-slate-400">Aplicación de modificadores de acceso en el lenguaje de programación (<code>public</code>, <code>private</code>, <code>protected</code>).</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UNIDAD 3 -->
+                        <div class="space-y-3 pt-2">
+                            <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
+                                Unidad 3: Herencia y Polimorfismo
+                            </h5>
+                            <div class="grid md:grid-cols-2 gap-3 text-xs">
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Conceptos de Herencia:</strong>
+                                    <span class="text-slate-400">Herencia simple, superclases y subclases, beneficios de la reutilización de código y alternativas a herencia múltiple en Java.</span>
+                                </div>
+                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                    <strong class="text-slate-200 block mb-1">• Polimorfismo Aplicado:</strong>
+                                    <span class="text-slate-400">Polimorfismo de métodos, vinculación con métodos constructores y ejecución polimórfica trabajando con colecciones de objetos.</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
