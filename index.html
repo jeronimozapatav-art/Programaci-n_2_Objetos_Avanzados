@@ -14,13 +14,13 @@
             <span class="text-xl font-bold tracking-tight text-teal-400">&lt;JeronimoZapata /&gt;</span>
             <div class="space-x-6 text-sm font-medium">
                 <a href="#sobre-mi" class="hover:text-teal-400 transition">Sobre mí</a>
-                <a href="#poo-info" class="hover:text-teal-400 transition">Conocimientos POO</a>
+                <a href="#poo-info" class="hover:text-teal-400 transition">Materias POO</a>
                 <a href="#proyectos" class="hover:text-teal-400 transition">Mis Trabajos</a>
             </div>
         </nav>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-24">
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-20">
 
         <!-- Hero Section -->
         <section id="hero" class="space-y-6">
@@ -48,40 +48,85 @@
             </div>
         </section>
 
-        <!-- Información Académica Detallada de POO I y POO II -->
-        <section id="poo-info" class="space-y-8">
+        <!-- Información Académica de POO I y POO II (DESPLEGABLE / ACORDEÓN) -->
+        <section id="poo-info" class="space-y-6">
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
-                <span class="text-teal-400 font-mono text-lg">02.</span> Fundamentos Académicos: POO I & POO II
+                <span class="text-teal-400 font-mono text-lg">02.</span> Contenido Completo de las Materias
             </h3>
+            <p class="text-slate-400 text-sm">Haz clic en el título de cada materia para desplegar su información completa y temas vistos:</p>
             
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- POO I / Básica -->
-                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 space-y-4">
-                    <span class="text-xs font-mono text-teal-400 uppercase tracking-wider">Materia: Programación Orientada a Objetos I</span>
-                    <h4 class="text-xl font-bold text-slate-100">POO Básica & Modelado UML</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Comprensión e implementación del paradigma orientado a objetos básico, enfocado en traducir entidades del mundo real en componentes informáticos:
-                    </p>
-                    <ul class="text-slate-300 text-sm space-y-2 font-mono">
-                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Abstracción y Clases:</strong> Identificación de entidades clave, definición de sus atributos (propiedades) y métodos (comportamientos).</li>
-                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Encapsulamiento y Ocultamiento:</strong> Modificadores de acceso (<code>public</code>, <code>private</code>, <code>protected</code>) y uso de métodos de acceso (Getters y Setters) para la integridad de los datos.</li>
-                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Modelado Estructural UML:</strong> Elaboración formal de diagramas de clases, definición de relaciones (asociación, agregación y composición) e indicación de visibilidades.</li>
-                    </ul>
+            <div class="space-y-4">
+                
+                <!-- MATERIA 1: POO I (BÁSICA) -->
+                <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
+                    <!-- Encabezado que hace clic -->
+                    <button onclick="toggleDesplegable('materia-poo1')" class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
+                        <div>
+                            <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">Semestre 2 • Asignatura Académica</span>
+                            <h4 class="text-xl font-bold text-slate-100">Programación Orientada a Objetos I (Básica)</h4>
+                        </div>
+                        <span id="icono-poo1" class="text-teal-400 text-2xl font-bold transition-transform duration-300">+</span>
+                    </button>
+                    
+                    <!-- Contenido Desplegable -->
+                    <div id="materia-poo1" class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed">
+                        <p class="text-slate-400">
+                            En esta asignatura se estudian los cimientos de la programación estructurada y la transición hacia el paradigma orientado a objetos, analizando problemas reales para convertirlos en representaciones informáticas.
+                        </p>
+                        
+                        <h5 class="font-bold text-slate-200 text-base pt-2">Ejes temáticos y conceptos desarrollados:</h5>
+                        <ul class="space-y-3 font-normal">
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">1. Abstracción y Clases:</strong> Identificación de entidades clave del mundo real, aislamiento de sus características fundamentales y definición de plantillas mediante atributos (datos) y métodos (funciones).
+                            </li>
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">2. Encapsulamiento y Control de Acceso:</strong> Protección del estado interno de los objetos. Aplicación estricta de modificadores de visibilidad (<code>private</code>, <code>public</code>, <code>protected</code>) y uso de métodos de acceso seguros (Getters y Setters).
+                            </li>
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">3. Instanciación y Ciclo de Vida del Objeto:</strong> Creación dinámica de objetos mediante métodos constructores, paso de parámetros e inicialización de memorias.
+                            </li>
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">4. Modelado Estructural UML:</strong> Representación gráfica estandarizada de diagramas de clases, especificando atributos, visibilidades, operaciones y relaciones básicas entre clases.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- POO II / Avanzada -->
-                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 space-y-4">
-                    <span class="text-xs font-mono text-teal-400 uppercase tracking-wider">Materia: Programación Orientada a Objetos II</span>
-                    <h4 class="text-xl font-bold text-slate-100">POO Avanzada & Arquitectura</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Diseño e implementación de sistemas complejos, jerárquicos, modulares y mantenibles utilizando patrones avanzados:
-                    </p>
-                    <ul class="text-slate-300 text-sm space-y-2 font-mono">
-                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Herencia y Polimorfismo:</strong> Construcción de jerarquías superclase/subclase, sobreescritura de métodos y ejecución dinámica en tiempo de ejecución.</li>
-                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Interfaces y Clases Abstractas:</strong> Definición de contratos de software para desacoplar componentes y garantizar extensibilidad del código.</li>
-                        <li class="flex items-start gap-2"><span class="text-teal-400">▹</span> <strong>Estructuras de Datos y Excepciones:</strong> Manejo de listas, mapas y control robusto de errores mediante bloques <code>try-catch</code>.</li>
-                    </ul>
+                <!-- MATERIA 2: POO II (AVANZADA) -->
+                <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
+                    <!-- Encabezado que hace clic -->
+                    <button onclick="toggleDesplegable('materia-poo2')" class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
+                        <div>
+                            <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">Semestre 3 • Asignatura Académica</span>
+                            <h4 class="text-xl font-bold text-slate-100">Programación Orientada a Objetos II (Avanzada)</h4>
+                        </div>
+                        <span id="icono-poo2" class="text-teal-400 text-2xl font-bold transition-transform duration-300">+</span>
+                    </button>
+                    
+                    <!-- Contenido Desplegable -->
+                    <div id="materia-poo2" class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed">
+                        <p class="text-slate-400">
+                            Enfoque avanzado en el diseño de software modular, jerárquico y desacoplado, preparado para crecer de forma escalable mediante patrones de diseño y buenas prácticas de arquitectura.
+                        </p>
+                        
+                        <h5 class="font-bold text-slate-200 text-base pt-2">Ejes temáticos y conceptos desarrollados:</h5>
+                        <ul class="space-y-3 font-normal">
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">1. Herencia y Jerarquía de Clases:</strong> Reutilización de código mediante la creación de superclases (clases padre) y subclases (clases hijas), heredando atributos y métodos compartidos.
+                            </li>
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">2. Polimorfismo y Sobreescritura:</strong> Capacidad de responder de forma distinta al mismo llamado a un método según el tipo de objeto. Implementación de sobreescritura (<code>@Override</code>) y sobrecarga de métodos.
+                            </li>
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">3. Interfaces y Clases Abstractas:</strong> Establecimiento de contratos de comportamiento para desacoplar componentes. La interfaz define el <em>"qué se debe hacer"</em> y las clases concretas implementan el <em>"cómo se hace"</em>.
+                            </li>
+                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                                <strong class="text-teal-300 font-mono">4. Gestores de Excepciones y Colecciones:</strong> Manejo de estructuras de datos dinámicas (listas, mapas, conjuntos) y control robusto de errores mediante bloques <code>try-catch-finally</code> para asegurar la estabilidad del software.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -107,8 +152,8 @@
                         Análisis de requerimientos, abstracción de entidades y modelado estructural de un sistema mediante diagramas de clases en UML.
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+                        <span>Trabajo Colaborativo</span>
                         <span>Diagrama UML</span>
-                        <span>Archivos drawio</span>
                         <span>Documentación Word</span>
                     </div>
                 </div>
@@ -118,11 +163,10 @@
 
     </main>
 
-    <!-- MODAL EMERGENTE -->
+    <!-- MODAL EMERGENTE TRABAJO 1 -->
     <div id="modal-evidencia1" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
             
-            <!-- Botón Cerrar X -->
             <button onclick="cerrarModal('modal-evidencia1')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold">
                 &times;
             </button>
@@ -132,12 +176,20 @@
             
             <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
                 <p>
-                    En esta evidencia de aprendizaje se abordó el diseño orientado a objetos a través del lenguaje unificado de modelado (UML). Se definieron clases, atributos con sus respectivos visibilidades (privado, público, protegido), métodos principales y las relaciones de asociación, agregación, composición y herencia entre las entidades del sistema.
+                    En esta evidencia de aprendizaje se abordó el diseño orientado a objetos a través del lenguaje unificado de modelado (UML). Se definieron clases, atributos con sus respectivas visibilidades (privado, público, protegido), métodos principales y las relaciones de asociación, agregación, composición y herencia entre las entidades del sistema.
                 </p>
+
+                <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70 space-y-2">
+                    <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">Equipo de Trabajo / Integrantes:</h6>
+                    <ul class="text-xs text-slate-300 space-y-1 font-mono">
+                        <li>• Franklin Dario Burbano Gaviria</li>
+                        <li>• Cristian Julian Monsalve Serna</li>
+                        <li>• Jeronimo Zapata Vargas</li>
+                    </ul>
+                </div>
 
                 <h5 class="font-bold text-slate-200 text-base">Archivos del Repositorio:</h5>
                 
-                <!-- Enlaces actualizados a tu GitHub -->
                 <ul class="space-y-3 font-mono text-xs">
                     <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
                         <div class="flex items-center gap-2">
@@ -153,13 +205,6 @@
                         </div>
                         <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.png" target="_blank" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Ver Imagen</a>
                     </li>
-                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
-                        <div class="flex items-center gap-2">
-                            <span>📊</span>
-                            <span>Diagrama sin título.drawio</span>
-                        </div>
-                        <a href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.drawio" target="_blank" class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition">Ver Fuente .drawio</a>
-                    </li>
                 </ul>
             </div>
 
@@ -171,8 +216,23 @@
         </div>
     </div>
 
-    <!-- JavaScript para apertura y cierre del Modal -->
+    <!-- JAVASCRIPT -->
     <script>
+        // Función para abrir/cerrar materias desplegables
+        function toggleDesplegable(id) {
+            const contenido = document.getElementById(id);
+            const icono = document.getElementById('icono-' + id.replace('materia-', ''));
+            
+            if (contenido.classList.contains('hidden')) {
+                contenido.classList.remove('hidden');
+                icono.innerText = '−';
+            } else {
+                contenido.classList.add('hidden');
+                icono.innerText = '+';
+            }
+        }
+
+        // Función para abrir/cerrar modal de entregables
         function abrirModal(id) {
             document.getElementById(id).classList.remove('hidden');
         }
