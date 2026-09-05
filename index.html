@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeronimo Zapata Vargas | Desarrollo de Software</title>
@@ -180,36 +179,70 @@
         </section>
 
         <!-- Mis Trabajos / Proyectos (SEPARADOS POR PROGRAMACIÓN 1 Y PROGRAMACIÓN 2) -->
-       <!-- Mis Trabajos / Proyectos -->
-        <section id="proyectos" class="space-y-6">
+        <section id="proyectos" class="space-y-12">
             <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
                 <span class="text-teal-400 font-mono text-lg">03.</span> Entregables Académicos
             </h3>
 
-            <!-- Contenedor donde se dibuja el texto de contenido.md -->
-            <div id="contenedor-contenido" class="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 text-slate-300 leading-relaxed space-y-4">
-                <p class="text-slate-400 font-mono text-sm">Cargando entregables desde contenido.md...</p>
-            </div>
-        </section>
+            <!-- BLOQUE 1: PROGRAMACIÓN ORIENTADA A OBJETOS I -->
+            <div class="space-y-6">
+                <div class="border-b border-slate-800 pb-2">
+                    <h4 class="text-xl font-bold text-teal-400 font-mono">Programación Orientada a Objetos 1 (Básica)</h4>
+                    <p class="text-slate-400 text-xs mt-1">Trabajos e iteraciones prácticas desarrolladas de manera individual.</p>
+                </div>
 
-        <!-- Código JavaScript que lee contenido.md y lo transforma a HTML -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                fetch('./contenido.md')
-                    .then(response => {
-                        if (!response.ok) throw new Error("No se encontró el archivo contenido.md");
-                        return response.text();
-                    })
-                    .then(markdownText => {
-                        document.getElementById('contenedor-contenido').innerHTML = marked.parse(markdownText);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        document.getElementById('contenedor-contenido').innerHTML = 
-                            '<p class="text-red-400 font-mono text-sm">Error al cargar contenido.md. Revisa que el archivo esté guardado en la misma carpeta que index.html.</p>';
-                    });
-            });
-        </script>
+                <div class="grid md:grid-cols-1 gap-6">
+                    <div onclick="abrirModal('modal-poo1-actividades')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono text-teal-400">POO 1 • Actividades Individuales</span>
+                            <span class="text-xs font-mono text-slate-400">Ver entregables ↗</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                            Entregables y Trabajos Prácticos de POO I
+                        </h5>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Compilación de las evidencias individuales desarrolladas en el semestre 2: Diagrama de Clases para el Sistema de Biblioteca (EA1), Guía Práctica de Aplicación (Actividad 2) y Caso de Estudio sobre Herencia y Polimorfismo (EA3).
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">Trabajo Individual</span>
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">UML Biblioteca</span>
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">Herencia & Polimorfismo</span>
+                            <span class="px-2 py-1 bg-blue-500/10 text-blue-300 rounded">Documentos PDF & DOCX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOQUE 2: PROGRAMACIÓN ORIENTADA A OBJETOS II -->
+            <div class="space-y-6">
+                <div class="border-b border-slate-800 pb-2">
+                    <h4 class="text-xl font-bold text-teal-400 font-mono">Programación Orientada a Objetos 2 (Avanzada)</h4>
+                    <p class="text-slate-400 text-xs mt-1">Proyectos complejos y modelado arquitectónico de software en equipo.</p>
+                </div>
+
+                <div class="grid md:grid-cols-1 gap-6">
+                    <div onclick="abrirModal('modal-evidencia1')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono text-teal-400">POO 2 • Evidencia N.º 1</span>
+                            <span class="text-xs font-mono text-slate-400">Ver entregables ↗</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                            Diagrama de Clases UML Avanzado
+                        </h5>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Análisis de requerimientos, abstracción de entidades y modelado estructural de un sistema mediante diagramas de clases en UML con relaciones avanzadas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">Trabajo Colaborativo</span>
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">Diagrama UML</span>
+                            <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">Documento Drive</span>
+                            <span class="px-2 py-1 bg-red-500/10 text-red-300 rounded">Video YouTube</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 
