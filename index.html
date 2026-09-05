@@ -220,18 +220,22 @@
                     <p class="text-slate-400 text-xs mt-1">Proyectos complejos y modelado arquitectónico de software en equipo.</p>
                 </div>
 
-                <div class="grid md:grid-cols-1 gap-6">
-                    <div onclick="abrirModal('modal-evidencia1')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-teal-400">POO 2 • Evidencia N.º 1</span>
-                            <span class="text-xs font-mono text-slate-400">Ver entregables ↗</span>
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <!-- ACTIVIDAD 1 DE POO 2 -->
+                    <div onclick="abrirModal('modal-evidencia1')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-mono text-teal-400">POO 2 • Actividad N.º 1</span>
+                                <span class="text-xs font-mono text-slate-400">Ver entregables ↗</span>
+                            </div>
+                            <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                                Actividad 1: Diagrama de Clases UML
+                            </h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Análisis de requerimientos, abstracción de entidades y modelado estructural de un sistema mediante diagramas de clases en UML con relaciones avanzadas.
+                            </p>
                         </div>
-                        <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
-                            Diagrama de Clases UML Avanzado
-                        </h5>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Análisis de requerimientos, abstracción de entidades y modelado estructural de un sistema mediante diagramas de clases en UML con relaciones avanzadas.
-                        </p>
                         <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
                             <span class="px-2 py-1 bg-slate-700/50 rounded">Trabajo Colaborativo</span>
                             <span class="px-2 py-1 bg-slate-700/50 rounded">Diagrama UML</span>
@@ -239,6 +243,28 @@
                             <span class="px-2 py-1 bg-red-500/10 text-red-300 rounded">Video YouTube</span>
                         </div>
                     </div>
+
+                    <!-- ACTIVIDAD 2 DE POO 2 -->
+                    <div onclick="abrirModal('modal-evidencia2')" class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-mono text-teal-400">POO 2 • Actividad N.º 2</span>
+                                <span class="text-xs font-mono text-slate-400">Ver entregables ↗</span>
+                            </div>
+                            <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                                Actividad 2: Programación Funcional
+                            </h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Estudio e implementación del paradigma de Programación Funcional en POO Avanzada: uso de funciones puras, inmutabilidad, colecciones, expresiones lambda y Streams.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">Trabajo Colaborativo</span>
+                            <span class="px-2 py-1 bg-slate-700/50 rounded">Programación Funcional</span>
+                            <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">Lambdas & Streams</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -308,7 +334,7 @@
         </div>
     </div>
 
-    <!-- MODAL EMERGENTE POO 2 (TRABAJO COLABORATIVO) -->
+    <!-- MODAL EMERGENTE POO 2 - ACTIVIDAD 1 (TRABAJO COLABORATIVO) -->
     <div id="modal-evidencia1" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
             
@@ -317,11 +343,11 @@
             </button>
 
             <span class="text-xs font-mono text-teal-400">Entregables Académicos • POO 2</span>
-            <h3 class="text-2xl font-bold text-slate-100">Evidencia de Aprendizaje 1: Diagrama de Clases UML</h3>
+            <h3 class="text-2xl font-bold text-slate-100">Actividad 1: Diagrama de Clases UML</h3>
             
             <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
                 <p>
-                    En esta evidencia de aprendizaje de Programación 2 se abordó el diseño avanzado orientado a objetos a través de UML. Se definieron clases, atributos con sus respectivas visibilidades (privado, público, protegido), métodos principales y relaciones complejas de asociación, agregación, composición y herencia.
+                    En esta primera actividad de Programación Orientada a Objetos 2 (Avanzada) se abordó el diseño avanzado de sistemas a través de UML. Se definieron clases, atributos con sus respectivas visibilidades (privado, público, protegido), métodos principales y relaciones complejas de asociación, agregación, composición y herencia.
                 </p>
 
                 <!-- Integrantes -->
@@ -373,6 +399,53 @@
 
             <div class="pt-4 border-t border-slate-700 flex justify-end">
                 <button onclick="cerrarModal('modal-evidencia1')" class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EMERGENTE POO 2 - ACTIVIDAD 2 (PROGRAMACIÓN FUNCIONAL) -->
+    <div id="modal-evidencia2" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="cerrarModal('modal-evidencia2')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold">
+                &times;
+            </button>
+
+            <span class="text-xs font-mono text-teal-400">Entregables Académicos • POO 2</span>
+            <h3 class="text-2xl font-bold text-slate-100">Actividad 2: Programación Funcional</h3>
+            
+            <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
+                <p>
+                    En esta segunda actividad de Programación Orientada a Objetos 2 (Avanzada) se desarrolló la aplicación práctica del paradigma de Programación Funcional, abordando conceptos clave como inmutabilidad, funciones puras, expresiones lambda y procesamiento de datos con Streams.
+                </p>
+
+                <!-- Integrantes -->
+                <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70 space-y-2">
+                    <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">Equipo de Trabajo Colaborativo / Integrantes:</h6>
+                    <ul class="text-xs text-slate-300 space-y-1 font-mono">
+                        <li>• Franklin Dario Burbano Gaviria</li>
+                        <li>• Cristian Julian Monsalve Serna</li>
+                        <li>• Jeronimo Zapata Vargas</li>
+                    </ul>
+                </div>
+
+                <h5 class="font-bold text-slate-200 text-base">Recursos y Archivos de la Entregable:</h5>
+                
+                <ul class="space-y-3 font-mono text-xs">
+                    <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span>💻</span>
+                            <span class="text-slate-200">Actividad 2: Programación Funcional</span>
+                        </div>
+                        <span class="text-slate-400 text-xs">(Trabajo Colaborativo)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pt-4 border-t border-slate-700 flex justify-end">
+                <button onclick="cerrarModal('modal-evidencia2')" class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition">
                     Cerrar
                 </button>
             </div>
