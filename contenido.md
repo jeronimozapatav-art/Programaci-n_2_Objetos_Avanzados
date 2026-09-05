@@ -1,19 +1,69 @@
-# PAGINA
+# Jeronimo Zapata Vargas
 
-## NOMBRE
-Jeronimo Zapata Vargas
+## 👨‍💻 Sobre mí
 
-## SEMESTRE
-3.er Semestre
+Soy estudiante de Tecnología en Desarrollo de Software,
+actualmente cursando tercer semestre.
 
-## PROFESION
-Estudiante de Tecnología en Desarrollo de Software
+Mi formación está enfocada en el desarrollo de software,
+programación orientada a objetos, UML, bases de datos
+y diseño de sistemas.
 
-## DESCRIPCION
-Especializado en el diseño conceptual de sistemas, modelado UML, estructuración de bases de datos relacionales y aplicación del paradigma de Programación Orientada a Objetos.
+---
 
-## SOBRE_MI
-Soy estudiante de tercer semestre de la Tecnología en Desarrollo de Software en la Institución Universitaria Digital de Antioquia.
+# 📚 Programación Orientada a Objetos I
 
-## PIE_DE_PAGINA
-Diseñado y desarrollado por Jeronimo Zapata Vargas
+## EA1 — Diagrama de Clases - Sistema de Biblioteca
+
+Trabajo realizado sobre el modelado de un sistema de biblioteca
+utilizando diagramas de clases UML.
+
+**Tipo:** Trabajo individual
+
+[📄 Ver documento](documentos/poo1/EA1-biblioteca.pdf)
+
+---
+
+## Actividad 2 — Guía Práctica
+
+Actividad práctica desarrollada durante el curso.
+
+[📘 Descargar documento](documentos/poo1/actividad2.docx)
+
+---
+
+## EA3 — Herencia y Polimorfismo
+
+Caso de estudio sobre los conceptos de herencia y polimorfismo.
+
+[📄 Ver documento](documentos/poo1/EA3-herencia-polimorfismo.pdf)
+
+---
+
+# 📘 Programación Orientada a Objetos II
+
+## Evidencia 1 — Diagrama de Clases UML
+
+Trabajo colaborativo sobre análisis de requerimientos
+y modelado mediante UML.
+
+### Integrantes
+
+- Franklin Dario Burbano Gaviria
+- Cristian Julian Monsalve Serna
+- Jeronimo Zapata Vargas
+
+### Recursos
+
+[📄 Documento](documentos/poo2/evidencia1.docx)
+
+[🖼️ Diagrama UML](imagenes/uml-evidencia1.png)
+
+[🎥 Video explicativo](https://youtu.be/-TwFSgdjxvU)
+
+---
+
+# 🚀 Próximos trabajos
+
+Aquí se agregarán las próximas actividades
+y evidencias desarrolladas durante el semestre.
