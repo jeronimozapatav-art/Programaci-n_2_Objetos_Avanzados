@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Jeronimo Zapata Vargas | Portafolio POO</title>
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -18,1432 +20,2140 @@
       --line:rgba(0,217,255,.45);
     }
 
-    *{scroll-behavior:smooth;box-sizing:border-box}
-    body{
+    *{
+      box-sizing:border-box;
       margin:0;
-      color:#e9f7ff;
-      background:#020711;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,217,255,.08), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(139,92,246,.08), transparent 25%),
+        var(--bg);
+      color:#eaf7ff;
+      font-family:Arial, Helvetica, sans-serif;
       overflow-x:hidden;
     }
 
-    /* Fondo futurista */
+    /* =========================
+       FONDO TECNOLÓGICO
+    ========================== */
+
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      z-index:-5;
-      background:
-        linear-gradient(90deg,rgba(1,7,17,.96) 0%,rgba(1,7,17,.82) 34%,rgba(1,7,17,.42) 70%,rgba(1,7,17,.72) 100%),
-        none;
-      filter:saturate(1.15) contrast(1.05);
+      pointer-events:none;
+      z-index:-2;
+
+      background-image:
+        linear-gradient(rgba(0,217,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,217,255,.035) 1px, transparent 1px);
+
+      background-size:40px 40px;
     }
 
     body::after{
       content:"";
       position:fixed;
       inset:0;
-      z-index:-4;
       pointer-events:none;
+      z-index:100;
+
       background:
-        linear-gradient(rgba(0,217,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,217,255,.025) 1px,transparent 1px);
-      background-size:48px 48px;
-      mask-image:linear-gradient(to bottom,black,transparent 95%);
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,.015) 0px,
+          rgba(255,255,255,.015) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+
+      opacity:.25;
     }
 
-    .scanlines{
-      position:fixed;
-      inset:0;
-      z-index:60;
-      pointer-events:none;
-      opacity:.06;
-      background:repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 3px,
-        rgba(0,217,255,.35) 4px
-      );
-    }
+    /* =========================
+       UTILIDADES
+    ========================== */
 
     .glass{
-      background:linear-gradient(145deg,rgba(3,19,38,.88),rgba(2,8,20,.82));
-      border:1px solid rgba(0,217,255,.38);
-      box-shadow:0 0 35px rgba(0,140,255,.10),inset 0 0 30px rgba(0,217,255,.025);
-      backdrop-filter:blur(10px);
+      background:var(--panel);
+      backdrop-filter:blur(15px);
+      -webkit-backdrop-filter:blur(15px);
+      border:1px solid rgba(0,217,255,.15);
     }
 
     .neon{
-      text-shadow:0 0 8px rgba(0,217,255,.8),0 0 25px rgba(0,140,255,.35);
+      color:var(--cyan);
+      text-shadow:
+        0 0 5px rgba(0,217,255,.7),
+        0 0 15px rgba(0,217,255,.35);
     }
 
     .neon-border{
-      box-shadow:0 0 12px rgba(0,217,255,.18),inset 0 0 15px rgba(0,217,255,.04);
+      border:1px solid rgba(0,217,255,.45);
+      box-shadow:
+        0 0 15px rgba(0,217,255,.08),
+        inset 0 0 15px rgba(0,217,255,.03);
     }
 
     .tech-line{
       height:1px;
-      background:linear-gradient(90deg,transparent,var(--cyan),transparent);
-      box-shadow:0 0 10px var(--cyan);
+      width:100%;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        transparent
+      );
+      opacity:.5;
     }
 
     .corner{
-      position:relative;
-    }
-    .corner::before,.corner::after{
-      content:"";
       position:absolute;
-      width:24px;height:24px;
-      pointer-events:none;
-    }
-    .corner::before{
-      left:-1px;top:-1px;
-      border-left:2px solid var(--cyan);
-      border-top:2px solid var(--cyan);
-    }
-    .corner::after{
-      right:-1px;bottom:-1px;
-      border-right:2px solid var(--cyan);
-      border-bottom:2px solid var(--cyan);
+      width:18px;
+      height:18px;
+      border-color:var(--cyan);
+      border-style:solid;
+      opacity:.7;
     }
 
+    .corner.tl{
+      top:0;
+      left:0;
+      border-width:2px 0 0 2px;
+    }
+
+    .corner.tr{
+      top:0;
+      right:0;
+      border-width:2px 2px 0 0;
+    }
+
+    .corner.bl{
+      bottom:0;
+      left:0;
+      border-width:0 0 2px 2px;
+    }
+
+    .corner.br{
+      bottom:0;
+      right:0;
+      border-width:0 2px 2px 0;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
     .nav{
-      background:rgba(1,7,17,.82);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(0,217,255,.28);
+      position:sticky;
+      top:0;
+      z-index:90;
+
+      background:rgba(2,7,17,.88);
+      backdrop-filter:blur(15px);
+      -webkit-backdrop-filter:blur(15px);
+
+      border-bottom:1px solid rgba(0,217,255,.18);
     }
 
     .nav-link{
       position:relative;
-      color:#a9dfff;
-      transition:.25s;
+      color:#9cc8d8;
+      transition:.3s;
     }
-    .nav-link:hover{color:white;text-shadow:0 0 10px var(--cyan)}
+
+    .nav-link:hover{
+      color:var(--cyan);
+      text-shadow:0 0 8px rgba(0,217,255,.6);
+    }
+
     .nav-link::after{
       content:"";
       position:absolute;
-      left:0;right:0;bottom:-9px;
+      left:0;
+      bottom:-7px;
+      width:0;
       height:2px;
       background:var(--cyan);
-      transform:scaleX(0);
-      transition:.25s;
-      box-shadow:0 0 10px var(--cyan);
+      box-shadow:0 0 8px var(--cyan);
+      transition:.3s;
     }
-    .nav-link:hover::after{transform:scaleX(1)}
+
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
 
     .hero{
-      min-height:350px;
+      min-height:520px;
       position:relative;
       display:flex;
       align-items:center;
       overflow:hidden;
+
+      background:
+        radial-gradient(
+          circle at 75% 50%,
+          rgba(0,140,255,.16),
+          transparent 35%
+        ),
+        #020711;
+
       border-bottom:1px solid rgba(0,217,255,.2);
     }
 
+    /*
+      Capa oscura sobre el lado izquierdo.
+      Así el texto se mantiene legible,
+      mientras Iron Man queda visible a la derecha.
+    */
     .hero::before{
       content:"";
       position:absolute;
       inset:0;
+
       background:
-        linear-gradient(90deg,#020711 0%,rgba(2,7,17,.96) 27%,rgba(2,7,17,.55) 55%,rgba(2,7,17,.12) 100%),
-        url("robot-heroe.png") right center/auto 100% no-repeat;
-      opacity:.95;
-      z-index:-1;
+        linear-gradient(
+          90deg,
+          #020711 0%,
+          rgba(2,7,17,.98) 25%,
+          rgba(2,7,17,.72) 48%,
+          rgba(2,7,17,.20) 72%,
+          rgba(2,7,17,.05) 100%
+        );
+
+      z-index:0;
+      pointer-events:none;
     }
 
     .hero-grid{
       position:absolute;
       inset:0;
+      pointer-events:none;
+      z-index:0;
+
       background-image:
-        linear-gradient(rgba(0,217,255,.045) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,217,255,.045) 1px,transparent 1px);
-      background-size:45px 45px;
-      mask-image:linear-gradient(90deg,black,transparent 85%);
-      pointer-events:none;
+        linear-gradient(
+          rgba(0,217,255,.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(0,217,255,.035) 1px,
+          transparent 1px
+        );
+
+      background-size:50px 50px;
+      mask-image:linear-gradient(
+        to right,
+        black,
+        transparent
+      );
     }
 
-    .status-dot{
-      width:9px;height:9px;border-radius:50%;
-      background:#00f0a8;
-      box-shadow:0 0 10px #00f0a8;
-      display:inline-block;
-    }
-
-    .tag{
-      border:1px solid rgba(0,217,255,.55);
-      background:rgba(0,217,255,.06);
-      color:#6fe7ff;
-      padding:.28rem .65rem;
-      border-radius:.45rem;
-      font-size:.72rem;
-      font-weight:700;
-      letter-spacing:.05em;
-    }
-
-    .section-title{
-      letter-spacing:.02em;
-      font-weight:800;
-    }
-
-    .unit-card{
-      position:relative;
-      overflow:hidden;
-      transition:.3s ease;
-    }
-    .unit-card:hover{
-      transform:translateY(-5px);
-      border-color:var(--cyan);
-      box-shadow:0 0 28px rgba(0,217,255,.15);
-    }
-
-    .unit-card::after{
-      content:"";
-      position:absolute;
-      left:-40%;
-      top:0;
-      width:30%;
-      height:100%;
-      transform:skewX(-18deg);
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
-      transition:.6s;
-    }
-    .unit-card:hover::after{left:120%}
-
-    .code-box{
-      background:#01050c;
-      border:1px solid rgba(0,217,255,.25);
-      color:#8feaff;
-      font-family:"Courier New",monospace;
-    }
-
-    .activity{
-      cursor:pointer;
-      transition:.3s;
-    }
-    .activity:hover{
-      transform:translateY(-3px);
-      border-color:#00d9ff;
-      box-shadow:0 0 22px rgba(0,217,255,.12);
-    }
-
-    .modal-bg{
-      position:fixed;
-      inset:0;
-      z-index:100;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:1rem;
-      background:rgba(0,0,0,.78);
-      backdrop-filter:blur(8px);
-    }
-    .modal-bg.active{display:flex}
-    .modal-box{
-      width:min(760px,100%);
-      max-height:90vh;
-      overflow:auto;
-      background:linear-gradient(145deg,#06172c,#020711);
-      border:1px solid rgba(0,217,255,.55);
-      box-shadow:0 0 50px rgba(0,170,255,.18);
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.5rem;
-      border:1px solid var(--cyan);
-      color:#c9f7ff;
-      background:rgba(0,217,255,.055);
-      transition:.25s;
-    }
-    .btn:hover{
-      color:white;
-      background:rgba(0,217,255,.14);
-      box-shadow:0 0 18px rgba(0,217,255,.22);
-      transform:translateY(-1px);
-    }
-
-    .pulse{
-      animation:pulse 2.8s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{opacity:.65}
-      50%{opacity:1}
-    }
-
-    .float{
-      animation:float 6s ease-in-out infinite;
-    }
-    @keyframes float{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-7px)}
-    }
-
-    @media(max-width:900px){
-      .hero{min-height:620px}
-      .hero::before{
-        background:
-          linear-gradient(90deg,rgba(2,7,17,.98),rgba(2,7,17,.88)),
-          url("robot-heroe.png") center/cover no-repeat;
-      }
-    }
-
-    /* ===== MEJORAS V2: IA / ROBOT / NEÓN ===== */
-    .particles-canvas{
-      position:fixed;
-      inset:0;
-      width:100%;
-      height:100%;
-      z-index:-3;
-      pointer-events:none;
-      opacity:.7;
-    }
-
-    .hero{
-      min-height:430px;
-    }
+    /* =========================
+       IMAGEN IRON MAN
+    ========================== */
 
     .hero-robot-layer{
       position:absolute;
       right:0;
       top:0;
-      width:min(64%,820px);
+
+      width:min(68%, 950px);
       height:100%;
+
       pointer-events:none;
-      z-index:0;
+      z-index:2;
+
       overflow:hidden;
     }
 
-    .hero-robot-layer::before{
+    /*
+      Brillo azul detrás del personaje
+    */
+    .hero-robot-layer::after{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg,#020711 0%,rgba(2,7,17,.72) 20%,rgba(2,7,17,.08) 65%,rgba(2,7,17,.16) 100%);
-      z-index:2;
+
+      background:
+        radial-gradient(
+          ellipse at 70% 50%,
+          rgba(0,160,255,.22),
+          rgba(0,80,180,.08) 35%,
+          transparent 65%
+        );
+
+      z-index:0;
+      pointer-events:none;
     }
 
     .robot-image{
       position:absolute;
-      right:-10px;
+
+      right:-20px;
       top:50%;
-      width:min(760px,100%);
-      height:auto;
-      transform:translateY(-50%) translateX(25px);
-      filter:drop-shadow(0 0 22px rgba(0,180,255,.25));
-      animation:robotEntrance 1.4s cubic-bezier(.2,.8,.2,1) both,
-                robotFloat 6s ease-in-out 1.4s infinite;
-      z-index:1;
+
+      width:min(900px, 100%);
+      height:100%;
+
+      max-width:none;
+
+      object-fit:contain;
+      object-position:center right;
+
+      transform:translateY(-50%);
+
+      filter:
+        drop-shadow(0 0 18px rgba(0,180,255,.25))
+        drop-shadow(0 0 45px rgba(0,100,255,.12));
+
+      z-index:2;
+
+      animation:
+        robotEntrance 1.4s cubic-bezier(.2,.8,.2,1) both,
+        robotFloat 6s ease-in-out 1.4s infinite;
     }
 
     @keyframes robotEntrance{
-      from{opacity:0;transform:translateY(-50%) translateX(150px) scale(.96)}
-      to{opacity:1;transform:translateY(-50%) translateX(25px) scale(1)}
+      from{
+        opacity:0;
+        transform:translate(100px,-50%) scale(.92);
+      }
+
+      to{
+        opacity:1;
+        transform:translate(0,-50%) scale(1);
+      }
     }
 
     @keyframes robotFloat{
-      0%,100%{transform:translateY(-50%) translateX(25px)}
-      50%{transform:translateY(calc(-50% - 8px)) translateX(25px)}
+      0%,100%{
+        margin-top:0;
+      }
+
+      50%{
+        margin-top:-10px;
+      }
     }
+
+    /* =========================
+       ESCANEO ROBOT
+    ========================== */
 
     .robot-scan{
       position:absolute;
-      left:8%;
-      right:3%;
-      top:10%;
-      height:3px;
-      background:linear-gradient(90deg,transparent,var(--cyan),#fff,var(--cyan),transparent);
-      box-shadow:0 0 10px var(--cyan),0 0 28px rgba(0,217,255,.7);
-      z-index:4;
-      opacity:.75;
-      animation:scanRobot 3.8s ease-in-out infinite;
+      inset:0;
+      z-index:3;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0,217,255,.08) 48%,
+          rgba(0,217,255,.22) 50%,
+          rgba(0,217,255,.08) 52%,
+          transparent 100%
+        );
+
+      background-size:100% 220px;
+
+      animation:scanMove 5s linear infinite;
+
+      opacity:.35;
     }
 
-    @keyframes scanRobot{
-      0%,100%{transform:translateY(0);opacity:.15}
-      12%{opacity:.9}
-      50%{transform:translateY(300px);opacity:.85}
-      88%{opacity:.9}
+    @keyframes scanMove{
+      from{
+        background-position:0 -220px;
+      }
+
+      to{
+        background-position:0 650px;
+      }
     }
 
     .robot-scan-grid{
       position:absolute;
       inset:0;
-      z-index:3;
+      z-index:4;
+
       background:
-        linear-gradient(rgba(0,217,255,.06) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,217,255,.06) 1px,transparent 1px);
-      background-size:28px 28px;
-      mask-image:linear-gradient(90deg,transparent 0%,black 35%,black 100%);
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          transparent 5px,
+          rgba(0,217,255,.025) 6px
+        );
+
+      pointer-events:none;
     }
+
+    /* =========================
+       ETIQUETAS ROBOT
+    ========================== */
 
     .ai-label{
       position:absolute;
-      right:8%;
-      bottom:18%;
-      z-index:5;
-      padding:.55rem .8rem;
-      border:1px solid rgba(0,217,255,.65);
-      background:rgba(0,8,20,.72);
-      color:#9eefff;
-      font:700 11px "Courier New",monospace;
-      letter-spacing:.12em;
-      box-shadow:0 0 18px rgba(0,217,255,.18);
-      animation:labelPulse 2.5s ease-in-out infinite;
+      z-index:6;
+
+      padding:7px 12px;
+
+      font-size:10px;
+      letter-spacing:2px;
+
+      color:var(--cyan);
+
+      border:1px solid rgba(0,217,255,.35);
+      background:rgba(0,12,25,.75);
+
+      box-shadow:
+        0 0 15px rgba(0,217,255,.1);
+
+      backdrop-filter:blur(5px);
     }
 
-    @keyframes labelPulse{
-      0%,100%{opacity:.65}
-      50%{opacity:1;box-shadow:0 0 24px rgba(0,217,255,.32)}
+    .ai-label.one{
+      right:12%;
+      top:20%;
+    }
+
+    .ai-label.two{
+      right:4%;
+      top:58%;
+    }
+
+    .ai-label.three{
+      right:20%;
+      bottom:12%;
     }
 
     .code-float{
       position:absolute;
       z-index:5;
-      padding:.6rem .75rem;
-      border:1px solid rgba(0,217,255,.28);
-      background:rgba(1,8,19,.58);
-      color:#66ddff;
-      font:11px/1.45 "Courier New",monospace;
-      box-shadow:0 0 18px rgba(0,150,255,.10);
-      backdrop-filter:blur(5px);
-      white-space:pre;
-      animation:codeDrift 5s ease-in-out infinite;
+
+      font-family:monospace;
+      font-size:9px;
+      color:rgba(0,217,255,.5);
+
+      animation:floatCode 5s ease-in-out infinite;
     }
 
-    .code-a{left:12%;top:14%}
-    .code-b{right:4%;top:12%;animation-delay:1.2s}
-    .code-c{right:17%;bottom:8%;animation-delay:2.1s}
-
-    @keyframes codeDrift{
-      0%,100%{transform:translateY(0);opacity:.55}
-      50%{transform:translateY(-8px);opacity:.9}
+    .code-float.one{
+      right:8%;
+      top:10%;
     }
+
+    .code-float.two{
+      right:27%;
+      bottom:15%;
+      animation-delay:1s;
+    }
+
+    @keyframes floatCode{
+      0%,100%{
+        transform:translateY(0);
+        opacity:.3;
+      }
+
+      50%{
+        transform:translateY(-10px);
+        opacity:.7;
+      }
+    }
+
+    /* =========================
+       CONTENIDO HERO
+    ========================== */
+
+    .hero-content{
+      position:relative;
+      z-index:10;
+      width:100%;
+    }
+
+    .hero-kicker{
+      font-family:monospace;
+      color:var(--cyan);
+      letter-spacing:3px;
+      font-size:12px;
+      margin-bottom:15px;
+    }
+
+    .hero-title{
+      font-size:clamp(42px,6vw,78px);
+      line-height:.95;
+      font-weight:900;
+      letter-spacing:-3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff,
+          #a8eaff,
+          var(--cyan)
+        );
+
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero-subtitle{
+      margin-top:15px;
+      color:#9cc8d8;
+      font-size:clamp(17px,2vw,23px);
+    }
+
+    .hero-description{
+      max-width:600px;
+      margin-top:18px;
+
+      color:#83a6b4;
+      line-height:1.7;
+    }
+
+    .tag{
+      display:inline-block;
+
+      padding:6px 11px;
+      margin:4px;
+
+      font-size:11px;
+      font-family:monospace;
+
+      color:#bcefff;
+
+      border:1px solid rgba(0,217,255,.25);
+      background:rgba(0,217,255,.04);
+    }
+
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:25px;
+    }
+
+    .btn-main,
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:12px 20px;
+
+      text-decoration:none;
+
+      font-family:monospace;
+      font-size:12px;
+      letter-spacing:1px;
+
+      transition:.3s;
+    }
+
+    .btn-main{
+      color:#001017;
+      background:var(--cyan);
+      border:1px solid var(--cyan);
+
+      box-shadow:
+        0 0 15px rgba(0,217,255,.25);
+    }
+
+    .btn-main:hover{
+      box-shadow:
+        0 0 25px rgba(0,217,255,.5);
+
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      color:var(--cyan);
+      background:rgba(0,217,255,.04);
+      border:1px solid rgba(0,217,255,.35);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(0,217,255,.1);
+      transform:translateY(-2px);
+    }
+
+    /* =========================
+       DASHBOARD
+    ========================== */
 
     .dashboard{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:1rem;
+      margin-top:30px;
     }
 
-    .progress-track{
-      height:8px;
-      border-radius:99px;
-      background:rgba(255,255,255,.07);
+    .dashboard-card{
+      position:relative;
+      padding:20px;
+
+      background:rgba(2,12,26,.75);
+      border:1px solid rgba(0,217,255,.15);
+    }
+
+    .dashboard-title{
+      font-family:monospace;
+      color:#7aa9ba;
+      font-size:11px;
+      letter-spacing:2px;
+    }
+
+    .progress-row{
+      margin-top:15px;
+    }
+
+    .progress-info{
+      display:flex;
+      justify-content:space-between;
+
+      margin-bottom:6px;
+
+      font-size:11px;
+      font-family:monospace;
+      color:#9fc4d2;
+    }
+
+    .progress{
+      width:100%;
+      height:5px;
+      background:rgba(255,255,255,.05);
       overflow:hidden;
-      border:1px solid rgba(0,217,255,.14);
     }
 
-    .progress-fill{
+    .progress span{
+      display:block;
       height:100%;
-      border-radius:99px;
-      background:linear-gradient(90deg,#0877ff,var(--cyan),#b6f7ff);
-      box-shadow:0 0 12px rgba(0,217,255,.65);
-      transform-origin:left;
-      animation:progressIn 1.5s ease-out both;
+      background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--cyan)
+      );
+
+      box-shadow:0 0 8px rgba(0,217,255,.5);
     }
 
-    @keyframes progressIn{
-      from{transform:scaleX(0)}
-      to{transform:scaleX(1)}
-    }
-
-    .status-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:.55rem;
-    }
+    /* =========================
+       STATUS
+    ========================== */
 
     .status-chip{
-      min-height:70px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+      display:inline-flex;
       align-items:center;
-      text-align:center;
-      border:1px solid rgba(0,217,255,.25);
-      background:rgba(0,217,255,.035);
-      border-radius:.85rem;
-      transition:.25s;
+      gap:7px;
+
+      padding:5px 9px;
+
+      font-family:monospace;
+      font-size:10px;
+
+      color:#8fffdc;
+
+      border:1px solid rgba(0,229,168,.25);
+      background:rgba(0,229,168,.04);
     }
 
-    .status-chip:hover{
-      border-color:var(--cyan);
-      box-shadow:0 0 18px rgba(0,217,255,.16);
-      transform:translateY(-3px);
+    .status-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 8px var(--green);
     }
 
-    .neon-btn{
+    /* =========================
+       SECCIONES
+    ========================== */
+
+    section{
       position:relative;
+    }
+
+    .section-title{
+      font-size:clamp(28px,4vw,42px);
+      font-weight:800;
+      letter-spacing:-1px;
+    }
+
+    .section-kicker{
+      color:var(--cyan);
+      font-family:monospace;
+      font-size:11px;
+      letter-spacing:3px;
+      margin-bottom:8px;
+    }
+
+    /* =========================
+       TARJETAS
+    ========================== */
+
+    .info-card{
+      position:relative;
+      padding:25px;
+
+      background:rgba(3,14,29,.72);
+      border:1px solid rgba(0,217,255,.12);
+
+      transition:.3s;
+    }
+
+    .info-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,217,255,.35);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.25),
+        0 0 20px rgba(0,217,255,.05);
+    }
+
+    .info-card h3{
+      color:#dff8ff;
+      font-size:18px;
+      margin-bottom:10px;
+    }
+
+    .info-card p{
+      color:#7fa5b5;
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* =========================
+       MATERIAS
+    ========================== */
+
+    .subject{
       overflow:hidden;
+
+      border:1px solid rgba(0,217,255,.15);
+      background:rgba(3,14,29,.75);
     }
 
-    .neon-btn::before{
-      content:"";
+    .subject-header{
+      width:100%;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:20px 22px;
+
+      color:#eaf7ff;
+      background:transparent;
+
+      border:none;
+
+      cursor:pointer;
+      text-align:left;
+
+      transition:.3s;
+    }
+
+    .subject-header:hover{
+      background:rgba(0,217,255,.04);
+    }
+
+    .subject-arrow{
+      color:var(--cyan);
+      font-size:20px;
+      transition:.3s;
+    }
+
+    .subject.open .subject-arrow{
+      transform:rotate(180deg);
+    }
+
+    .subject-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .5s ease;
+    }
+
+    .subject.open .subject-content{
+      max-height:1000px;
+    }
+
+    .subject-inner{
+      padding:0 22px 25px;
+      color:#8aafbd;
+      line-height:1.7;
+    }
+
+    /* =========================
+       ENTREGABLES
+    ========================== */
+
+    .deliverable-card{
+      position:relative;
+
+      padding:22px;
+
+      border:1px solid rgba(0,217,255,.14);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0,217,255,.04),
+          rgba(139,92,246,.025)
+        );
+
+      transition:.3s;
+    }
+
+    .deliverable-card:hover{
+      transform:translateY(-4px);
+
+      border-color:rgba(0,217,255,.4);
+
+      box-shadow:
+        0 15px 30px rgba(0,0,0,.25);
+    }
+
+    .deliverable-number{
+      font-family:monospace;
+      font-size:11px;
+      color:var(--cyan);
+      letter-spacing:2px;
+    }
+
+    .deliverable-card h3{
+      margin-top:10px;
+      font-size:18px;
+      color:#e9fbff;
+    }
+
+    .deliverable-card p{
+      margin-top:8px;
+      color:#789baa;
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .delivery-button{
+      display:inline-block;
+
+      margin-top:15px;
+      padding:8px 13px;
+
+      color:var(--cyan);
+
+      border:1px solid rgba(0,217,255,.3);
+      background:rgba(0,217,255,.04);
+
+      font-family:monospace;
+      font-size:10px;
+      text-decoration:none;
+
+      transition:.3s;
+    }
+
+    .delivery-button:hover{
+      background:rgba(0,217,255,.12);
+      box-shadow:0 0 15px rgba(0,217,255,.1);
+    }
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    .modal{
+      position:fixed;
+      inset:0;
+
+      display:none;
+      align-items:center;
+      justify-content:center;
+
+      padding:20px;
+
+      background:rgba(0,0,0,.8);
+
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+
+      z-index:200;
+    }
+
+    .modal.active{
+      display:flex;
+    }
+
+    .modal-box{
+      position:relative;
+
+      width:min(700px,100%);
+      max-height:85vh;
+
+      overflow:auto;
+
+      padding:30px;
+
+      background:#04101f;
+
+      border:1px solid rgba(0,217,255,.4);
+
+      box-shadow:
+        0 0 50px rgba(0,217,255,.1);
+    }
+
+    .modal-close{
       position:absolute;
-      top:0;
-      left:-120%;
-      width:80%;
-      height:100%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
-      transform:skewX(-20deg);
-      transition:.55s;
+      top:12px;
+      right:15px;
+
+      background:none;
+      border:none;
+
+      color:#8baeba;
+      font-size:25px;
+
+      cursor:pointer;
     }
 
-    .neon-btn:hover::before{left:140%}
+    .modal-close:hover{
+      color:var(--cyan);
+    }
+
+    /* =========================
+       PARTICULAS
+    ========================== */
+
+    .particle{
+      position:fixed;
+
+      width:2px;
+      height:2px;
+
+      background:var(--cyan);
+
+      border-radius:50%;
+
+      opacity:.35;
+
+      pointer-events:none;
+
+      z-index:-1;
+
+      animation:particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat{
+      from{
+        transform:translateY(110vh);
+      }
+
+      to{
+        transform:translateY(-10vh);
+      }
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      border-top:1px solid rgba(0,217,255,.12);
+      background:rgba(2,7,17,.8);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
 
     @media(max-width:900px){
-      .hero{min-height:650px}
+
+      .hero{
+        min-height:700px;
+        align-items:flex-start;
+      }
+
+      .hero-content{
+        padding-top:70px;
+      }
+
       .hero-robot-layer{
         width:100%;
-        height:48%;
+        height:52%;
+
         top:auto;
         bottom:0;
-        opacity:.82;
+
+        opacity:.88;
       }
+
       .robot-image{
-        right:-60px;
-        width:620px;
-        max-width:none;
+        right:-80px;
+
+        width:680px;
+        height:100%;
+
+        object-fit:contain;
+        object-position:center right;
       }
-      .robot-scan{top:5%;animation-duration:3.2s}
-      .code-a{left:3%;top:10%;font-size:9px}
-      .code-b{right:2%;top:8%;font-size:9px}
-      .code-c{display:none}
-      .dashboard{grid-template-columns:1fr}
-      .status-grid{grid-template-columns:repeat(2,1fr)}
-    }
 
-    @media(max-width:520px){
-      .hero{min-height:700px}
-      .hero-robot-layer{height:42%}
-      .robot-image{right:-105px;width:600px}
-      .ai-label{right:4%;bottom:9%;font-size:9px}
-      .status-grid{grid-template-columns:repeat(2,1fr)}
-    }
+      .hero::before{
+        background:
+          linear-gradient(
+            180deg,
+            #020711 0%,
+            rgba(2,7,17,.98) 38%,
+            rgba(2,7,17,.75) 65%,
+            rgba(2,7,17,.35) 100%
+          );
+      }
 
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{
-        animation-duration:.001ms!important;
-        animation-iteration-count:1!important;
-        scroll-behavior:auto!important;
+      .ai-label.one{
+        right:15%;
+        top:12%;
+      }
+
+      .ai-label.two{
+        right:5%;
+        top:50%;
+      }
+
+      .ai-label.three{
+        right:25%;
+        bottom:8%;
       }
     }
 
+    @media(max-width:640px){
+
+      .hero{
+        min-height:720px;
+      }
+
+      .hero-content{
+        padding-top:50px;
+      }
+
+      .hero-title{
+        font-size:45px;
+        letter-spacing:-2px;
+      }
+
+      .hero-description{
+        font-size:14px;
+      }
+
+      .hero-robot-layer{
+        height:48%;
+      }
+
+      .robot-image{
+        right:-130px;
+        width:600px;
+      }
+
+      .ai-label{
+        font-size:8px;
+        padding:5px 8px;
+      }
+
+      .code-float{
+        display:none;
+      }
+    }
+
+    @media(max-width:420px){
+
+      .hero{
+        min-height:680px;
+      }
+
+      .hero-title{
+        font-size:39px;
+      }
+
+      .robot-image{
+        right:-160px;
+        width:560px;
+      }
+
+      .hero-buttons{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .btn-main,
+      .btn-secondary{
+        width:100%;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <canvas id="particles" class="particles-canvas"></canvas>
-  <div class="scanlines"></div>
 
-  <!-- El archivo robot-heroe.png contiene únicamente el área visual del robot/IA. -->
-  <!-- =========================================================
+  <!-- =====================================================
+       PARTICULAS
+  ====================================================== -->
+
+  <div class="particle" style="left:8%;animation-duration:13s;"></div>
+  <div class="particle" style="left:18%;animation-duration:17s;"></div>
+  <div class="particle" style="left:31%;animation-duration:11s;"></div>
+  <div class="particle" style="left:47%;animation-duration:19s;"></div>
+  <div class="particle" style="left:62%;animation-duration:14s;"></div>
+  <div class="particle" style="left:76%;animation-duration:16s;"></div>
+  <div class="particle" style="left:91%;animation-duration:12s;"></div>
+
+
+  <!-- =====================================================
        NAVBAR
-  ========================================================== -->
-  <header class="nav fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-5">
-      <div class="h-[68px] flex items-center justify-between">
-        <a href="#inicio" class="flex items-center gap-3 font-black text-xl">
-          <span class="text-3xl text-cyan-400 neon">&lt;/&gt;</span>
-          <span class="hidden sm:block text-cyan-300">&lt;JeronimoZapata /&gt;</span>
+  ====================================================== -->
+
+  <nav class="nav">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+
+      <div class="flex items-center justify-between">
+
+        <a href="#inicio"
+           class="font-mono text-sm neon tracking-widest">
+          JZV<span class="text-white">_DEV</span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-9">
-          <a class="nav-link" href="#sobre-mi">Sobre mí</a>
-          <a class="nav-link" href="#materias">Materias POO</a>
-          <a class="nav-link" href="#trabajos">Mis Trabajos</a>
-        </nav>
-
-        <div class="hidden sm:flex items-center gap-3 text-xs text-cyan-200">
-          <span class="w-8 h-px bg-cyan-400"></span>
-          <span>Código hoy, grandes ideas mañana</span>
+        <div class="hidden md:flex items-center gap-8 text-xs font-mono">
+          <a href="#inicio" class="nav-link">INICIO</a>
+          <a href="#sobre-mi" class="nav-link">SOBRE MÍ</a>
+          <a href="#materias" class="nav-link">MATERIAS</a>
+          <a href="#entregables" class="nav-link">ENTREGABLES</a>
         </div>
+
+        <div class="status-chip">
+          <span class="status-dot"></span>
+          ONLINE
+        </div>
+
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- =========================================================
+
+  <!-- =====================================================
        HERO
-  ========================================================== -->
-  <main id="inicio" class="pt-[68px]">
-    <section class="hero">
-      <div class="hero-grid"></div>
+  ====================================================== -->
 
-      <div class="hero-robot-layer" aria-hidden="true">
-        <img src="robot-heroe.png" alt="" class="robot-image">
-        <div class="robot-scan-grid"></div>
-        <div class="robot-scan"></div>
+  <header id="inicio" class="hero">
 
-        <div class="code-float code-a">&lt;system&gt;
-status: ONLINE
-core: JAVA</div>
+    <div class="hero-grid"></div>
 
-        <div class="code-float code-b">AI + CODE
-=&gt; BETTER TOMORROW</div>
+    <!-- =================================================
+         IMAGEN PRINCIPAL
 
-        <div class="code-float code-c">class Developer {
-  void create() {}
-}</div>
+         IMPORTANTE:
+         El archivo debe llamarse exactamente:
 
-        <div class="ai-label">SYSTEM ONLINE // DEVELOPER MODE</div>
+         hero-robot.png
+
+         y debe estar en la misma carpeta que index.html.
+    ================================================== -->
+
+    <div class="hero-robot-layer">
+
+      <img
+        src="hero-robot.png"
+        alt="Iron Man - Inteligencia Artificial y Tecnología"
+        class="robot-image"
+      >
+
+      <div class="robot-scan"></div>
+      <div class="robot-scan-grid"></div>
+
+      <div class="ai-label one">
+        SYSTEM // ONLINE
       </div>
 
-      <div class="max-w-7xl mx-auto w-full px-5 py-10 relative z-10">
-        <div class="max-w-[610px]">
-          <div class="flex items-center gap-3 text-cyan-300 text-xs sm:text-sm font-mono tracking-wider mb-5">
-            <span class="status-dot pulse"></span>
+      <div class="ai-label two">
+        POO_ENGINE
+      </div>
+
+      <div class="ai-label three">
+        JAVA_CORE
+      </div>
+
+      <div class="code-float one">
+        class HeroRobot { }
+      </div>
+
+      <div class="code-float two">
+        public void execute();
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CONTENIDO HERO
+    ================================================== -->
+
+    <div class="hero-content">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl">
+
+          <div class="hero-kicker">
             SISTEMA ACADÉMICO ONLINE // PORTAFOLIO_DEV_3
           </div>
 
-          <p class="text-cyan-200 text-lg mb-1">Hola, mi nombre es</p>
-
-          <h1 class="text-4xl sm:text-6xl font-black leading-tight">
-            Jeronimo Zapata Vargas<span class="text-cyan-400">.</span>
+          <h1 class="hero-title">
+            JERONIMO<br>
+            ZAPATA VARGAS
           </h1>
 
-          <h2 class="text-xl sm:text-2xl font-bold mt-4 text-slate-200">
-            Estudiante de Tecnología en Desarrollo de Software
-            <span class="text-cyan-400">(3.er Semestre)</span>.
-          </h2>
-
-          <p class="mt-5 text-slate-300 leading-relaxed max-w-xl">
-            Especializado en el diseño conceptual de sistemas, modelado UML,
-            estructuración de bases de datos relacionales y aplicación del
-            paradigma de Programación Orientada a Objetos.
+          <p class="hero-subtitle">
+            Estudiante de Desarrollo de Software
           </p>
 
-          <div class="flex flex-wrap gap-3 mt-7">
+          <p class="hero-description">
+            Portafolio académico enfocado en Programación Orientada
+            a Objetos, Java, diseño de clases, herencia, polimorfismo,
+            encapsulamiento y principios SOLID.
+          </p>
+
+
+          <div class="mt-4">
+
             <span class="tag">JAVA</span>
-            <span class="tag">UML</span>
-            <span class="tag" style="border-color:rgba(139,92,246,.7);color:#c4a7ff">POO</span>
+            <span class="tag">POO</span>
             <span class="tag">GITHUB</span>
+            <span class="tag">UML</span>
+            <span class="tag">SOLID</span>
+
           </div>
 
-          <div class="flex flex-wrap gap-4 mt-9">
-            <a href="#materias" class="btn neon-btn rounded-lg px-5 py-3 font-bold">
-              Explorar materias →
+
+          <div class="hero-buttons">
+
+            <a href="#entregables"
+               class="btn-main">
+              VER ENTREGABLES
             </a>
-            <a href="#trabajos" class="btn neon-btn rounded-lg px-5 py-3 font-bold">
-              Ver trabajos
+
+            <a href="#materias"
+               class="btn-secondary">
+              EXPLORAR MATERIAS
             </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- =======================================================
-         ESTADO ACADÉMICO
-    ======================================================== -->
-    <section class="max-w-7xl mx-auto px-5 pt-8">
-      <div class="dashboard">
-
-        <article class="glass corner rounded-2xl p-6">
-          <div class="flex items-center justify-between gap-4 mb-5">
-            <div>
-              <p class="text-cyan-400 font-mono text-xs">SYSTEM DASHBOARD // 03</p>
-              <h2 class="text-2xl font-black">Estado académico</h2>
-            </div>
-            <span class="tag">ONLINE</span>
           </div>
 
-          <div class="space-y-5">
-            <div>
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-300">POO I · contenido académico</span>
-                <span class="text-cyan-300 font-mono">100%</span>
+
+          <!-- DASHBOARD -->
+
+          <div class="dashboard">
+
+            <div class="dashboard-card">
+
+              <div class="corner tl"></div>
+              <div class="corner tr"></div>
+              <div class="corner bl"></div>
+              <div class="corner br"></div>
+
+              <div class="dashboard-title">
+                DEVELOPMENT_PROGRESS // 2026
               </div>
-              <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
-            </div>
 
-            <div>
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-300">POO II · contenido académico</span>
-                <span class="text-cyan-300 font-mono">66%</span>
-              </div>
-              <div class="progress-track"><div class="progress-fill" style="width:66%"></div></div>
-            </div>
-          </div>
-        </article>
 
-        <article class="glass corner rounded-2xl p-6">
-          <div class="flex items-center justify-between gap-4 mb-5">
-            <div>
-              <p class="text-cyan-400 font-mono text-xs">PROFILE STATUS</p>
-              <h2 class="text-2xl font-black">Tecnologías y formación</h2>
-            </div>
-            <span class="status-dot pulse"></span>
-          </div>
+              <div class="progress-row">
 
-          <div class="status-grid">
-            <div class="status-chip">
-              <span class="text-cyan-300 font-black text-lg">3</span>
-              <span class="text-[11px] text-slate-400 mt-1">SEMESTRE</span>
-            </div>
-            <div class="status-chip">
-              <span class="text-cyan-300 font-black">JAVA</span>
-              <span class="text-[11px] text-slate-400 mt-1">LENGUAJE</span>
-            </div>
-            <div class="status-chip">
-              <span class="text-cyan-300 font-black">POO</span>
-              <span class="text-[11px] text-slate-400 mt-1">PARADIGMA</span>
-            </div>
-            <div class="status-chip">
-              <span class="text-cyan-300 font-black">UML</span>
-              <span class="text-[11px] text-slate-400 mt-1">MODELADO</span>
-            </div>
-            <div class="status-chip">
-              <span class="text-cyan-300 font-black">GIT</span>
-              <span class="text-[11px] text-slate-400 mt-1">GITHUB</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- =======================================================
-         SOBRE MI
-    ======================================================== -->
-    <section id="sobre-mi" class="max-w-7xl mx-auto px-5 py-14">
-      <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-6">
-
-        <article class="glass corner rounded-2xl p-7">
-          <div class="flex items-center gap-4 mb-5">
-            <div class="w-12 h-12 rounded-xl border border-cyan-400/50 flex items-center justify-center text-2xl text-cyan-300">
-              ◉
-            </div>
-            <div>
-              <p class="text-cyan-400 font-mono text-sm">01.</p>
-              <h2 class="text-2xl font-black">Sobre mí</h2>
-            </div>
-          </div>
-
-          <p class="text-slate-300 leading-relaxed">
-            Soy estudiante de tercer semestre de la Tecnología en Desarrollo
-            de Software en la Institución Universitaria Digital de Antioquia.
-          </p>
-
-          <p class="text-slate-300 leading-relaxed mt-4">
-            Mi enfoque formativo abarca el ciclo de vida del software, desde
-            el análisis de sistemas y la modelación arquitectónica con UML,
-            hasta la implementación orientada a objetos e integración con
-            bases de datos relacionales.
-          </p>
-
-          <p class="text-slate-300 leading-relaxed mt-4">
-            Actualmente continúo fortaleciendo mis conocimientos en
-            Programación Orientada a Objetos, Java, diseño de clases,
-            relaciones entre objetos, programación funcional y buenas
-            prácticas de desarrollo de software.
-          </p>
-        </article>
-
-        <!-- =====================================================
-             MATERIAS
-        ====================================================== -->
-        <article id="materias" class="glass corner rounded-2xl p-7">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-xl border border-cyan-400/50 flex items-center justify-center text-2xl text-cyan-300">
-              ◇
-            </div>
-            <div>
-              <p class="text-cyan-400 font-mono text-sm">02.</p>
-              <h2 class="text-2xl font-black">Contenido de las Materias</h2>
-            </div>
-          </div>
-
-          <p class="text-slate-400 mb-5">
-            Haz clic en cada materia para consultar las unidades,
-            conceptos desarrollados y contenidos académicos.
-          </p>
-
-          <div class="space-y-4">
-
-            <!-- POO I -->
-            <button onclick="toggleDesplegable('poo1')" class="w-full text-left rounded-xl border border-cyan-400/40 bg-cyan-400/[.035] hover:bg-cyan-400/[.07] transition p-5">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <div class="w-11 h-11 rounded-lg border border-cyan-400/60 flex items-center justify-center text-cyan-300 font-bold">
-                    &lt;/&gt;
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-lg">Programación Orientada a Objetos I (Básica)</h3>
-                    <p class="text-cyan-400 text-xs font-mono mt-1">Semestre 2 • IU Digital de Antioquia</p>
-                  </div>
-                </div>
-                <span id="icono-poo1" class="text-3xl text-cyan-300">+</span>
-              </div>
-            </button>
-
-            <div id="poo1" class="hidden pl-4 pr-2">
-              <div class="grid md:grid-cols-3 gap-3">
-                <div class="rounded-xl border border-cyan-400/20 bg-black/20 p-4">
-                  <p class="text-cyan-400 text-xs font-bold">UNIDAD 1</p>
-                  <h4 class="font-bold mt-2">Fundamentos de POO</h4>
-                  <p class="text-sm text-slate-400 mt-2">Conceptos iniciales, objetos, clases, atributos y métodos.</p>
-                </div>
-                <div class="rounded-xl border border-cyan-400/20 bg-black/20 p-4">
-                  <p class="text-cyan-400 text-xs font-bold">UNIDAD 2</p>
-                  <h4 class="font-bold mt-2">Encapsulamiento</h4>
-                  <p class="text-sm text-slate-400 mt-2">Estructuración, modificadores de acceso y control de datos.</p>
-                </div>
-                <div class="rounded-xl border border-cyan-400/20 bg-black/20 p-4">
-                  <p class="text-cyan-400 text-xs font-bold">UNIDAD 3</p>
-                  <h4 class="font-bold mt-2">Herencia y Polimorfismo</h4>
-                  <p class="text-sm text-slate-400 mt-2">Relaciones entre clases, herencia y comportamiento polimórfico.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- POO II -->
-            <button onclick="toggleDesplegable('poo2')" class="w-full text-left rounded-xl border border-cyan-400/40 bg-cyan-400/[.035] hover:bg-cyan-400/[.07] transition p-5">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <div class="w-11 h-11 rounded-lg border border-cyan-400/60 flex items-center justify-center text-cyan-300 font-bold">
-                    &lt;/&gt;
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-lg">Programación Orientada a Objetos II (Avanzada)</h3>
-                    <p class="text-cyan-400 text-xs font-mono mt-1">Semestre 3 • Asignatura actual</p>
-                  </div>
-                </div>
-                <span id="icono-poo2" class="text-3xl text-cyan-300">+</span>
-              </div>
-            </button>
-
-            <div id="poo2" class="hidden pl-4 pr-2">
-              <div class="space-y-4">
-
-                <div class="rounded-xl border border-slate-600/50 bg-black/25 p-5">
-                  <div class="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-600/40 text-slate-300">
-                        UNIDAD 1 • VISTA
-                      </span>
-                      <h4 class="text-lg font-bold mt-3">Diseño e Implementación Orientada a Objetos</h4>
-                    </div>
-                    <span class="text-slate-400 text-xs font-mono">ESTADO: VISTA</span>
-                  </div>
-                  <p class="text-slate-400 text-sm leading-relaxed mt-3">
-                    Herencia y jerarquías de clases, polimorfismo, sobrescritura,
-                    sobrecarga, clases abstractas, interfaces y relaciones entre objetos.
-                  </p>
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    <span class="tag">HERENCIA</span>
-                    <span class="tag">POLIMORFISMO</span>
-                    <span class="tag">INTERFACES</span>
-                    <span class="tag">CLASES ABSTRACTAS</span>
-                  </div>
+                <div class="progress-info">
+                  <span>PROGRAMACIÓN ORIENTADA A OBJETOS</span>
+                  <span>90%</span>
                 </div>
 
-                <div class="rounded-xl border border-emerald-400/50 bg-emerald-400/[.035] p-5">
-                  <div class="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-400/15 text-emerald-300">
-                        UNIDAD 2 • EN CURSO
-                      </span>
-                      <h4 class="text-lg font-bold mt-3">Programación Avanzada y Programación Funcional</h4>
-                    </div>
-                    <span class="text-emerald-300 text-xs font-mono">● EN CURSO</span>
-                  </div>
-                  <p class="text-slate-400 text-sm leading-relaxed mt-3">
-                    Implementación de modelos de clases en Java y acercamiento a la
-                    programación funcional mediante funciones, expresiones lambda,
-                    interfaces funcionales, colecciones, Streams, map, filter y reduce.
-                  </p>
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    <span class="tag">JAVA</span>
-                    <span class="tag">LAMBDA</span>
-                    <span class="tag">STREAMS</span>
-                    <span class="tag">COLECCIONES</span>
-                  </div>
-                </div>
-
-                <div class="rounded-xl border border-blue-400/40 bg-blue-400/[.025] p-5">
-                  <div class="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-blue-400/15 text-blue-300">
-                        UNIDAD 3 • PRÓXIMAMENTE
-                      </span>
-                      <h4 class="text-lg font-bold mt-3">Arquitectura, Patrones y Buenas Prácticas</h4>
-                    </div>
-                    <span class="text-blue-300 text-xs font-mono">PRÓXIMAMENTE</span>
-                  </div>
-                  <p class="text-slate-400 text-sm leading-relaxed mt-3">
-                    Espacio reservado para los contenidos que se desarrollarán
-                    posteriormente en el recorrido de Programación Orientada a Objetos II.
-                  </p>
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    <span class="tag">PATRONES</span>
-                    <span class="tag">ARQUITECTURA</span>
-                    <span class="tag">SOLID</span>
-                  </div>
+                <div class="progress">
+                  <span style="width:90%;"></span>
                 </div>
 
               </div>
-            </div>
 
-          </div>
-        </article>
-      </div>
-    </section>
 
-    <!-- =======================================================
-         TRABAJOS
-    ======================================================== -->
-    <section id="trabajos" class="max-w-7xl mx-auto px-5 pb-16">
-      <div class="glass corner rounded-2xl p-7">
+              <div class="progress-row">
 
-        <div class="flex items-center gap-4 mb-7">
-          <div class="w-12 h-12 rounded-xl border border-cyan-400/50 flex items-center justify-center text-2xl text-cyan-300">
-            ▣
-          </div>
-          <div>
-            <p class="text-cyan-400 font-mono text-sm">03.</p>
-            <h2 class="text-2xl sm:text-3xl font-black">Entregables Académicos</h2>
-          </div>
-        </div>
+                <div class="progress-info">
+                  <span>JAVA</span>
+                  <span>85%</span>
+                </div>
 
-        <div class="grid lg:grid-cols-2 gap-6">
+                <div class="progress">
+                  <span style="width:85%;"></span>
+                </div>
 
-          <!-- POO I -->
-          <div class="rounded-2xl border border-cyan-400/35 bg-black/25 p-5">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="text-cyan-300 text-2xl">◈</div>
-              <div>
-                <h3 class="font-bold text-lg text-cyan-300">Programación Orientada a Objetos I (Básica)</h3>
-                <p class="text-xs text-slate-400">Trabajos e iteraciones prácticas desarrolladas de manera individual.</p>
               </div>
+
+
+              <div class="progress-row">
+
+                <div class="progress-info">
+                  <span>GITHUB / CONTROL DE VERSIONES</span>
+                  <span>80%</span>
+                </div>
+
+                <div class="progress">
+                  <span style="width:80%;"></span>
+                </div>
+
+              </div>
+
             </div>
 
-            <div class="space-y-4">
-
-              <!-- ENTREGA 1 -->
-              <button onclick="abrirModal('modal-poo1-entrega1')" class="activity w-full text-left rounded-xl border border-cyan-400/30 bg-cyan-400/[.025] p-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 shrink-0 rounded-lg border border-cyan-400/50 flex items-center justify-center text-cyan-300 font-black">01</div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <div>
-                        <p class="text-cyan-400 text-xs font-mono">POO I • ENTREGA N.º 1</p>
-                        <h4 class="font-bold mt-1">Planteando el diagrama de clase UML</h4>
-                      </div>
-                      <span class="text-cyan-300 text-sm whitespace-nowrap">Ver entrega ↗</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Diseño y modelado UML del sistema de biblioteca, definiendo las clases y sus relaciones.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                      <span class="tag">TRABAJO INDIVIDUAL</span>
-                      <span class="tag">UML</span>
-                      <span class="tag">BIBLIOTECA</span>
-                      <span class="tag">PDF</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-
-              <!-- ENTREGA 2 -->
-              <button onclick="abrirModal('modal-poo1-entrega2')" class="activity w-full text-left rounded-xl border border-blue-400/30 bg-blue-400/[.025] p-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 shrink-0 rounded-lg border border-blue-400/50 flex items-center justify-center text-blue-300 font-black">02</div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <div>
-                        <p class="text-blue-300 text-xs font-mono">POO I • ENTREGA N.º 2</p>
-                        <h4 class="font-bold mt-1">Implementación del diagrama de clases</h4>
-                      </div>
-                      <span class="text-blue-300 text-sm whitespace-nowrap">Ver entrega ↗</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Implementación en lenguaje de programación de las clases planteadas en el modelo UML.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                      <span class="tag">TRABAJO INDIVIDUAL</span>
-                      <span class="tag">JAVA</span>
-                      <span class="tag">IMPLEMENTACIÓN</span>
-                      <span class="tag">DOCX</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-
-              <!-- ENTREGA 3 -->
-              <button onclick="abrirModal('modal-poo1-entrega3')" class="activity w-full text-left rounded-xl border border-purple-400/35 bg-purple-400/[.025] p-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 shrink-0 rounded-lg border border-purple-400/50 flex items-center justify-center text-purple-300 font-black">03</div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <div>
-                        <p class="text-purple-300 text-xs font-mono">POO I • ENTREGA N.º 3</p>
-                        <h4 class="font-bold mt-1">Caso de estudio: Herencia y Polimorfismo</h4>
-                      </div>
-                      <span class="text-purple-300 text-sm whitespace-nowrap">Ver entrega ↗</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Caso de estudio orientado a aplicar los conceptos de herencia y polimorfismo en programación orientada a objetos.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                      <span class="tag">TRABAJO INDIVIDUAL</span>
-                      <span class="tag">HERENCIA</span>
-                      <span class="tag">POLIMORFISMO</span>
-                      <span class="tag">PDF</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-
-            </div>
           </div>
 
-          <!-- POO II -->
-          <div class="rounded-2xl border border-cyan-400/35 bg-black/25 p-5">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="text-cyan-300 text-2xl">◈</div>
-              <div>
-                <h3 class="font-bold text-lg text-cyan-300">Programación Orientada a Objetos II (Avanzada)</h3>
-                <p class="text-xs text-slate-400">Proyectos, actividades y modelado avanzado de software.</p>
-              </div>
-            </div>
-
-            <div class="space-y-4">
-
-              <!-- ACTIVIDAD 1: CONSERVAR LOS CUATRO ENLACES -->
-              <button onclick="abrirModal('modal-evidencia1')" class="activity w-full text-left rounded-xl border border-cyan-400/35 bg-cyan-400/[.025] p-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 shrink-0 rounded-lg border border-cyan-400/50 flex items-center justify-center text-cyan-300">▤</div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <div>
-                        <p class="text-cyan-400 text-xs font-mono">POO 2 • ACTIVIDAD N.º 1</p>
-                        <h4 class="font-bold mt-1">Actividad 1: Diagrama de Clases UML</h4>
-                      </div>
-                      <span class="text-cyan-300 text-sm whitespace-nowrap">Ver entregables ↗</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Análisis de requerimientos, abstracción de entidades y modelado
-                      estructural de un sistema mediante diagramas de clases UML.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                      <span class="tag">TRABAJO COLABORATIVO</span>
-                      <span class="tag">DIAGRAMA UML</span>
-                      <span class="tag">DOCUMENTO</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-
-              <!-- ACTIVIDAD 2: SIN ENLACES -->
-              <button onclick="abrirModal('modal-evidencia2')" class="activity w-full text-left rounded-xl border border-slate-500/45 bg-slate-400/[.02] p-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 shrink-0 rounded-lg border border-slate-500/50 flex items-center justify-center text-slate-300">▤</div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <div>
-                        <p class="text-slate-300 text-xs font-mono">POO 2 • ACTIVIDAD N.º 2</p>
-                        <h4 class="font-bold mt-1">Actividad 2: Implementación de Diagrama de clases</h4>
-                      </div>
-                      <span class="text-slate-300 text-sm whitespace-nowrap">Ver información ↗</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Implementación en Java del diagrama de clases, llevando el modelo
-                      conceptual a una estructura de código.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                      <span class="tag">TRABAJO ACADÉMICO</span>
-                      <span class="tag">JAVA</span>
-                      <span class="tag">IMPLEMENTACIÓN</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-
-              <!-- ACTIVIDAD 3: SIN ENLACES -->
-              <button onclick="abrirModal('modal-evidencia3')" class="activity w-full text-left rounded-xl border border-purple-400/40 bg-purple-400/[.025] p-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 shrink-0 rounded-lg border border-purple-400/50 flex items-center justify-center text-purple-300">▤</div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <div>
-                        <p class="text-purple-300 text-xs font-mono">POO 2 • ACTIVIDAD N.º 3</p>
-                        <h4 class="font-bold mt-1">Actividad 3: Programación Funcional</h4>
-                      </div>
-                      <span class="text-purple-300 text-sm whitespace-nowrap">Ver información ↗</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Estudio e implementación del paradigma de Programación Funcional
-                      en Java, incluyendo funciones, lambdas, colecciones y Streams.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                      <span class="tag">TRABAJO COLABORATIVO</span>
-                      <span class="tag">PROGRAMACIÓN FUNCIONAL</span>
-                      <span class="tag">LAMBDAS & STREAMS</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Estado de unidades -->
-        <div class="mt-6 rounded-2xl border border-cyan-400/25 bg-black/25 p-5">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-cyan-300 text-xl">◇</span>
-            <h3 class="font-bold text-cyan-300">Unidades de POO II</h3>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-3">
-            <div class="rounded-xl border border-slate-600/50 p-4">
-              <div class="flex justify-between gap-3">
-                <span class="text-sm">● Unidad 1: Diseño e Implementación Orientada a Objetos</span>
-                <span class="text-xs text-slate-400">VISTA</span>
-              </div>
-            </div>
-
-            <div class="rounded-xl border border-emerald-400/35 bg-emerald-400/[.025] p-4">
-              <div class="flex justify-between gap-3">
-                <span class="text-sm text-emerald-100">● Unidad 2: Programación Avanzada y Programación Funcional</span>
-                <span class="text-xs text-emerald-300">EN CURSO</span>
-              </div>
-            </div>
-
-            <div class="rounded-xl border border-blue-400/30 p-4">
-              <div class="flex justify-between gap-3">
-                <span class="text-sm text-blue-100">● Unidad 3: Arquitectura, Patrones y Buenas Prácticas</span>
-                <span class="text-xs text-blue-300">PRÓXIMAMENTE</span>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
-    </section>
-  </main>
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
-  <footer class="border-t border-cyan-400/20 bg-black/50">
-    <div class="max-w-7xl mx-auto px-5 py-8 text-center">
-      <p class="text-slate-400 text-sm">
-        Diseñado y desarrollado por <span class="text-cyan-300 font-semibold">Jeronimo Zapata Vargas</span>
-      </p>
-      <p class="font-mono text-cyan-400 mt-2 text-sm">
-        &lt;/&gt; Software Developer Portfolio // AI SYSTEM ONLINE
-      </p>
-      <div class="flex justify-center gap-5 text-xs text-slate-500 mt-4">
-        <span>Programación</span>
-        <span>•</span>
-        <span>Inteligencia Artificial</span>
-        <span>•</span>
-        <span>Innovación</span>
-      </div>
     </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       SOBRE MÍ
+  ====================================================== -->
+
+  <section id="sobre-mi" class="py-24">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="section-kicker">
+        01 // IDENTIDAD
+      </div>
+
+      <h2 class="section-title">
+        Sobre mí
+      </h2>
+
+      <div class="tech-line mt-5 mb-10"></div>
+
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <div class="info-card">
+
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+
+          <h3>
+            Perfil académico
+          </h3>
+
+          <p>
+            Soy estudiante de Desarrollo de Software y durante mi
+            proceso académico he venido fortaleciendo mis conocimientos
+            en programación, especialmente en Programación Orientada
+            a Objetos y desarrollo de aplicaciones utilizando Java.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+
+          <h3>
+            Objetivo
+          </h3>
+
+          <p>
+            Este portafolio tiene como propósito presentar el proceso
+            de aprendizaje, las actividades desarrolladas y los
+            diferentes entregables realizados durante las materias
+            relacionadas con programación orientada a objetos.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MATERIAS
+  ====================================================== -->
+
+  <section id="materias" class="py-24">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="section-kicker">
+        02 // FORMACIÓN
+      </div>
+
+      <h2 class="section-title">
+        Contenido de las Materias
+      </h2>
+
+      <div class="tech-line mt-5 mb-10"></div>
+
+
+      <!-- POO I -->
+
+      <div class="subject mb-5">
+
+        <button class="subject-header"
+                onclick="toggleSubject(this)">
+
+          <div>
+
+            <div class="font-mono text-xs neon">
+              POO I
+            </div>
+
+            <div class="text-xl font-bold mt-1">
+              Programación Orientada a Objetos I
+            </div>
+
+          </div>
+
+          <div class="subject-arrow">
+            ▼
+          </div>
+
+        </button>
+
+
+        <div class="subject-content">
+
+          <div class="subject-inner">
+
+            <p>
+              En esta materia se trabajan los fundamentos de la
+              Programación Orientada a Objetos y la construcción de
+              programas utilizando clases y objetos.
+            </p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+
+              <div class="info-card">
+                <h3>Clases y objetos</h3>
+                <p>
+                  Creación y utilización de clases, atributos,
+                  métodos y objetos.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Encapsulamiento</h3>
+                <p>
+                  Protección de los atributos y control del acceso
+                  mediante métodos.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Abstracción</h3>
+                <p>
+                  Identificación de las características y
+                  comportamientos esenciales.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Herencia</h3>
+                <p>
+                  Reutilización de código mediante relaciones
+                  entre clases.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Polimorfismo</h3>
+                <p>
+                  Diferentes comportamientos mediante una misma
+                  interfaz o referencia.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Java</h3>
+                <p>
+                  Implementación práctica de los conceptos de POO
+                  utilizando Java.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- POO II -->
+
+      <div class="subject">
+
+        <button class="subject-header"
+                onclick="toggleSubject(this)">
+
+          <div>
+
+            <div class="font-mono text-xs neon">
+              POO II
+            </div>
+
+            <div class="text-xl font-bold mt-1">
+              Programación Orientada a Objetos II
+            </div>
+
+          </div>
+
+          <div class="subject-arrow">
+            ▼
+          </div>
+
+        </button>
+
+
+        <div class="subject-content">
+
+          <div class="subject-inner">
+
+            <p>
+              En esta materia se profundizan los conceptos de
+              Programación Orientada a Objetos mediante el desarrollo
+              de sistemas más estructurados y aplicando buenas
+              prácticas de diseño.
+            </p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+
+              <div class="info-card">
+                <h3>SOLID</h3>
+                <p>
+                  Aplicación de principios para desarrollar software
+                  más mantenible y organizado.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Asociación</h3>
+                <p>
+                  Relaciones entre diferentes clases dentro del
+                  diseño del sistema.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Agregación</h3>
+                <p>
+                  Relación donde una clase contiene o agrupa
+                  objetos de otras clases.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Composición</h3>
+                <p>
+                  Relación fuerte entre objetos que forman parte
+                  de una estructura.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Sobrecarga</h3>
+                <p>
+                  Utilización de varios métodos con el mismo nombre
+                  y diferentes parámetros.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <h3>Sobrescritura</h3>
+                <p>
+                  Redefinición del comportamiento de un método
+                  heredado.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       ENTREGABLES
+  ====================================================== -->
+
+  <section id="entregables" class="py-24">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="section-kicker">
+        03 // EVIDENCIAS
+      </div>
+
+      <h2 class="section-title">
+        Entregables Académicos
+      </h2>
+
+      <div class="tech-line mt-5 mb-10"></div>
+
+
+      <!-- =========================
+           POO I
+      ========================== -->
+
+      <div class="mb-12">
+
+        <div class="flex items-center gap-4 mb-6">
+
+          <span class="font-mono neon text-sm">
+            POO I
+          </span>
+
+          <div class="h-px flex-1 bg-cyan-900"></div>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-5">
+
+
+          <!-- ENTREGA 1 -->
+
+          <div class="deliverable-card">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="deliverable-number">
+              ENTREGA_01
+            </div>
+
+            <h3>
+              Diagrama de Clases
+            </h3>
+
+            <p>
+              Diseño del sistema de biblioteca mediante un diagrama
+              de clases UML.
+            </p>
+
+            <a
+              href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA1_Grupo20_DiagramaDeClasesbiblioteca.pdf"
+              target="_blank"
+              class="delivery-button">
+              VER PDF →
+            </a>
+
+          </div>
+
+
+          <!-- ENTREGA 2 -->
+
+          <div class="deliverable-card">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="deliverable-number">
+              ENTREGA_02
+            </div>
+
+            <h3>
+              Actividad Práctica
+            </h3>
+
+            <p>
+              Desarrollo de la actividad práctica relacionada con
+              los conceptos de programación.
+            </p>
+
+            <a
+              href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/actividad%202%20de%20Programacion%201.docx"
+              target="_blank"
+              class="delivery-button">
+              VER DOCUMENTO →
+            </a>
+
+          </div>
+
+
+          <!-- ENTREGA 3 -->
+
+          <div class="deliverable-card">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="deliverable-number">
+              ENTREGA_03
+            </div>
+
+            <h3>
+              Herencia y Polimorfismo
+            </h3>
+
+            <p>
+              Implementación de conceptos de herencia y polimorfismo
+              en Java.
+            </p>
+
+            <a
+              href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA3.jeronimozapata_Herenciapolimorfismo.pdf"
+              target="_blank"
+              class="delivery-button">
+              VER PDF →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           POO II
+      ========================== -->
+
+      <div>
+
+        <div class="flex items-center gap-4 mb-6">
+
+          <span class="font-mono neon text-sm">
+            POO II
+          </span>
+
+          <div class="h-px flex-1 bg-cyan-900"></div>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-5">
+
+
+          <!-- ACTIVIDAD 1 -->
+
+          <div class="deliverable-card">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="deliverable-number">
+              ACTIVIDAD_01
+            </div>
+
+            <h3>
+              Actividad POO II
+            </h3>
+
+            <p>
+              Evidencia correspondiente a la actividad desarrollada
+              en Programación Orientada a Objetos II.
+            </p>
+
+            <a
+              href="https://drive.google.com/file/d/1qFYqp5D04FFw6FQ_eQ6fam6UZ11XKChm/view?usp=sharing"
+              target="_blank"
+              class="delivery-button">
+              VER ACTIVIDAD →
+            </a>
+
+          </div>
+
+
+          <!-- ACTIVIDAD 2 -->
+
+          <div class="deliverable-card">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="deliverable-number">
+              ACTIVIDAD_02
+            </div>
+
+            <h3>
+              Video
+            </h3>
+
+            <p>
+              Presentación y explicación del proyecto desarrollado
+              durante la actividad.
+            </p>
+
+            <a
+              href="https://youtu.be/-TwFSgdjxvU"
+              target="_blank"
+              class="delivery-button">
+              VER VIDEO →
+            </a>
+
+          </div>
+
+
+          <!-- ACTIVIDAD 3 -->
+
+          <div class="deliverable-card">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="deliverable-number">
+              ACTIVIDAD_03
+            </div>
+
+            <h3>
+              Repositorio GitHub
+            </h3>
+
+            <p>
+              Código fuente, clases, relaciones y control de versiones
+              del proyecto Java.
+            </p>
+
+            <a
+              href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados"
+              target="_blank"
+              class="delivery-button">
+              VER GITHUB →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       CONTROL DE VERSIONES
+  ====================================================== -->
+
+  <section class="py-24">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="section-kicker">
+        04 // CONTROL DE VERSIONES
+      </div>
+
+      <h2 class="section-title">
+        Control de versiones en GitHub
+      </h2>
+
+      <div class="tech-line mt-5 mb-10"></div>
+
+
+      <div class="info-card">
+
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+          <div>
+
+            <h3>
+              Proyecto Java
+            </h3>
+
+            <p>
+              El repositorio contiene las diferentes clases,
+              atributos, métodos y relaciones desarrolladas para
+              implementar el sistema de biblioteca.
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <h3>
+              Evidencias del desarrollo
+            </h3>
+
+            <p>
+              En el repositorio se pueden consultar los archivos
+              relacionados con las actividades, documentos, diagramas,
+              código fuente y demás evidencias del proceso académico.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-buttons mt-8">
+
+          <a
+            href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados"
+            target="_blank"
+            class="btn-main">
+            ABRIR REPOSITORIO
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="py-10">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-5">
+
+        <div>
+
+          <div class="font-mono neon text-sm">
+            JZV_DEV
+          </div>
+
+          <p class="text-xs text-slate-500 mt-2">
+            Portafolio académico · Programación Orientada a Objetos
+          </p>
+
+        </div>
+
+
+        <div class="text-xs font-mono text-slate-500">
+          © 2026 Jeronimo Zapata Vargas
+        </div>
+
+      </div>
+
+    </div>
+
   </footer>
 
-  <!-- =========================================================
-       MODALES DE LAS 3 ENTREGAS DE POO I
-  ========================================================== -->
 
-  <!-- ENTREGA 1 -->
-  <div id="modal-poo1-entrega1" class="modal-bg" onclick="cerrarSiFondo(event,this)">
-    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-cyan-400 font-mono text-xs">POO I • ENTREGA N.º 1</p>
-          <h3 class="text-2xl font-black">Planteando el diagrama de clase UML</h3>
-        </div>
-        <button onclick="cerrarModal('modal-poo1-entrega1')" class="text-2xl text-slate-400 hover:text-white">×</button>
-      </div>
+  <!-- =====================================================
+       MODAL
+  ====================================================== -->
 
-      <p class="text-slate-400 leading-relaxed mb-6">
-        Primera entrega de Programación Orientada a Objetos I, enfocada en el planteamiento
-        y modelado del diagrama de clases UML para el sistema de biblioteca.
-      </p>
+  <div id="modal"
+       class="modal"
+       onclick="closeModal(event)">
 
-      <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank" rel="noopener noreferrer"
-         href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA1_Grupo20_DiagramaDeClasesbiblioteca.pdf">
-        <span>📕 Ver EA1: Diagrama de Clases - Sistema Biblioteca</span><span>↗</span>
-      </a>
+    <div class="modal-box">
 
-      <div class="mt-6 flex flex-wrap gap-2">
-        <span class="tag">UML</span>
-        <span class="tag">BIBLIOTECA</span>
-        <span class="tag">DIAGRAMA DE CLASES</span>
-        <span class="tag">PDF</span>
-      </div>
+      <button
+        class="modal-close"
+        onclick="closeModal()">
+        ×
+      </button>
+
+      <div id="modal-content"></div>
+
     </div>
+
   </div>
 
-  <!-- ENTREGA 2 -->
-  <div id="modal-poo1-entrega2" class="modal-bg" onclick="cerrarSiFondo(event,this)">
-    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-blue-300 font-mono text-xs">POO I • ENTREGA N.º 2</p>
-          <h3 class="text-2xl font-black">Implementación del diagrama de clases</h3>
-        </div>
-        <button onclick="cerrarModal('modal-poo1-entrega2')" class="text-2xl text-slate-400 hover:text-white">×</button>
-      </div>
 
-      <p class="text-slate-400 leading-relaxed mb-6">
-        Segunda entrega correspondiente a la guía práctica de Programación 1 y a la
-        implementación del modelo de clases en el lenguaje de programación.
-      </p>
-
-      <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank" rel="noopener noreferrer"
-         href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/actividad%202%20de%20Programacion%201.docx">
-        <span>📘 Descargar Actividad 2: Guía Práctica de Programación 1</span><span>↗</span>
-      </a>
-
-      <div class="mt-6 flex flex-wrap gap-2">
-        <span class="tag">JAVA</span>
-        <span class="tag">IMPLEMENTACIÓN</span>
-        <span class="tag">PROGRAMACIÓN 1</span>
-        <span class="tag">DOCX</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ENTREGA 3 -->
-  <div id="modal-poo1-entrega3" class="modal-bg" onclick="cerrarSiFondo(event,this)">
-    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-purple-300 font-mono text-xs">POO I • ENTREGA N.º 3</p>
-          <h3 class="text-2xl font-black">Caso de estudio: Herencia y Polimorfismo</h3>
-        </div>
-        <button onclick="cerrarModal('modal-poo1-entrega3')" class="text-2xl text-slate-400 hover:text-white">×</button>
-      </div>
-
-      <p class="text-slate-400 leading-relaxed mb-6">
-        Tercera entrega de Programación Orientada a Objetos I, centrada en el caso de estudio
-        sobre los conceptos de herencia y polimorfismo.
-      </p>
-
-      <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank" rel="noopener noreferrer"
-         href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA3.jeronimozapata_Herenciapolimorfismo.pdf">
-        <span>📕 Ver EA3: Caso de Estudio Herencia y Polimorfismo</span><span>↗</span>
-      </a>
-
-      <div class="mt-6 flex flex-wrap gap-2">
-        <span class="tag">HERENCIA</span>
-        <span class="tag">POLIMORFISMO</span>
-        <span class="tag">CASO DE ESTUDIO</span>
-        <span class="tag">PDF</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================
-       MODAL ACTIVIDAD 1 POO II
-       LOS CUATRO ENLACES PERTENECEN SOLO A ESTA ACTIVIDAD.
-  ========================================================== -->
-  <div id="modal-evidencia1" class="modal-bg" onclick="cerrarSiFondo(event,this)">
-    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-cyan-400 font-mono text-xs">POO II • ACTIVIDAD N.º 1</p>
-          <h3 class="text-2xl font-black">Diagrama de Clases UML</h3>
-        </div>
-        <button onclick="cerrarModal('modal-evidencia1')" class="text-2xl text-slate-400 hover:text-white">×</button>
-      </div>
-
-      <p class="text-slate-400 leading-relaxed mb-6">
-        Evidencia de aprendizaje relacionada con el análisis y modelado de un
-        sistema mediante diagramas de clases UML.
-      </p>
-
-      <div class="space-y-3">
-        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
-           href="https://drive.google.com/file/d/1qFYqp5D04FFw6FQ_eQ6fam6UZ11XKChm/view?usp=sharing">
-          <span>Google Drive</span><span>↗</span>
-        </a>
-
-        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
-           href="https://youtu.be/-TwFSgdjxvU">
-          <span>Video de YouTube</span><span>↗</span>
-        </a>
-
-        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
-           href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/EVIDENCIA%20DE%20APRENDIZAJE%201%20DIAGRAMA%20DE%20CLASES%20UML.docx">
-          <span>Documento Word</span><span>↗</span>
-        </a>
-
-        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
-           href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.png">
-          <span>Diagrama UML</span><span>↗</span>
-        </a>
-      </div>
-
-      <div class="mt-7 rounded-xl border border-cyan-400/20 bg-black/25 p-4">
-        <p class="text-cyan-300 font-semibold mb-2">Integrantes</p>
-        <ul class="text-sm text-slate-400 space-y-1">
-          <li>• Franklin Dario Burbano Gaviria</li>
-          <li>• Cristian Julian Monsalve Serna</li>
-          <li>• Jeronimo Zapata Vargas</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================
-       MODAL ACTIVIDAD 2
-       SIN ENLACES.
-  ========================================================== -->
-  <div id="modal-evidencia2" class="modal-bg" onclick="cerrarSiFondo(event,this)">
-    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-slate-300 font-mono text-xs">POO II • ACTIVIDAD N.º 2</p>
-          <h3 class="text-2xl font-black">Implementación de Diagrama de clases</h3>
-        </div>
-        <button onclick="cerrarModal('modal-evidencia2')" class="text-2xl text-slate-400 hover:text-white">×</button>
-      </div>
-
-      <p class="text-slate-400 leading-relaxed">
-        Implementación en Java del diagrama de clases, llevando el modelo
-        conceptual a una estructura funcional de código.
-      </p>
-
-      <div class="mt-6 rounded-xl border border-slate-500/30 bg-black/25 p-5">
-        <p class="text-slate-300 font-semibold">Recursos y enlaces</p>
-        <p class="text-slate-500 text-sm mt-2">Aún no se han agregado enlaces para esta actividad.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================
-       MODAL ACTIVIDAD 3
-       SIN ENLACES.
-  ========================================================== -->
-  <div id="modal-evidencia3" class="modal-bg" onclick="cerrarSiFondo(event,this)">
-    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-purple-300 font-mono text-xs">POO II • ACTIVIDAD N.º 3</p>
-          <h3 class="text-2xl font-black">Programación Funcional</h3>
-        </div>
-        <button onclick="cerrarModal('modal-evidencia3')" class="text-2xl text-slate-400 hover:text-white">×</button>
-      </div>
-
-      <p class="text-slate-400 leading-relaxed">
-        Estudio e implementación del paradigma de Programación Funcional en Java,
-        incluyendo funciones, expresiones lambda, colecciones y Streams.
-      </p>
-
-      <div class="mt-6 rounded-xl border border-purple-400/20 bg-black/25 p-5">
-        <p class="text-purple-300 font-semibold">Recursos y enlaces</p>
-        <p class="text-slate-500 text-sm mt-2">Aún no se han agregado enlaces para esta actividad.</p>
-      </div>
-    </div>
-  </div>
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
   <script>
-    function toggleDesplegable(id){
-      const elemento = document.getElementById(id);
-      const icono = document.getElementById("icono-" + id);
 
-      if(!elemento) return;
+    /* =========================
+       ACORDEONES
+    ========================== */
 
-      const estaOculto = elemento.classList.contains("hidden");
-      elemento.classList.toggle("hidden");
+    function toggleSubject(button){
 
-      if(icono){
-        icono.textContent = estaOculto ? "−" : "+";
-      }
-    }
+      const subject = button.parentElement;
 
-    function abrirModal(id){
-      const modal = document.getElementById(id);
-      if(modal){
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }
-    }
+      const allSubjects =
+        document.querySelectorAll(".subject");
 
-    function cerrarModal(id){
-      const modal = document.getElementById(id);
-      if(modal){
-        modal.classList.remove("active");
-        document.body.style.overflow = "";
-      }
-    }
+      allSubjects.forEach(item => {
 
-    function cerrarSiFondo(event, modal){
-      if(event.target === modal){
-        modal.classList.remove("active");
-        document.body.style.overflow = "";
-      }
-    }
-
-    document.addEventListener("keydown", function(event){
-      if(event.key === "Escape"){
-        document.querySelectorAll(".modal-bg.active").forEach(modal => {
-          modal.classList.remove("active");
-        });
-        document.body.style.overflow = "";
-      }
-    });
-    // Partículas azules de fondo
-    const canvas = document.getElementById("particles");
-    const ctx = canvas ? canvas.getContext("2d") : null;
-
-    if (canvas && ctx) {
-      let particles = [];
-      const density = 0.000055;
-
-      function resizeParticles(){
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = Math.floor(window.innerWidth * dpr);
-        canvas.height = Math.floor(window.innerHeight * dpr);
-        canvas.style.width = window.innerWidth + "px";
-        canvas.style.height = window.innerHeight + "px";
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-
-        const count = Math.min(95, Math.max(28, Math.floor(window.innerWidth * window.innerHeight * density)));
-        particles = Array.from({length:count}, () => ({
-          x: Math.random()*window.innerWidth,
-          y: Math.random()*window.innerHeight,
-          r: Math.random()*1.5+.35,
-          vx:(Math.random()-.5)*.22,
-          vy:(Math.random()-.5)*.22,
-          a:Math.random()*.6+.18
-        }));
-      }
-
-      function drawParticles(){
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-
-        for(const p of particles){
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if(p.x < -5) p.x = window.innerWidth+5;
-          if(p.x > window.innerWidth+5) p.x = -5;
-          if(p.y < -5) p.y = window.innerHeight+5;
-          if(p.y > window.innerHeight+5) p.y = -5;
-
-          ctx.beginPath();
-          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-          ctx.fillStyle = `rgba(0,217,255,${p.a})`;
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = "rgba(0,170,255,.8)";
-          ctx.fill();
+        if(item !== subject){
+          item.classList.remove("open");
         }
 
-        ctx.shadowBlur = 0;
-        requestAnimationFrame(drawParticles);
-      }
+      });
 
-      window.addEventListener("resize", resizeParticles);
-      resizeParticles();
-      drawParticles();
+      subject.classList.toggle("open");
     }
 
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    function openModal(content){
+
+      const modal =
+        document.getElementById("modal");
+
+      const modalContent =
+        document.getElementById("modal-content");
+
+      modalContent.innerHTML = content;
+
+      modal.classList.add("active");
+
+      document.body.style.overflow = "hidden";
+    }
+
+
+    function closeModal(event){
+
+      const modal =
+        document.getElementById("modal");
+
+      if(
+        !event ||
+        event.target === modal ||
+        event.currentTarget === modal
+      ){
+
+        modal.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+      }
+    }
+
+
+    /* =========================
+       ESCAPE PARA CERRAR MODAL
+    ========================== */
+
+    document.addEventListener(
+      "keydown",
+      function(event){
+
+        if(event.key === "Escape"){
+
+          const modal =
+            document.getElementById("modal");
+
+          modal.classList.remove("active");
+
+          document.body.style.overflow = "";
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       ANIMACIÓN PARTICULAS
+    ========================== */
+
+    document
+      .querySelectorAll(".particle")
+      .forEach((particle, index) => {
+
+        particle.style.animationDelay =
+          `${index * -2}s`;
+
+      });
+
+
+    /* =========================
+       REVEAL AL HACER SCROLL
+    ========================== */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".info-card, .deliverable-card, .subject"
+      );
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+
+            }
+
+          });
+
+        },
+        {
+          threshold:.1
+        }
+      );
+
+
+    revealElements.forEach(element => {
+
+      element.style.opacity = "0";
+      element.style.transform = "translateY(20px)";
+      element.style.transition =
+        "opacity .6s ease, transform .6s ease";
+
+      observer.observe(element);
+
+    });
+
   </script>
+
 </body>
 </html>
