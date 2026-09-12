@@ -146,7 +146,7 @@
       inset:0;
       background:
         linear-gradient(90deg,#020711 0%,rgba(2,7,17,.96) 27%,rgba(2,7,17,.55) 55%,rgba(2,7,17,.12) 100%),
-        url("hero-robot.png") right center/auto 100% no-repeat;
+        url("robot-heroe.png") right center/auto 100% no-repeat;
       opacity:.95;
       z-index:-1;
     }
@@ -285,16 +285,259 @@
       .hero::before{
         background:
           linear-gradient(90deg,rgba(2,7,17,.98),rgba(2,7,17,.88)),
-          url("hero-robot.png") center/cover no-repeat;
+          url("robot-heroe.png") center/cover no-repeat;
       }
     }
+
+    /* ===== MEJORAS V2: IA / ROBOT / NEÓN ===== */
+    .particles-canvas{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:-3;
+      pointer-events:none;
+      opacity:.7;
+    }
+
+    .hero{
+      min-height:430px;
+    }
+
+    .hero-robot-layer{
+      position:absolute;
+      right:0;
+      top:0;
+      width:min(64%,820px);
+      height:100%;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    .hero-robot-layer::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,#020711 0%,rgba(2,7,17,.72) 20%,rgba(2,7,17,.08) 65%,rgba(2,7,17,.16) 100%);
+      z-index:2;
+    }
+
+    .robot-image{
+      position:absolute;
+      right:-10px;
+      top:50%;
+      width:min(760px,100%);
+      height:auto;
+      transform:translateY(-50%) translateX(25px);
+      filter:drop-shadow(0 0 22px rgba(0,180,255,.25));
+      animation:robotEntrance 1.4s cubic-bezier(.2,.8,.2,1) both,
+                robotFloat 6s ease-in-out 1.4s infinite;
+      z-index:1;
+    }
+
+    @keyframes robotEntrance{
+      from{opacity:0;transform:translateY(-50%) translateX(150px) scale(.96)}
+      to{opacity:1;transform:translateY(-50%) translateX(25px) scale(1)}
+    }
+
+    @keyframes robotFloat{
+      0%,100%{transform:translateY(-50%) translateX(25px)}
+      50%{transform:translateY(calc(-50% - 8px)) translateX(25px)}
+    }
+
+    .robot-scan{
+      position:absolute;
+      left:8%;
+      right:3%;
+      top:10%;
+      height:3px;
+      background:linear-gradient(90deg,transparent,var(--cyan),#fff,var(--cyan),transparent);
+      box-shadow:0 0 10px var(--cyan),0 0 28px rgba(0,217,255,.7);
+      z-index:4;
+      opacity:.75;
+      animation:scanRobot 3.8s ease-in-out infinite;
+    }
+
+    @keyframes scanRobot{
+      0%,100%{transform:translateY(0);opacity:.15}
+      12%{opacity:.9}
+      50%{transform:translateY(300px);opacity:.85}
+      88%{opacity:.9}
+    }
+
+    .robot-scan-grid{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      background:
+        linear-gradient(rgba(0,217,255,.06) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,217,255,.06) 1px,transparent 1px);
+      background-size:28px 28px;
+      mask-image:linear-gradient(90deg,transparent 0%,black 35%,black 100%);
+    }
+
+    .ai-label{
+      position:absolute;
+      right:8%;
+      bottom:18%;
+      z-index:5;
+      padding:.55rem .8rem;
+      border:1px solid rgba(0,217,255,.65);
+      background:rgba(0,8,20,.72);
+      color:#9eefff;
+      font:700 11px "Courier New",monospace;
+      letter-spacing:.12em;
+      box-shadow:0 0 18px rgba(0,217,255,.18);
+      animation:labelPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse{
+      0%,100%{opacity:.65}
+      50%{opacity:1;box-shadow:0 0 24px rgba(0,217,255,.32)}
+    }
+
+    .code-float{
+      position:absolute;
+      z-index:5;
+      padding:.6rem .75rem;
+      border:1px solid rgba(0,217,255,.28);
+      background:rgba(1,8,19,.58);
+      color:#66ddff;
+      font:11px/1.45 "Courier New",monospace;
+      box-shadow:0 0 18px rgba(0,150,255,.10);
+      backdrop-filter:blur(5px);
+      white-space:pre;
+      animation:codeDrift 5s ease-in-out infinite;
+    }
+
+    .code-a{left:12%;top:14%}
+    .code-b{right:4%;top:12%;animation-delay:1.2s}
+    .code-c{right:17%;bottom:8%;animation-delay:2.1s}
+
+    @keyframes codeDrift{
+      0%,100%{transform:translateY(0);opacity:.55}
+      50%{transform:translateY(-8px);opacity:.9}
+    }
+
+    .dashboard{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:1rem;
+    }
+
+    .progress-track{
+      height:8px;
+      border-radius:99px;
+      background:rgba(255,255,255,.07);
+      overflow:hidden;
+      border:1px solid rgba(0,217,255,.14);
+    }
+
+    .progress-fill{
+      height:100%;
+      border-radius:99px;
+      background:linear-gradient(90deg,#0877ff,var(--cyan),#b6f7ff);
+      box-shadow:0 0 12px rgba(0,217,255,.65);
+      transform-origin:left;
+      animation:progressIn 1.5s ease-out both;
+    }
+
+    @keyframes progressIn{
+      from{transform:scaleX(0)}
+      to{transform:scaleX(1)}
+    }
+
+    .status-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:.55rem;
+    }
+
+    .status-chip{
+      min-height:70px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      border:1px solid rgba(0,217,255,.25);
+      background:rgba(0,217,255,.035);
+      border-radius:.85rem;
+      transition:.25s;
+    }
+
+    .status-chip:hover{
+      border-color:var(--cyan);
+      box-shadow:0 0 18px rgba(0,217,255,.16);
+      transform:translateY(-3px);
+    }
+
+    .neon-btn{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .neon-btn::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:80%;
+      height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+      transform:skewX(-20deg);
+      transition:.55s;
+    }
+
+    .neon-btn:hover::before{left:140%}
+
+    @media(max-width:900px){
+      .hero{min-height:650px}
+      .hero-robot-layer{
+        width:100%;
+        height:48%;
+        top:auto;
+        bottom:0;
+        opacity:.82;
+      }
+      .robot-image{
+        right:-60px;
+        width:620px;
+        max-width:none;
+      }
+      .robot-scan{top:5%;animation-duration:3.2s}
+      .code-a{left:3%;top:10%;font-size:9px}
+      .code-b{right:2%;top:8%;font-size:9px}
+      .code-c{display:none}
+      .dashboard{grid-template-columns:1fr}
+      .status-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:520px){
+      .hero{min-height:700px}
+      .hero-robot-layer{height:42%}
+      .robot-image{right:-105px;width:600px}
+      .ai-label{right:4%;bottom:9%;font-size:9px}
+      .status-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+  <canvas id="particles" class="particles-canvas"></canvas>
   <div class="scanlines"></div>
 
-  <!-- El archivo hero-robot.png contiene únicamente el área visual del robot/IA. -->
+  <!-- El archivo robot-heroe.png contiene únicamente el área visual del robot/IA. -->
   <!-- =========================================================
        NAVBAR
   ========================================================== -->
@@ -326,6 +569,25 @@
   <main id="inicio" class="pt-[68px]">
     <section class="hero">
       <div class="hero-grid"></div>
+
+      <div class="hero-robot-layer" aria-hidden="true">
+        <img src="robot-heroe.png" alt="" class="robot-image">
+        <div class="robot-scan-grid"></div>
+        <div class="robot-scan"></div>
+
+        <div class="code-float code-a">&lt;system&gt;
+status: ONLINE
+core: JAVA</div>
+
+        <div class="code-float code-b">AI + CODE
+=&gt; BETTER TOMORROW</div>
+
+        <div class="code-float code-c">class Developer {
+  void create() {}
+}</div>
+
+        <div class="ai-label">SYSTEM ONLINE // DEVELOPER MODE</div>
+      </div>
 
       <div class="max-w-7xl mx-auto w-full px-5 py-10 relative z-10">
         <div class="max-w-[610px]">
@@ -359,14 +621,84 @@
           </div>
 
           <div class="flex flex-wrap gap-4 mt-9">
-            <a href="#materias" class="btn rounded-lg px-5 py-3 font-bold">
+            <a href="#materias" class="btn neon-btn rounded-lg px-5 py-3 font-bold">
               Explorar materias →
             </a>
-            <a href="#trabajos" class="btn rounded-lg px-5 py-3 font-bold">
+            <a href="#trabajos" class="btn neon-btn rounded-lg px-5 py-3 font-bold">
               Ver trabajos
             </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         ESTADO ACADÉMICO
+    ======================================================== -->
+    <section class="max-w-7xl mx-auto px-5 pt-8">
+      <div class="dashboard">
+
+        <article class="glass corner rounded-2xl p-6">
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <p class="text-cyan-400 font-mono text-xs">SYSTEM DASHBOARD // 03</p>
+              <h2 class="text-2xl font-black">Estado académico</h2>
+            </div>
+            <span class="tag">ONLINE</span>
+          </div>
+
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-slate-300">POO I · contenido académico</span>
+                <span class="text-cyan-300 font-mono">100%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-slate-300">POO II · contenido académico</span>
+                <span class="text-cyan-300 font-mono">66%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:66%"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass corner rounded-2xl p-6">
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <p class="text-cyan-400 font-mono text-xs">PROFILE STATUS</p>
+              <h2 class="text-2xl font-black">Tecnologías y formación</h2>
+            </div>
+            <span class="status-dot pulse"></span>
+          </div>
+
+          <div class="status-grid">
+            <div class="status-chip">
+              <span class="text-cyan-300 font-black text-lg">3</span>
+              <span class="text-[11px] text-slate-400 mt-1">SEMESTRE</span>
+            </div>
+            <div class="status-chip">
+              <span class="text-cyan-300 font-black">JAVA</span>
+              <span class="text-[11px] text-slate-400 mt-1">LENGUAJE</span>
+            </div>
+            <div class="status-chip">
+              <span class="text-cyan-300 font-black">POO</span>
+              <span class="text-[11px] text-slate-400 mt-1">PARADIGMA</span>
+            </div>
+            <div class="status-chip">
+              <span class="text-cyan-300 font-black">UML</span>
+              <span class="text-[11px] text-slate-400 mt-1">MODELADO</span>
+            </div>
+            <div class="status-chip">
+              <span class="text-cyan-300 font-black">GIT</span>
+              <span class="text-[11px] text-slate-400 mt-1">GITHUB</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -804,22 +1136,22 @@
       </p>
 
       <div class="space-y-3">
-        <a class="btn rounded-xl p-4 w-full justify-between" target="_blank"
+        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
            href="https://drive.google.com/file/d/1qFYqp5D04FFw6FQ_eQ6fam6UZ11XKChm/view?usp=sharing">
           <span>Google Drive</span><span>↗</span>
         </a>
 
-        <a class="btn rounded-xl p-4 w-full justify-between" target="_blank"
+        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
            href="https://youtu.be/-TwFSgdjxvU">
           <span>Video de YouTube</span><span>↗</span>
         </a>
 
-        <a class="btn rounded-xl p-4 w-full justify-between" target="_blank"
+        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
            href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/EVIDENCIA%20DE%20APRENDIZAJE%201%20DIAGRAMA%20DE%20CLASES%20UML.docx">
           <span>Documento Word</span><span>↗</span>
         </a>
 
-        <a class="btn rounded-xl p-4 w-full justify-between" target="_blank"
+        <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank"
            href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.png">
           <span>Diagrama UML</span><span>↗</span>
         </a>
@@ -934,6 +1266,62 @@
         document.body.style.overflow = "";
       }
     });
+    // Partículas azules de fondo
+    const canvas = document.getElementById("particles");
+    const ctx = canvas ? canvas.getContext("2d") : null;
+
+    if (canvas && ctx) {
+      let particles = [];
+      const density = 0.000055;
+
+      function resizeParticles(){
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(window.innerWidth * dpr);
+        canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+
+        const count = Math.min(95, Math.max(28, Math.floor(window.innerWidth * window.innerHeight * density)));
+        particles = Array.from({length:count}, () => ({
+          x: Math.random()*window.innerWidth,
+          y: Math.random()*window.innerHeight,
+          r: Math.random()*1.5+.35,
+          vx:(Math.random()-.5)*.22,
+          vy:(Math.random()-.5)*.22,
+          a:Math.random()*.6+.18
+        }));
+      }
+
+      function drawParticles(){
+        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+        for(const p of particles){
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if(p.x < -5) p.x = window.innerWidth+5;
+          if(p.x > window.innerWidth+5) p.x = -5;
+          if(p.y < -5) p.y = window.innerHeight+5;
+          if(p.y > window.innerHeight+5) p.y = -5;
+
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle = `rgba(0,217,255,${p.a})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = "rgba(0,170,255,.8)";
+          ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(drawParticles);
+      }
+
+      window.addEventListener("resize", resizeParticles);
+      resizeParticles();
+      drawParticles();
+    }
+
   </script>
 </body>
 </html>
