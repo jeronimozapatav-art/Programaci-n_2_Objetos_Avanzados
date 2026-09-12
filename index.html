@@ -1,369 +1,638 @@
-```html
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeronimo Zapata Vargas | Desarrollo de Software</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-900 text-slate-100 font-sans antialiased">
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-teal-300 selection:text-teal-900">
 
-    <!-- =========================
-         NAVEGACIÓN
-    ========================== -->
-    <header class="fixed top-0 w-full bg-slate-900/80 backdrop-blur border-b border-slate-800 z-50">
+<!-- Navegación -->
+<header class="fixed top-0 w-full bg-slate-900/80 backdrop-blur border-b border-slate-800 z-50">
+    <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+        <span class="text-xl font-bold tracking-tight text-teal-400">
+            &lt;JeronimoZapata /&gt;
+        </span>
 
-        <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-
-            <span class="text-xl font-bold tracking-tight text-teal-400">
-                &lt;JeronimoZapata /&gt;
-            </span>
-
-            <div class="space-x-6 text-sm font-medium">
-
-                <a href="#sobre-mi"
-                   class="hover:text-teal-400 transition">
-                    Sobre mí
-                </a>
-
-                <a href="#poo-info"
-                   class="hover:text-teal-400 transition">
-                    Materias POO
-                </a>
-
-                <a href="#proyectos"
-                   class="hover:text-teal-400 transition">
-                    Mis Trabajos
-                </a>
-
-            </div>
-
-        </nav>
-
-    </header>
+        <div class="space-x-6 text-sm font-medium">
+            <a href="#sobre-mi" class="hover:text-teal-400 transition">Sobre mí</a>
+            <a href="#poo-info" class="hover:text-teal-400 transition">Materias POO</a>
+            <a href="#proyectos" class="hover:text-teal-400 transition">Mis Trabajos</a>
+        </div>
+    </nav>
+</header>
 
 
-    <main class="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-20">
+<main class="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-20">
+
+    <!-- Hero Section -->
+    <section id="hero" class="space-y-6">
+        <span class="text-teal-400 font-mono text-sm">
+            Hola, mi nombre es
+        </span>
+
+        <h1 class="text-5xl sm:text-7xl font-bold tracking-tight text-slate-100">
+            Jeronimo Zapata Vargas.
+        </h1>
+
+        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-slate-400">
+            Estudiante de Tecnología en Desarrollo de Software (3.ᵉʳ Semestre).
+        </h2>
+
+        <p class="max-w-2xl text-slate-400 text-lg leading-relaxed">
+            Especializado en el diseño conceptual de sistemas, modelado UML,
+            estructuración de bases de datos relacionales y aplicación del
+            paradigma de Programación Orientada a Objetos.
+        </p>
+    </section>
 
 
-        <!-- =========================
-             PRESENTACIÓN
-        ========================== -->
-        <section id="hero" class="space-y-6">
+    <!-- Sobre mí -->
+    <section id="sobre-mi" class="space-y-6">
+        <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
+            <span class="text-teal-400 font-mono text-lg">01.</span>
+            Sobre mí
+        </h3>
 
-            <span class="text-teal-400 font-mono text-sm">
-                Hola, mi nombre es
-            </span>
-
-            <h1 class="text-5xl sm:text-7xl font-bold tracking-tight text-slate-100">
-                Jeronimo Zapata Vargas.
-            </h1>
-
-            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-slate-400">
-                Estudiante de Tecnología en Desarrollo de Software (3.er Semestre).
-            </h2>
-
-            <p class="max-w-2xl text-slate-400 text-lg leading-relaxed">
-                Estudiante de Tecnología en Desarrollo de Software con formación
-                en diseño conceptual de sistemas, modelado UML, programación
-                orientada a objetos, programación funcional y desarrollo de
-                aplicaciones.
+        <div class="text-slate-400 leading-relaxed space-y-4 max-w-3xl">
+            <p>
+                Soy estudiante de tercer semestre de la Tecnología en Desarrollo
+                de Software en la Institución Universitaria Digital de Antioquia.
+                Mi enfoque formativo abarca el ciclo de vida del software, desde
+                el análisis de requerimientos y la modelación arquitectónica con
+                UML, hasta la implementación orientada a objetos avanzada e
+                integración con bases de datos relacionales.
             </p>
-
-        </section>
-
-
-        <!-- =========================
-             SOBRE MÍ
-        ========================== -->
-        <section id="sobre-mi" class="space-y-6">
-
-            <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
-
-                <span class="text-teal-400 font-mono text-lg">
-                    01.
-                </span>
-
-                Sobre mí
-
-            </h3>
-
-            <div class="text-slate-400 leading-relaxed space-y-4 max-w-3xl">
-
-                <p>
-                    Soy estudiante de tercer semestre de la Tecnología en
-                    Desarrollo de Software en la Institución Universitaria
-                    Digital de Antioquia. Mi formación incluye el análisis
-                    de sistemas, modelado UML, programación orientada a
-                    objetos y desarrollo de software.
-                </p>
-
-                <p>
-                    Durante mi proceso académico he trabajado conceptos como
-                    clases, objetos, encapsulamiento, abstracción, herencia,
-                    polimorfismo, relaciones entre clases y programación
-                    funcional.
-                </p>
-
-            </div>
-
-        </section>
+        </div>
+    </section>
 
 
-        <!-- =========================
-             INFORMACIÓN ACADÉMICA
-        ========================== -->
-        <section id="poo-info" class="space-y-6">
+    <!-- Información Académica de POO I y POO II -->
+    <section id="poo-info" class="space-y-6">
 
-            <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
+        <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
+            <span class="text-teal-400 font-mono text-lg">02.</span>
+            Contenido Completo de las Materias
+        </h3>
 
-                <span class="text-teal-400 font-mono text-lg">
-                    02.
-                </span>
+        <p class="text-slate-400 text-sm">
+            Haz clic en el título de cada materia para desplegar su información
+            conceptual y unidades temáticas vistas:
+        </p>
 
-                Contenido de las materias
+        <div class="space-y-4">
 
-            </h3>
+            <!-- MATERIA 1: POO I -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
 
-            <p class="text-slate-400 text-sm">
-                Haz clic en cada materia para consultar los principales
-                conceptos trabajados durante el proceso académico.
-            </p>
-
-
-            <div class="space-y-4">
-
-
-                <!-- =========================
-                     POO I
-                ========================== -->
-                <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden">
-
-                    <button
-                        onclick="toggleDesplegable('materia-poo1')"
-                        class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
-
-                        <div>
-
-                            <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">
-                                Semestre 2
-                            </span>
-
-                            <h4 class="text-xl font-bold text-slate-100">
-                                Programación Orientada a Objetos I
-                            </h4>
-
-                        </div>
-
-                        <span
-                            id="icono-poo1"
-                            class="text-teal-400 text-2xl font-bold">
-                            +
+                <button
+                    onclick="toggleDesplegable('materia-poo1')"
+                    class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition"
+                >
+                    <div>
+                        <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">
+                            Semestre 2 • IU Digital de Antioquia
                         </span>
 
-                    </button>
+                        <h4 class="text-xl font-bold text-slate-100">
+                            Programación Orientada a Objetos I (Básica)
+                        </h4>
+                    </div>
+
+                    <span
+                        id="icono-poo1"
+                        class="text-teal-400 text-2xl font-bold transition-transform duration-300"
+                    >
+                        +
+                    </span>
+                </button>
 
 
-                    <div
-                        id="materia-poo1"
-                        class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-6 text-slate-300 text-sm leading-relaxed">
+                <div
+                    id="materia-poo1"
+                    class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-6 text-slate-300 text-sm leading-relaxed"
+                >
 
-                        <p class="text-slate-400">
-                            En esta materia se desarrollaron los fundamentos
-                            de la programación orientada a objetos y del
-                            lenguaje Java.
-                        </p>
-
-
-                        <div class="space-y-3">
-
-                            <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
-                                Conceptos principales
-                            </h5>
-
-                            <div class="grid md:grid-cols-2 gap-3 text-xs">
-
-                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
-
-                                    <strong class="text-slate-200 block mb-1">
-                                        • Lenguajes de programación
-                                    </strong>
-
-                                    <span class="text-slate-400">
-                                        Conceptos fundamentales sobre lenguajes,
-                                        compiladores e intérpretes.
-                                    </span>
-
-                                </div>
+                    <p class="text-slate-400">
+                        Programa de formación estructurado en tres unidades académicas
+                        orientadas al dominio del lenguaje, paradigmas y principios
+                        fundamentales del modelado orientado a objetos.
+                    </p>
 
 
-                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                    <!-- UNIDAD 1 -->
+                    <div class="space-y-3">
 
-                                    <strong class="text-slate-200 block mb-1">
-                                        • Programación Orientada a Objetos
-                                    </strong>
+                        <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
+                            Unidad 1: Fundamentos de Lenguajes, Paradigmas y POO Inicial
+                        </h5>
 
-                                    <span class="text-slate-400">
-                                        Objetos, clases, atributos, métodos
-                                        y principios fundamentales de POO.
-                                    </span>
+                        <div class="grid md:grid-cols-2 gap-3 text-xs">
 
-                                </div>
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Introducción a Lenguajes de Programación:
+                                </strong>
 
-
-                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
-
-                                    <strong class="text-slate-200 block mb-1">
-                                        • UML
-                                    </strong>
-
-                                    <span class="text-slate-400">
-                                        Identificación de clases y elaboración
-                                        de diagramas de clases.
-                                    </span>
-
-                                </div>
+                                <span class="text-slate-400">
+                                    Historia, evolución, diferencias estructurales entre intérpretes y compiladores.
+                                </span>
+                            </div>
 
 
-                                <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Paradigmas de Programación:
+                                </strong>
 
-                                    <strong class="text-slate-200 block mb-1">
-                                        • Encapsulamiento
-                                    </strong>
+                                <span class="text-slate-400">
+                                    Paradigma imperativo, declarativo y transición hacia el paradigma orientado a objetos.
+                                </span>
+                            </div>
 
-                                    <span class="text-slate-400">
-                                        Uso de modificadores de acceso como
-                                        public, private y protected.
-                                    </span>
 
-                                </div>
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Conceptos Clave de POO:
+                                </strong>
 
+                                <span class="text-slate-400">
+                                    Definición conceptual de Objetos, Atributos, Métodos,
+                                    paso de Parámetros y pilares fundamentales.
+                                </span>
+                            </div>
+
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Modelado Estructural UML:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Identificación de objetos, diseño formal del Diagrama
+                                    de Clases y sus componentes principales.
+                                </span>
                             </div>
 
                         </div>
+                    </div>
 
 
-                        <div class="space-y-3">
+                    <!-- UNIDAD 2 -->
+                    <div class="space-y-3 pt-2">
 
-                            <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
-                                Herencia y polimorfismo
-                            </h5>
+                        <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
+                            Unidad 2: Estructuración, Encapsulamiento y Control de Acceso
+                        </h5>
 
-                            <p class="text-slate-400">
-                                Aplicación de herencia entre clases,
-                                reutilización de código y utilización del
-                                polimorfismo mediante métodos.
-                            </p>
+                        <div class="grid md:grid-cols-2 gap-3 text-xs">
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Arquitectura de Código & Métodos:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Programación modular, programación estructurada,
+                                    tipos de métodos en Java y recursividad.
+                                </span>
+                            </div>
+
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Ámbitos y Memoria:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Diferenciación entre variables locales y variables globales.
+                                </span>
+                            </div>
+
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Principio de Encapsulamiento:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Beneficios y protección de datos internos.
+                                </span>
+                            </div>
+
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Visibilidad y Modificadores:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Aplicación de public, private y protected.
+                                </span>
+                            </div>
 
                         </div>
+                    </div>
+
+
+                    <!-- UNIDAD 3 -->
+                    <div class="space-y-3 pt-2">
+
+                        <h5 class="text-sm font-mono text-teal-400 font-bold uppercase tracking-wide border-b border-slate-700/60 pb-1">
+                            Unidad 3: Herencia y Polimorfismo
+                        </h5>
+
+                        <div class="grid md:grid-cols-2 gap-3 text-xs">
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Conceptos de Herencia:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Herencia simple, superclases, subclases y reutilización de código.
+                                </span>
+                            </div>
+
+
+                            <div class="bg-slate-900/50 p-3 rounded border border-slate-700/40">
+                                <strong class="text-slate-200 block mb-1">
+                                    • Polimorfismo Aplicado:
+                                </strong>
+
+                                <span class="text-slate-400">
+                                    Polimorfismo de métodos y ejecución polimórfica trabajando con colecciones.
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- MATERIA 2: POO II -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden transition">
+
+                <button
+                    onclick="toggleDesplegable('materia-poo2')"
+                    class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition"
+                >
+
+                    <div>
+
+                        <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">
+                            Semestre 3 • Asignatura Académica
+                        </span>
+
+                        <h4 class="text-xl font-bold text-slate-100">
+                            Programación Orientada a Objetos II (Avanzada)
+                        </h4>
+
+                    </div>
+
+                    <span
+                        id="icono-poo2"
+                        class="text-teal-400 text-2xl font-bold transition-transform duration-300"
+                    >
+                        +
+                    </span>
+
+                </button>
+
+
+                <div
+                    id="materia-poo2"
+                    class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed"
+                >
+
+                    <p class="text-slate-400">
+                        Enfoque avanzado en el diseño de software modular,
+                        jerárquico y desacoplado, preparado para crecer de forma
+                        escalable mediante patrones de diseño y buenas prácticas
+                        de arquitectura.
+                    </p>
+
+
+                    <h5 class="font-bold text-slate-200 text-base pt-2">
+                        Ejes temáticos y conceptos desarrollados:
+                    </h5>
+
+
+                    <ul class="space-y-3 font-normal">
+
+                        <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                            <strong class="text-teal-300 font-mono">
+                                1. Herencia y Jerarquía de Clases:
+                            </strong>
+
+                            Reutilización de código mediante superclases y subclases.
+                        </li>
+
+
+                        <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                            <strong class="text-teal-300 font-mono">
+                                2. Polimorfismo y Sobreescritura:
+                            </strong>
+
+                            Capacidad de responder de forma distinta al mismo llamado
+                            a un método según el tipo de objeto.
+                        </li>
+
+
+                        <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                            <strong class="text-teal-300 font-mono">
+                                3. Interfaces y Clases Abstractas:
+                            </strong>
+
+                            Establecimiento de contratos de comportamiento para
+                            desacoplar componentes.
+                        </li>
+
+
+                        <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                            <strong class="text-teal-300 font-mono">
+                                4. Gestores de Excepciones y Colecciones:
+                            </strong>
+
+                            Manejo de estructuras de datos dinámicas y control
+                            robusto de errores mediante try-catch-finally.
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- MIS TRABAJOS -->
+    <section id="proyectos" class="space-y-12">
+
+        <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
+            <span class="text-teal-400 font-mono text-lg">03.</span>
+            Entregables Académicos
+        </h3>
+
+
+        <!-- PROGRAMACIÓN 1 -->
+        <div class="space-y-6">
+
+            <div class="border-b border-slate-800 pb-2">
+
+                <h4 class="text-xl font-bold text-teal-400 font-mono">
+                    Programación Orientada a Objetos 1 (Básica)
+                </h4>
+
+                <p class="text-slate-400 text-xs mt-1">
+                    Trabajos e iteraciones prácticas desarrolladas de manera individual.
+                </p>
+
+            </div>
+
+
+            <div class="grid md:grid-cols-1 gap-6">
+
+                <div
+                    onclick="abrirModal('modal-poo1-actividades')"
+                    class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4"
+                >
+
+                    <div class="flex justify-between items-center">
+
+                        <span class="text-xs font-mono text-teal-400">
+                            POO 1 • Actividades Individuales
+                        </span>
+
+                        <span class="text-xs font-mono text-slate-400">
+                            Ver entregables ↗
+                        </span>
+
+                    </div>
+
+
+                    <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                        Entregables y Trabajos Prácticos de POO I
+                    </h5>
+
+
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Compilación de las evidencias individuales desarrolladas
+                        en el semestre 2: Diagrama de Clases para el Sistema de
+                        Biblioteca, Guía Práctica de Aplicación y Caso de Estudio
+                        sobre Herencia y Polimorfismo.
+                    </p>
+
+
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Trabajo Individual
+                        </span>
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            UML Biblioteca
+                        </span>
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Herencia & Polimorfismo
+                        </span>
+
+                        <span class="px-2 py-1 bg-blue-500/10 text-blue-300 rounded">
+                            Documentos PDF & DOCX
+                        </span>
 
                     </div>
 
                 </div>
 
+            </div>
 
-                <!-- =========================
-                     POO II
-                ========================== -->
-                <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg overflow-hidden">
+        </div>
 
-                    <button
-                        onclick="toggleDesplegable('materia-poo2')"
-                        class="w-full p-6 text-left flex justify-between items-center hover:bg-slate-700/30 transition">
 
-                        <div>
+        <!-- PROGRAMACIÓN 2 -->
+        <div class="space-y-6">
 
-                            <span class="text-xs font-mono text-teal-400 uppercase tracking-wider block mb-1">
-                                Semestre 3
+            <div class="border-b border-slate-800 pb-2">
+
+                <h4 class="text-xl font-bold text-teal-400 font-mono">
+                    Programación Orientada a Objetos 2 (Avanzada)
+                </h4>
+
+                <p class="text-slate-400 text-xs mt-1">
+                    Proyectos y actividades académicas desarrolladas durante el semestre.
+                </p>
+
+            </div>
+
+
+            <!-- LAS 3 ACTIVIDADES -->
+            <div class="grid md:grid-cols-3 gap-6">
+
+
+                <!-- ACTIVIDAD 1 -->
+                <div
+                    onclick="abrirModal('modal-evidencia1')"
+                    class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between"
+                >
+
+                    <div class="space-y-3">
+
+                        <div class="flex justify-between items-center">
+
+                            <span class="text-xs font-mono text-teal-400">
+                                POO 2 • Actividad N.º 1
                             </span>
 
-                            <h4 class="text-xl font-bold text-slate-100">
-                                Programación Orientada a Objetos II
-                            </h4>
+                            <span class="text-xs font-mono text-slate-400">
+                                Ver ↗
+                            </span>
 
                         </div>
 
-                        <span
-                            id="icono-poo2"
-                            class="text-teal-400 text-2xl font-bold">
-                            +
-                        </span>
 
-                    </button>
-
-
-                    <div
-                        id="materia-poo2"
-                        class="hidden p-6 pt-2 border-t border-slate-700/50 space-y-4 text-slate-300 text-sm leading-relaxed">
-
-                        <p class="text-slate-400">
-                            En esta materia se trabajan conceptos avanzados
-                            relacionados con el diseño y desarrollo de
-                            software utilizando Java.
-                        </p>
-
-
-                        <h5 class="font-bold text-slate-200 text-base pt-2">
-                            Principales conceptos:
+                        <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                            Actividad 1: Diagrama de Clases UML
                         </h5>
 
 
-                        <ul class="space-y-3">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Análisis de requerimientos, abstracción de entidades
+                            y modelado estructural de un sistema mediante
+                            diagramas de clases UML.
+                        </p>
+
+                    </div>
 
 
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
 
-                                <strong class="text-teal-300 font-mono">
-                                    1. Herencia y jerarquía de clases:
-                                </strong>
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Trabajo Colaborativo
+                        </span>
 
-                                Reutilización de código mediante superclases
-                                y subclases.
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Diagrama UML
+                        </span>
 
-                            </li>
+                        <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">
+                            Documentación
+                        </span>
 
+                    </div>
 
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
-
-                                <strong class="text-teal-300 font-mono">
-                                    2. Polimorfismo:
-                                </strong>
-
-                                Permite que diferentes objetos respondan de
-                                distintas maneras ante una misma operación.
-
-                            </li>
+                </div>
 
 
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
+                <!-- ACTIVIDAD 2 -->
+                <div
+                    onclick="abrirModal('modal-evidencia2')"
+                    class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between"
+                >
 
-                                <strong class="text-teal-300 font-mono">
-                                    3. Interfaces y clases abstractas:
-                                </strong>
+                    <div class="space-y-3">
 
-                                Definición de estructuras y comportamientos
-                                comunes para diferentes clases.
+                        <div class="flex justify-between items-center">
 
-                            </li>
+                            <span class="text-xs font-mono text-teal-400">
+                                POO 2 • Actividad N.º 2
+                            </span>
 
+                            <span class="text-xs font-mono text-slate-400">
+                                Ver ↗
+                            </span>
 
-                            <li class="bg-slate-900/50 p-4 rounded border border-slate-700/40">
-
-                                <strong class="text-teal-300 font-mono">
-                                    4. Colecciones y excepciones:
-                                </strong>
-
-                                Manejo de listas, conjuntos, mapas y control
-                                de errores mediante excepciones.
-
-                            </li>
+                        </div>
 
 
-                        </ul>
+                        <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                            Implementacion de Diagrama de clases
+                        </h5>
+
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Implementación en Java del diagrama de clases,
+                            aplicando los conceptos de Programación Orientada
+                            a Objetos trabajados en la asignatura.
+                        </p>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Trabajo Académico
+                        </span>
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Java
+                        </span>
+
+                        <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">
+                            POO
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVIDAD 3 -->
+                <div
+                    onclick="abrirModal('modal-evidencia3')"
+                    class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between"
+                >
+
+                    <div class="space-y-3">
+
+                        <div class="flex justify-between items-center">
+
+                            <span class="text-xs font-mono text-teal-400">
+                                POO 2 • Actividad N.º 3
+                            </span>
+
+                            <span class="text-xs font-mono text-slate-400">
+                                Ver ↗
+                            </span>
+
+                        </div>
+
+
+                        <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
+                            Programación Funcional
+                        </h5>
+
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Estudio e implementación del paradigma de
+                            Programación Funcional en Java, trabajando
+                            conceptos como funciones puras, inmutabilidad,
+                            expresiones lambda y Streams.
+                        </p>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Trabajo Colaborativo
+                        </span>
+
+                        <span class="px-2 py-1 bg-slate-700/50 rounded">
+                            Programación Funcional
+                        </span>
+
+                        <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">
+                            Java
+                        </span>
 
                     </div>
 
@@ -371,538 +640,605 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
+
+</main>
 
 
-        <!-- =========================
-             PROYECTOS
-        ========================== -->
-        <section id="proyectos" class="space-y-12">
+<!-- ========================================================= -->
+<!-- MODAL POO 1 -->
+<!-- ========================================================= -->
 
-            <h3 class="text-2xl font-bold text-slate-200 flex items-center gap-2">
+<div
+    id="modal-poo1-actividades"
+    class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+>
 
-                <span class="text-teal-400 font-mono text-lg">
-                    03.
+    <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
+
+        <button
+            onclick="cerrarModal('modal-poo1-actividades')"
+            class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold"
+        >
+            &times;
+        </button>
+
+
+        <span class="text-xs font-mono text-teal-400">
+            Entregables Académicos • POO 1
+        </span>
+
+
+        <h3 class="text-2xl font-bold text-slate-100">
+            Actividades Prácticas de Programación Orientada a Objetos I
+        </h3>
+
+
+        <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
+
+            <p>
+                Recopilación de trabajos prácticos y evidencias de aprendizaje
+                desarrolladas de forma individual en la materia de Programación
+                Orientada a Objetos 1.
+            </p>
+
+
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70 space-y-1">
+
+                <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">
+                    Autor del trabajo:
+                </h6>
+
+                <p class="text-xs text-slate-300 font-mono">
+                    • Jeronimo Zapata Vargas
+                </p>
+
+            </div>
+
+
+            <h5 class="font-bold text-slate-200 text-base">
+                Archivos y Documentos de POO I:
+            </h5>
+
+
+            <ul class="space-y-3 font-mono text-xs">
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>📕</span>
+                        <span class="text-slate-200">
+                            EA1: Diagrama de Clases - Sistema Biblioteca
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA1_Grupo20_DiagramaDeClasesbiblioteca.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition"
+                    >
+                        Ver Documento
+                    </a>
+
+                </li>
+
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>📘</span>
+
+                        <span class="text-slate-200">
+                            Actividad 2: Guía Práctica de Programación 1
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/actividad%202%20de%20Programacion%201.docx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded border border-blue-500/30 hover:bg-blue-500/30 transition"
+                    >
+                        Descargar Word
+                    </a>
+
+                </li>
+
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>📕</span>
+
+                        <span class="text-slate-200">
+                            EA3: Caso de Estudio Herencia y Polimorfismo
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA3.jeronimozapata_Herenciapolimorfismo.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition"
+                    >
+                        Ver Documento
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="pt-4 border-t border-slate-700 flex justify-end">
+
+            <button
+                onclick="cerrarModal('modal-poo1-actividades')"
+                class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- MODAL ACTIVIDAD 1 POO 2 -->
+<!-- ========================================================= -->
+
+<div
+    id="modal-evidencia1"
+    class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
+
+        <button
+            onclick="cerrarModal('modal-evidencia1')"
+            class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold"
+        >
+            &times;
+        </button>
+
+
+        <span class="text-xs font-mono text-teal-400">
+            Entregables Académicos • POO 2
+        </span>
+
+
+        <h3 class="text-2xl font-bold text-slate-100">
+            Actividad 1: Diagrama de Clases UML
+        </h3>
+
+
+        <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
+
+            <p>
+                En esta primera actividad de Programación Orientada a Objetos 2
+                se abordó el diseño avanzado de sistemas a través de UML.
+                Se definieron clases, atributos, métodos y relaciones complejas
+                de asociación, agregación, composición y herencia.
+            </p>
+
+
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70 space-y-2">
+
+                <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">
+                    Equipo de Trabajo Colaborativo / Integrantes:
+                </h6>
+
+                <ul class="text-xs text-slate-300 space-y-1 font-mono">
+                    <li>• Franklin Dario Burbano Gaviria</li>
+                    <li>• Cristian Julian Monsalve Serna</li>
+                    <li>• Jeronimo Zapata Vargas</li>
+                </ul>
+
+            </div>
+
+
+            <h5 class="font-bold text-slate-200 text-base">
+                Recursos y Archivos de la Entregable:
+            </h5>
+
+
+            <ul class="space-y-3 font-mono text-xs">
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>📁</span>
+                        <span class="text-slate-200">
+                            Documentación de la Entregable
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://drive.google.com/file/d/1qFYqp5D04FFw6FQ_eQ6fam6UZ11XKChm/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded border border-blue-500/30 hover:bg-blue-500/30 transition"
+                    >
+                        Abrir Drive
+                    </a>
+
+                </li>
+
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>🎥</span>
+
+                        <span class="text-slate-200">
+                            Video Explicativo
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://youtu.be/-TwFSgdjxvU"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-red-500/20 text-red-300 rounded border border-red-500/30 hover:bg-red-500/30 transition"
+                    >
+                        Ver en YouTube
+                    </a>
+
+                </li>
+
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>📄</span>
+
+                        <span>
+                            EVIDENCIA DE APRENDIZAJE 1 DIAGRAMA DE CLASES UML.docx
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/EVIDENCIA%20DE%20APRENDIZAJE%201%20DIAGRAMA%20DE%20CLASES%20UML.docx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition"
+                    >
+                        Descargar Word
+                    </a>
+
+                </li>
+
+
+                <li class="bg-slate-900/60 p-3 rounded flex items-center justify-between border border-slate-700/50">
+
+                    <div class="flex items-center gap-2">
+                        <span>🖼️</span>
+
+                        <span>
+                            Diagrama sin título.png
+                        </span>
+                    </div>
+
+                    <a
+                        href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Diagrama%20sin%20t%C3%ADtulo.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded border border-teal-500/30 hover:bg-teal-500/30 transition"
+                    >
+                        Ver Imagen
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="pt-4 border-t border-slate-700 flex justify-end">
+
+            <button
+                onclick="cerrarModal('modal-evidencia1')"
+                class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- MODAL ACTIVIDAD 2 POO 2 -->
+<!-- IMPLEMENTACION DE DIAGRAMA DE CLASES -->
+<!-- SIN ENLACES POR AHORA -->
+<!-- ========================================================= -->
+
+<div
+    id="modal-evidencia2"
+    class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
+
+        <button
+            onclick="cerrarModal('modal-evidencia2')"
+            class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold"
+        >
+            &times;
+        </button>
+
+
+        <span class="text-xs font-mono text-teal-400">
+            Entregables Académicos • POO 2
+        </span>
+
+
+        <h3 class="text-2xl font-bold text-slate-100">
+            Actividad 2: Implementacion de Diagrama de clases
+        </h3>
+
+
+        <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
+
+            <p>
+                En esta actividad se desarrolla la implementación en Java del
+                diagrama de clases, llevando el modelo conceptual a una
+                estructura funcional mediante clases, atributos, métodos y
+                relaciones entre objetos.
+            </p>
+
+
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70">
+
+                <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider mb-2">
+                    Estado de la actividad:
+                </h6>
+
+                <p class="text-xs text-slate-400">
+                    Los enlaces y evidencias de esta actividad serán agregados
+                    posteriormente.
+                </p>
+
+            </div>
+
+
+            <h5 class="font-bold text-slate-200 text-base">
+                Recursos y Archivos:
+            </h5>
+
+
+            <div class="bg-slate-900/60 p-5 rounded-lg border border-dashed border-slate-700 text-center">
+
+                <span class="text-3xl block mb-2">
+                    📂
                 </span>
 
-                Entregables Académicos
-
-            </h3>
-
-
-            <!-- =========================
-                 PROGRAMACIÓN 2
-            ========================== -->
-            <div class="space-y-6">
-
-                <div class="border-b border-slate-800 pb-2">
-
-                    <h4 class="text-xl font-bold text-teal-400 font-mono">
-                        Programación 2
-                    </h4>
-
-                    <p class="text-slate-400 text-xs mt-1">
-                        Actividades y proyectos desarrollados durante la
-                        asignatura.
-                    </p>
-
-                </div>
-
-
-                <div class="grid md:grid-cols-2 gap-6">
-
-
-                    <!-- =================================
-                         ACTIVIDAD 2
-                         IMPLEMENTACIÓN DIAGRAMA DE CLASES
-                    ================================== -->
-                    <div
-                        onclick="abrirModal('modal-actividad2')"
-                        class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between">
-
-                        <div class="space-y-3">
-
-                            <div class="flex justify-between items-center">
-
-                                <span class="text-xs font-mono text-teal-400">
-                                    PROGRAMACIÓN 2 • ACTIVIDAD N.º 2
-                                </span>
-
-                                <span class="text-xs font-mono text-slate-400">
-                                    Ver entregable ↗
-                                </span>
-
-                            </div>
-
-
-                            <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
-                                Actividad 2: Implementación de Diagrama de clases
-                            </h5>
-
-
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Implementación en Java del diagrama de clases
-                                correspondiente al sistema de biblioteca,
-                                aplicando clases, atributos, métodos,
-                                encapsulamiento, herencia, polimorfismo y
-                                relaciones entre clases.
-                            </p>
-
-                        </div>
-
-
-                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
-
-                            <span class="px-2 py-1 bg-slate-700/50 rounded">
-                                Trabajo Colaborativo
-                            </span>
-
-                            <span class="px-2 py-1 bg-slate-700/50 rounded">
-                                Java
-                            </span>
-
-                            <span class="px-2 py-1 bg-slate-700/50 rounded">
-                                UML
-                            </span>
-
-                            <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">
-                                Diagrama de clases
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- =================================
-                         ACTIVIDAD 3
-                         PROGRAMACIÓN FUNCIONAL
-                    ================================== -->
-                    <div
-                        onclick="abrirModal('modal-actividad3')"
-                        class="cursor-pointer bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 hover:border-teal-400 transition space-y-4 flex flex-col justify-between">
-
-                        <div class="space-y-3">
-
-                            <div class="flex justify-between items-center">
-
-                                <span class="text-xs font-mono text-teal-400">
-                                    PROGRAMACIÓN 2 • ACTIVIDAD N.º 3
-                                </span>
-
-                                <span class="text-xs font-mono text-slate-400">
-                                    Ver entregable ↗
-                                </span>
-
-                            </div>
-
-
-                            <h5 class="text-xl font-bold text-slate-100 hover:text-teal-300 transition">
-                                Actividad 3: Programación Funcional
-                            </h5>
-
-
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Aplicación del paradigma de programación
-                                funcional mediante funciones, expresiones
-                                lambda, colecciones y Streams en Java.
-                            </p>
-
-                        </div>
-
-
-                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
-
-                            <span class="px-2 py-1 bg-slate-700/50 rounded">
-                                Trabajo Colaborativo
-                            </span>
-
-                            <span class="px-2 py-1 bg-slate-700/50 rounded">
-                                Java
-                            </span>
-
-                            <span class="px-2 py-1 bg-slate-700/50 rounded">
-                                Programación Funcional
-                            </span>
-
-                            <span class="px-2 py-1 bg-teal-500/10 text-teal-300 rounded">
-                                Lambdas & Streams
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =================================
-         MODAL ACTIVIDAD 2
-         IMPLEMENTACIÓN DIAGRAMA DE CLASES
-    ================================== -->
-
-    <div
-        id="modal-actividad2"
-        class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-
-        <div
-            class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
-
-
-            <button
-                onclick="cerrarModal('modal-actividad2')"
-                class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold">
-
-                &times;
-
-            </button>
-
-
-            <span class="text-xs font-mono text-teal-400">
-                PROGRAMACIÓN 2 • ACTIVIDAD N.º 2
-            </span>
-
-
-            <h3 class="text-2xl font-bold text-slate-100">
-                Implementación de Diagrama de clases
-            </h3>
-
-
-            <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
-
-
-                <p>
-                    En esta actividad se realizó la implementación en Java
-                    del diagrama de clases diseñado para el sistema de
-                    biblioteca.
+                <p class="text-slate-500 text-xs font-mono">
+                    Próximamente se agregarán los enlaces de la actividad.
                 </p>
-
-
-                <p>
-                    El desarrollo permite aplicar conceptos fundamentales
-                    de la programación orientada a objetos, incluyendo
-                    clases, atributos, métodos, encapsulamiento, herencia,
-                    polimorfismo y relaciones entre clases.
-                </p>
-
-
-                <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70">
-
-                    <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">
-                        Equipo de trabajo
-                    </h6>
-
-                    <ul class="text-xs text-slate-300 space-y-1 font-mono mt-2">
-
-                        <li>
-                            • Franklin Dario Burbano Gaviria
-                        </li>
-
-                        <li>
-                            • Cristian Julian Monsalve Serna
-                        </li>
-
-                        <li>
-                            • Jeronimo Zapata Vargas
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <h5 class="font-bold text-slate-200 text-base">
-                    Componentes desarrollados
-                </h5>
-
-
-                <ul class="space-y-2 text-sm">
-
-                    <li>
-                        ✓ Implementación de clases en Java
-                    </li>
-
-                    <li>
-                        ✓ Atributos y métodos
-                    </li>
-
-                    <li>
-                        ✓ Encapsulamiento
-                    </li>
-
-                    <li>
-                        ✓ Herencia
-                    </li>
-
-                    <li>
-                        ✓ Polimorfismo
-                    </li>
-
-                    <li>
-                        ✓ Relaciones entre clases
-                    </li>
-
-                </ul>
-
-
-                <!--
-                Si tienes un enlace específico de GitHub,
-                Drive o video para esta actividad,
-                puedes colocarlo aquí.
-                -->
-
-            </div>
-
-
-            <div class="pt-4 border-t border-slate-700 flex justify-end">
-
-                <button
-                    onclick="cerrarModal('modal-actividad2')"
-                    class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition">
-
-                    Cerrar
-
-                </button>
 
             </div>
 
         </div>
 
-    </div>
 
-
-    <!-- =================================
-         MODAL ACTIVIDAD 3
-         PROGRAMACIÓN FUNCIONAL
-    ================================== -->
-
-    <div
-        id="modal-actividad3"
-        class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-
-        <div
-            class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
-
+        <div class="pt-4 border-t border-slate-700 flex justify-end">
 
             <button
-                onclick="cerrarModal('modal-actividad3')"
-                class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold">
-
-                &times;
-
+                onclick="cerrarModal('modal-evidencia2')"
+                class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition"
+            >
+                Cerrar
             </button>
-
-
-            <span class="text-xs font-mono text-teal-400">
-                PROGRAMACIÓN 2 • ACTIVIDAD N.º 3
-            </span>
-
-
-            <h3 class="text-2xl font-bold text-slate-100">
-                Programación Funcional
-            </h3>
-
-
-            <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
-
-
-                <p>
-                    En esta actividad se aborda el paradigma de
-                    Programación Funcional utilizando Java.
-                </p>
-
-
-                <p>
-                    Se trabajan conceptos relacionados con funciones,
-                    expresiones lambda, procesamiento de colecciones y
-                    Streams.
-                </p>
-
-
-                <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70">
-
-                    <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider">
-                        Equipo de trabajo
-                    </h6>
-
-                    <ul class="text-xs text-slate-300 space-y-1 font-mono mt-2">
-
-                        <li>
-                            • Franklin Dario Burbano Gaviria
-                        </li>
-
-                        <li>
-                            • Cristian Julian Monsalve Serna
-                        </li>
-
-                        <li>
-                            • Jeronimo Zapata Vargas
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <h5 class="font-bold text-slate-200 text-base">
-                    Conceptos desarrollados
-                </h5>
-
-
-                <ul class="space-y-2 text-sm">
-
-                    <li>
-                        ✓ Programación Funcional
-                    </li>
-
-                    <li>
-                        ✓ Expresiones Lambda
-                    </li>
-
-                    <li>
-                        ✓ Funciones
-                    </li>
-
-                    <li>
-                        ✓ Colecciones
-                    </li>
-
-                    <li>
-                        ✓ Streams
-                    </li>
-
-                </ul>
-
-
-                <!--
-                Si tienes un enlace específico de GitHub,
-                Drive o video para esta actividad,
-                puedes colocarlo aquí.
-                -->
-
-            </div>
-
-
-            <div class="pt-4 border-t border-slate-700 flex justify-end">
-
-                <button
-                    onclick="cerrarModal('modal-actividad3')"
-                    class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition">
-
-                    Cerrar
-
-                </button>
-
-            </div>
 
         </div>
 
     </div>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script>
-
-        function toggleDesplegable(id) {
-
-            const contenido = document.getElementById(id);
-
-            const numero =
-                id.replace('materia-', '');
-
-            const icono =
-                document.getElementById('icono-' + numero);
+</div>
 
 
-            if (contenido.classList.contains('hidden')) {
+<!-- ========================================================= -->
+<!-- MODAL ACTIVIDAD 3 POO 2 -->
+<!-- PROGRAMACIÓN FUNCIONAL -->
+<!-- SIN ENLACES POR AHORA -->
+<!-- ========================================================= -->
 
-                contenido.classList.remove('hidden');
+<div
+    id="modal-evidencia3"
+    class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+>
 
-                icono.innerText = '−';
+    <div class="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-6 relative max-h-[90vh] overflow-y-auto">
 
-            } else {
+        <button
+            onclick="cerrarModal('modal-evidencia3')"
+            class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 text-2xl font-bold"
+        >
+            &times;
+        </button>
 
-                contenido.classList.add('hidden');
 
-                icono.innerText = '+';
+        <span class="text-xs font-mono text-teal-400">
+            Entregables Académicos • POO 2
+        </span>
 
-            }
+
+        <h3 class="text-2xl font-bold text-slate-100">
+            Actividad 3: Programación Funcional
+        </h3>
+
+
+        <div class="text-slate-300 text-sm space-y-4 leading-relaxed">
+
+            <p>
+                En esta tercera actividad de Programación Orientada a Objetos 2
+                se desarrolla la aplicación práctica del paradigma de
+                Programación Funcional, abordando conceptos como funciones
+                puras, inmutabilidad, expresiones lambda y procesamiento de
+                datos mediante Streams.
+            </p>
+
+
+            <div class="bg-slate-900/80 p-4 rounded-lg border border-slate-700/70">
+
+                <h6 class="text-xs font-mono text-teal-400 uppercase tracking-wider mb-2">
+                    Estado de la actividad:
+                </h6>
+
+                <p class="text-xs text-slate-400">
+                    Los enlaces y evidencias de esta actividad serán agregados
+                    posteriormente.
+                </p>
+
+            </div>
+
+
+            <h5 class="font-bold text-slate-200 text-base">
+                Recursos y Archivos:
+            </h5>
+
+
+            <div class="bg-slate-900/60 p-5 rounded-lg border border-dashed border-slate-700 text-center">
+
+                <span class="text-3xl block mb-2">
+                    📂
+                </span>
+
+                <p class="text-slate-500 text-xs font-mono">
+                    Próximamente se agregarán los enlaces de la actividad.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="pt-4 border-t border-slate-700 flex justify-end">
+
+            <button
+                onclick="cerrarModal('modal-evidencia3')"
+                class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-slate-200 font-medium transition"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+    function toggleDesplegable(id) {
+
+        const contenido = document.getElementById(id);
+
+        const icono = document.getElementById(
+            'icono-' + id.replace('materia-', '')
+        );
+
+
+        if (contenido.classList.contains('hidden')) {
+
+            contenido.classList.remove('hidden');
+
+            icono.innerText = '−';
+
+        } else {
+
+            contenido.classList.add('hidden');
+
+            icono.innerText = '+';
 
         }
 
-
-        function abrirModal(id) {
-
-            document
-                .getElementById(id)
-                .classList
-                .remove('hidden');
-
-        }
+    }
 
 
-        function cerrarModal(id) {
+    function abrirModal(id) {
 
-            document
-                .getElementById(id)
-                .classList
-                .add('hidden');
+        document.getElementById(id).classList.remove('hidden');
 
-        }
+        document.body.classList.add('overflow-hidden');
 
-
-        // Cerrar el modal al hacer clic fuera de él
-
-        window.addEventListener('click', function(event) {
-
-            const modal2 =
-                document.getElementById('modal-actividad2');
-
-            const modal3 =
-                document.getElementById('modal-actividad3');
+    }
 
 
-            if (event.target === modal2) {
+    function cerrarModal(id) {
 
-                cerrarModal('modal-actividad2');
+        document.getElementById(id).classList.add('hidden');
 
-            }
+        document.body.classList.remove('overflow-hidden');
+
+    }
 
 
-            if (event.target === modal3) {
+    // Cerrar modal haciendo clic fuera de su contenido
+    document.querySelectorAll('[id^="modal-"]').forEach(modal => {
 
-                cerrarModal('modal-actividad3');
+        modal.addEventListener('click', function(event) {
+
+            if (event.target === modal) {
+
+                cerrarModal(modal.id);
 
             }
 
         });
 
-    </script>
+    });
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    // Cerrar modal con la tecla ESC
+    document.addEventListener('keydown', function(event) {
 
-    <footer
-        class="text-center py-8 text-slate-500 text-xs font-mono border-t border-slate-800">
+        if (event.key === 'Escape') {
 
-        <p>
-            Diseñado y desarrollado por Jeronimo Zapata Vargas
-        </p>
+            document.querySelectorAll('[id^="modal-"]').forEach(modal => {
 
-    </footer>
+                if (!modal.classList.contains('hidden')) {
+
+                    cerrarModal(modal.id);
+
+                }
+
+            });
+
+        }
+
+    });
+
+</script>
+
+
+<!-- Footer -->
+
+<footer class="text-center py-8 text-slate-500 text-xs font-mono border-t border-slate-800">
+
+    <p>
+        Diseñado y desarrollado por Jeronimo Zapata Vargas
+    </p>
+
+</footer>
+
 
 </body>
-
 </html>
-```
