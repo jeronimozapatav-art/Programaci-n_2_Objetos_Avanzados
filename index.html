@@ -917,27 +917,84 @@ core: JAVA</div>
               </div>
             </div>
 
-            <button onclick="abrirModal('modal-poo1-actividades')" class="activity w-full text-left rounded-xl border border-cyan-400/30 bg-cyan-400/[.025] p-5">
-              <div class="flex items-start gap-4">
-                <div class="w-11 h-11 shrink-0 rounded-lg border border-cyan-400/50 flex items-center justify-center text-cyan-300">▤</div>
-                <div class="flex-1">
-                  <div class="flex items-center justify-between gap-3">
-                    <h4 class="font-bold">Entregables y Trabajos Prácticos de POO I</h4>
-                    <span class="text-cyan-300 text-sm">Ver entregables ↗</span>
-                  </div>
-                  <p class="text-sm text-slate-400 mt-2">
-                    Compilación de las evidencias individuales desarrolladas en el semestre:
-                    diagramas de clases, guía práctica de aplicación y casos de estudio.
-                  </p>
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    <span class="tag">TRABAJO INDIVIDUAL</span>
-                    <span class="tag">UML BIBLIOTECA</span>
-                    <span class="tag">HERENCIA & POLIMORFISMO</span>
-                    <span class="tag">PDF / DOCX</span>
+            <div class="space-y-4">
+
+              <!-- ENTREGA 1 -->
+              <button onclick="abrirModal('modal-poo1-entrega1')" class="activity w-full text-left rounded-xl border border-cyan-400/30 bg-cyan-400/[.025] p-5">
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 shrink-0 rounded-lg border border-cyan-400/50 flex items-center justify-center text-cyan-300 font-black">01</div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-cyan-400 text-xs font-mono">POO I • ENTREGA N.º 1</p>
+                        <h4 class="font-bold mt-1">Planteando el diagrama de clase UML</h4>
+                      </div>
+                      <span class="text-cyan-300 text-sm whitespace-nowrap">Ver entrega ↗</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-2">
+                      Diseño y modelado UML del sistema de biblioteca, definiendo las clases y sus relaciones.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                      <span class="tag">TRABAJO INDIVIDUAL</span>
+                      <span class="tag">UML</span>
+                      <span class="tag">BIBLIOTECA</span>
+                      <span class="tag">PDF</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </button>
+              </button>
+
+              <!-- ENTREGA 2 -->
+              <button onclick="abrirModal('modal-poo1-entrega2')" class="activity w-full text-left rounded-xl border border-blue-400/30 bg-blue-400/[.025] p-5">
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 shrink-0 rounded-lg border border-blue-400/50 flex items-center justify-center text-blue-300 font-black">02</div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-blue-300 text-xs font-mono">POO I • ENTREGA N.º 2</p>
+                        <h4 class="font-bold mt-1">Implementación del diagrama de clases</h4>
+                      </div>
+                      <span class="text-blue-300 text-sm whitespace-nowrap">Ver entrega ↗</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-2">
+                      Implementación en lenguaje de programación de las clases planteadas en el modelo UML.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                      <span class="tag">TRABAJO INDIVIDUAL</span>
+                      <span class="tag">JAVA</span>
+                      <span class="tag">IMPLEMENTACIÓN</span>
+                      <span class="tag">DOCX</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+
+              <!-- ENTREGA 3 -->
+              <button onclick="abrirModal('modal-poo1-entrega3')" class="activity w-full text-left rounded-xl border border-purple-400/35 bg-purple-400/[.025] p-5">
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 shrink-0 rounded-lg border border-purple-400/50 flex items-center justify-center text-purple-300 font-black">03</div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-purple-300 text-xs font-mono">POO I • ENTREGA N.º 3</p>
+                        <h4 class="font-bold mt-1">Caso de estudio: Herencia y Polimorfismo</h4>
+                      </div>
+                      <span class="text-purple-300 text-sm whitespace-nowrap">Ver entrega ↗</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-2">
+                      Caso de estudio orientado a aplicar los conceptos de herencia y polimorfismo en programación orientada a objetos.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                      <span class="tag">TRABAJO INDIVIDUAL</span>
+                      <span class="tag">HERENCIA</span>
+                      <span class="tag">POLIMORFISMO</span>
+                      <span class="tag">PDF</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+
+            </div>
           </div>
 
           <!-- POO II -->
@@ -1088,30 +1145,95 @@ core: JAVA</div>
   </footer>
 
   <!-- =========================================================
-       MODAL POO I
-       Conserva aquí tus enlaces originales de POO I.
+       MODALES DE LAS 3 ENTREGAS DE POO I
   ========================================================== -->
-  <div id="modal-poo1-actividades" class="modal-bg" onclick="cerrarSiFondo(event,this)">
+
+  <!-- ENTREGA 1 -->
+  <div id="modal-poo1-entrega1" class="modal-bg" onclick="cerrarSiFondo(event,this)">
     <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between gap-4 mb-6">
+      <div class="flex items-start justify-between gap-4 mb-6">
         <div>
-          <p class="text-cyan-400 font-mono text-xs">POO I</p>
-          <h3 class="text-2xl font-black">Entregables de POO I</h3>
+          <p class="text-cyan-400 font-mono text-xs">POO I • ENTREGA N.º 1</p>
+          <h3 class="text-2xl font-black">Planteando el diagrama de clase UML</h3>
         </div>
-        <button onclick="cerrarModal('modal-poo1-actividades')" class="text-2xl text-slate-400 hover:text-white">×</button>
+        <button onclick="cerrarModal('modal-poo1-entrega1')" class="text-2xl text-slate-400 hover:text-white">×</button>
       </div>
 
-      <p class="text-slate-400 mb-5">
-        Esta ventana queda preparada para tus entregables de Programación Orientada a Objetos I.
-        Conserva aquí los enlaces que ya tenías en tu código original.
+      <p class="text-slate-400 leading-relaxed mb-6">
+        Primera entrega de Programación Orientada a Objetos I, enfocada en el planteamiento
+        y modelado del diagrama de clases UML para el sistema de biblioteca.
       </p>
 
-      <div class="rounded-xl border border-cyan-400/20 bg-black/25 p-4 text-sm text-slate-400">
-        <p class="text-cyan-300 font-semibold mb-2">Nota</p>
-        <p>
-          No se inventaron enlaces nuevos para POO I. Pega aquí los enlaces que ya tenías
-          en tu versión anterior del index.html.
-        </p>
+      <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank" rel="noopener noreferrer"
+         href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA1_Grupo20_DiagramaDeClasesbiblioteca.pdf">
+        <span>📕 Ver EA1: Diagrama de Clases - Sistema Biblioteca</span><span>↗</span>
+      </a>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="tag">UML</span>
+        <span class="tag">BIBLIOTECA</span>
+        <span class="tag">DIAGRAMA DE CLASES</span>
+        <span class="tag">PDF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREGA 2 -->
+  <div id="modal-poo1-entrega2" class="modal-bg" onclick="cerrarSiFondo(event,this)">
+    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <p class="text-blue-300 font-mono text-xs">POO I • ENTREGA N.º 2</p>
+          <h3 class="text-2xl font-black">Implementación del diagrama de clases</h3>
+        </div>
+        <button onclick="cerrarModal('modal-poo1-entrega2')" class="text-2xl text-slate-400 hover:text-white">×</button>
+      </div>
+
+      <p class="text-slate-400 leading-relaxed mb-6">
+        Segunda entrega correspondiente a la guía práctica de Programación 1 y a la
+        implementación del modelo de clases en el lenguaje de programación.
+      </p>
+
+      <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank" rel="noopener noreferrer"
+         href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/raw/main/actividad%202%20de%20Programacion%201.docx">
+        <span>📘 Descargar Actividad 2: Guía Práctica de Programación 1</span><span>↗</span>
+      </a>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="tag">JAVA</span>
+        <span class="tag">IMPLEMENTACIÓN</span>
+        <span class="tag">PROGRAMACIÓN 1</span>
+        <span class="tag">DOCX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREGA 3 -->
+  <div id="modal-poo1-entrega3" class="modal-bg" onclick="cerrarSiFondo(event,this)">
+    <div class="modal-box rounded-2xl p-6" onclick="event.stopPropagation()">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <p class="text-purple-300 font-mono text-xs">POO I • ENTREGA N.º 3</p>
+          <h3 class="text-2xl font-black">Caso de estudio: Herencia y Polimorfismo</h3>
+        </div>
+        <button onclick="cerrarModal('modal-poo1-entrega3')" class="text-2xl text-slate-400 hover:text-white">×</button>
+      </div>
+
+      <p class="text-slate-400 leading-relaxed mb-6">
+        Tercera entrega de Programación Orientada a Objetos I, centrada en el caso de estudio
+        sobre los conceptos de herencia y polimorfismo.
+      </p>
+
+      <a class="btn neon-btn rounded-xl p-4 w-full justify-between" target="_blank" rel="noopener noreferrer"
+         href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/EA3.jeronimozapata_Herenciapolimorfismo.pdf">
+        <span>📕 Ver EA3: Caso de Estudio Herencia y Polimorfismo</span><span>↗</span>
+      </a>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="tag">HERENCIA</span>
+        <span class="tag">POLIMORFISMO</span>
+        <span class="tag">CASO DE ESTUDIO</span>
+        <span class="tag">PDF</span>
       </div>
     </div>
   </div>
