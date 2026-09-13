@@ -1,220 +1,212 @@
 from pathlib import Path
 import re
 
-src = Path("/mnt/data/Pasted text.txt")
-out = Path("/mnt/data/portafolio_programacion_corregido.html")
-html = src.read_text(encoding="utf-8")
+src = Path("/mnt/data/original_files/Pasted text.txt")
+out = Path("/mnt/data/portafolio_programacion_1_2_separado.html")
 
-def extract_balanced(text, start, tag):
-    token_re = re.compile(rf"</?{tag}\b[^>]*>", re.I)
-    depth = 0
-    for m in token_re.finditer(text, start):
-        token = m.group(0)
-        if token.startswith("</"):
-            depth -= 1
-            if depth == 0:
-                return text[start:m.end()]
-        elif not token.rstrip().endswith("/>"):
-            depth += 1
-    raise ValueError(f"No se encontró cierre para {tag}")
+original = src.read_text(encoding="utf-8")
 
-# Locate the original two sections.
-materias_start = html.index('        <article\n          id="materias"')
-materias_end = html.index('\n        </article>', materias_start) + len('\n        </article>')
-trabajos_start = html.index('    <section\n      id="trabajos"', materias_end)
-trabajos_end = html.index('\n    </section>', trabajos_start) + len('\n    </section>')
+materias_start = original.rfind("<!--", 0, original.find("MATERIAS"))
+trabajos_start = original.find("<!-- =======================================================", original.find("MATERIAS") + 10)
 
-materias = html[materias_start:materias_end]
-trabajos = html[trabajos_start:trabajos_end]
+if materias_start == -1 or trabajos_start == -1:
+    raise RuntimeError("No se pudo localizar exactamente la sección MATERIAS.")
 
-# Original theory blocks.
-s = materias.index('            <!-- POO I -->')
-p1b = extract_balanced(materias, materias.index('            <button', s), "button")
-p1d = extract_balanced(materias, materias.index('            <div\n              id="poo1"', s), "div")
+materias_original = original[materias_start:trabajos_start]
 
-s = materias.index('            <!-- POO II -->')
-p2b = extract_balanced(materias, materias.index('            <button', s), "button")
-p2d = extract_balanced(materias, materias.index('            <div\n              id="poo2"', s), "div")
+# Extraer los dos bloques académicos originales para conservar íntegramente
+# sus contenidos, IDs y funciones JavaScript.
+p1_marker = materias_original.find("<!-- POO I -->")
+p2_marker = materias_original.find("<!-- POO II -->")
+if p1_marker == -1 or p2_marker == -1:
+    raise RuntimeError("No se encontraron los bloques originales de POO I y POO II.")
 
-# Original activity cards, including every onclick/modal/link inside them.
-s = trabajos.index('          <!-- POO I -->')
-p1card = extract_balanced(
-    trabajos,
-    trabajos.index('          <div class="rounded-2xl border border-cyan-400/35 bg-black/25 p-5">', s),
-    "div"
+p1 = materias_original[p1_marker:p2_marker]
+# El bloque POO II llega hasta el cierre del contenedor interno de materias.
+p2 = materias_original[p2_marker:]
+p2 = p2.rsplit("        </article>", 1)[0]  # quitar solo el cierre del article original
+
+# Ajustar únicamente los textos de encabezado/semestre dentro de MATERIAS.
+p1 = p1.replace(
+    "Programación Orientada a Objetos I (Básica)",
+    "PROGRAMACIÓN 1 — Orientada a Objetos Básica",
+    1
+).replace(
+    "Semestre 2 • IU Digital de Antioquia",
+    "SEGUNDO SEMESTRE • IU Digital de Antioquia",
+    1
 )
 
-s = trabajos.index('          <!-- POO II -->')
-p2card = extract_balanced(
-    trabajos,
-    trabajos.index('          <div class="rounded-2xl border border-cyan-400/35 bg-black/25 p-5">', s),
-    "div"
+p2 = p2.replace(
+    "Programación Orientada a Objetos II (Avanzada)",
+    "PROGRAMACIÓN 2 — Orientada a Objetos Avanzada",
+    1
+).replace(
+    "Semestre 3 • Asignatura actual",
+    "TERCER SEMESTRE • Asignatura actual",
+    1
 )
 
-# Only change labels; activity links/modal handlers are untouched.
-p1b = p1b.replace("Programación Orientada a Objetos I (Básica)", "Programación 1 — Orientada a Objetos Básica")
-p1b = p1b.replace("Semestre 2 • IU Digital de Antioquia", "Segundo semestre • IU Digital de Antioquia")
+# Actividades: se reutilizan los mismos modal IDs y, por tanto, el mismo contenido,
+# sin tocar los enlaces, modales ni JavaScript existentes.
+def activity_button(num, label, modal_id, color="cyan"):
+    border = "cyan" if color == "cyan" else "blue"
+    text = "cyan" if color == "cyan" else "blue"
+    return f"""
+              <button
+                onclick="abrirModal('{modal_id}')"
+                class="activity w-full text-left rounded-xl border border-{border}-400/30 bg-{border}-400/[.025] p-4"
+              >
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 shrink-0 rounded-lg border border-{border}-400/50 flex items-center justify-center text-{text}-300 font-black">
+                    {num:02d}
+                  </div>
+                  <div>
+                    <p class="text-{text}-400 text-xs font-mono">
+                      {label}
+                    </p>
+                    <p class="font-bold mt-1">
+                      {modal_titles[modal_id]}
+                    </p>
+                  </div>
+                </div>
+              </button>
+"""
 
-p2b = p2b.replace("Programación Orientada a Objetos II (Avanzada)", "Programación 2 — Orientada a Objetos Avanzada")
-p2b = p2b.replace("Semestre 3 • Asignatura actual", "Tercer semestre • Asignatura actual")
+modal_titles = {
+    "modal-poo1-entrega1": "Planteando el diagrama de clase UML",
+    "modal-poo1-entrega2": "Implementación del diagrama de clases",
+    "modal-poo1-entrega3": "Caso de estudio: Herencia y Polimorfismo",
+    "modal-evidencia1": "Diagrama de Clases UML",
+    "modal-evidencia2": "Implementación de Diagrama de clases",
+    "modal-evidencia3": "Programación Funcional",
+}
 
-p1card = p1card.replace("Programación Orientada a Objetos I (Básica)", "Programación 1 — Orientada a Objetos Básica")
-p1card = p1card.replace(
-    "Trabajos e iteraciones prácticas desarrolladas de manera individual.",
-    "Actividades académicas y entregables del segundo semestre."
-)
+new_materias = f"""<!-- =====================================================
+             MATERIAS
+        ====================================================== -->
 
-p2card = p2card.replace("Programación Orientada a Objetos II (Avanzada)", "Programación 2 — Orientada a Objetos Avanzada")
-p2card = p2card.replace(
-    "Proyectos, actividades y modelado avanzado de software.",
-    "Actividades académicas y entregables del tercer semestre."
-)
-
-# Keep the original theory content exactly, but place each activity group directly below its subject.
-combined = f'''        <article
+        <article
           id="materias"
           class="glass corner rounded-2xl p-7"
         >
 
           <div class="flex items-center gap-4 mb-6">
-
             <div class="w-12 h-12 rounded-xl border border-cyan-400/50 flex items-center justify-center text-2xl text-cyan-300">
               ◇
             </div>
 
             <div>
-
               <p class="text-cyan-400 font-mono text-sm">
                 02.
               </p>
 
               <h2 class="text-2xl font-black">
-                Materias de Programación
+                Contenido de las Materias
               </h2>
-
             </div>
-
           </div>
 
-          <p class="text-slate-400 mb-7">
-            Información de las materias, contenidos vistos en clase,
-            temas en curso, contenidos próximos y actividades académicas.
+          <p class="text-slate-400 mb-5">
+            Consulta por separado la información académica y las actividades
+            correspondientes a Programación 1 y Programación 2.
           </p>
 
-          <div class="space-y-8">
+          <div class="space-y-6">
 
             <!-- =====================================================
-                 PROGRAMACIÓN 1 — SEGUNDO SEMESTRE
+                 PROGRAMACIÓN 1
             ====================================================== -->
 
-            <div class="rounded-2xl border border-cyan-400/35 bg-black/20 p-5">
+            <section class="rounded-2xl border border-cyan-400/35 bg-black/20 p-5">
 
-{p1b}
+{p1}
 
-              <div class="mt-5">
-                <p class="text-cyan-400 text-xs font-mono font-bold mb-3">
-                  INFORMACIÓN • LO VISTO EN CLASES
-                </p>
-
-{p1d}
-              </div>
-
-              <div id="trabajos" class="mt-7 pt-6 border-t border-cyan-400/20">
-
-                <div class="flex items-center gap-3 mb-5">
-
-                  <div class="text-cyan-300 text-2xl">
+              <div class="mt-6 pt-6 border-t border-cyan-400/20">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="text-cyan-300 text-xl">
                     ◈
                   </div>
-
                   <div>
-
                     <h3 class="font-bold text-lg text-cyan-300">
-                      Actividades académicas — Programación 1
+                      ACTIVIDADES DE PROGRAMACIÓN 1
                     </h3>
-
                     <p class="text-xs text-slate-400">
-                      Segundo semestre • Entregables y trabajos realizados.
+                      Entregas correspondientes a Segundo Semestre.
                     </p>
-
                   </div>
-
                 </div>
 
-{p1card}
-
+                <div class="space-y-3">
+{activity_button(1, "POO I • ENTREGA N.º 1", "modal-poo1-entrega1")}
+{activity_button(2, "POO I • ENTREGA N.º 2", "modal-poo1-entrega2")}
+{activity_button(3, "POO I • ENTREGA N.º 3", "modal-poo1-entrega3")}
+                </div>
               </div>
 
-            </div>
+            </section>
 
             <!-- =====================================================
-                 PROGRAMACIÓN 2 — TERCER SEMESTRE
+                 PROGRAMACIÓN 2
             ====================================================== -->
 
-            <div class="rounded-2xl border border-cyan-400/35 bg-black/20 p-5">
+            <section class="rounded-2xl border border-blue-400/35 bg-black/20 p-5">
 
-{p2b}
+{p2}
 
-              <div class="mt-5">
-                <p class="text-cyan-400 text-xs font-mono font-bold mb-3">
-                  INFORMACIÓN • LO VISTO / EN CURSO / PRÓXIMAMENTE
-                </p>
-
-{p2d}
-              </div>
-
-              <div class="mt-7 pt-6 border-t border-cyan-400/20">
-
-                <div class="flex items-center gap-3 mb-5">
-
-                  <div class="text-cyan-300 text-2xl">
+              <div class="mt-6 pt-6 border-t border-blue-400/20">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="text-blue-300 text-xl">
                     ◈
                   </div>
-
                   <div>
-
-                    <h3 class="font-bold text-lg text-cyan-300">
-                      Actividades académicas — Programación 2
+                    <h3 class="font-bold text-lg text-blue-300">
+                      ACTIVIDADES DE PROGRAMACIÓN 2
                     </h3>
-
                     <p class="text-xs text-slate-400">
-                      Tercer semestre • Actividades y proyectos de la materia.
+                      Actividades correspondientes a Tercer Semestre.
                     </p>
-
                   </div>
-
                 </div>
 
-{p2card}
-
+                <div class="space-y-3">
+{activity_button(1, "POO 2 • ACTIVIDAD N.º 1", "modal-evidencia1", "blue")}
+{activity_button(2, "POO 2 • ACTIVIDAD N.º 2", "modal-evidencia2", "blue")}
+{activity_button(3, "POO 2 • ACTIVIDAD N.º 3", "modal-evidencia3", "blue")}
+                </div>
               </div>
 
-            </div>
+            </section>
 
           </div>
 
-        </article>'''
+        </article>
 
-new_html = html[:materias_start] + combined + html[trabajos_end:]
+      </div>
 
-# Verify that nothing outside the academic sections was altered and all activity links remain.
-orig_hrefs = re.findall(r'\bhref="([^"]+)"', html)
-new_hrefs = re.findall(r'\bhref="([^"]+)"', new_html)
-orig_modals = sorted(re.findall(r'\bid="(modal-[^"]+)"', html))
-new_modals = sorted(re.findall(r'\bid="(modal-[^"]+)"', new_html))
+    </section>
 
-assert len(orig_hrefs) == len(new_hrefs)
-assert sorted(orig_hrefs) == sorted(new_hrefs)
-assert orig_modals == new_modals
-assert html.count("<script") == new_html.count("<script")
-assert new_html.count("<html") == 1 and new_html.count("</html>") == 1
-assert 'id="materias"' in new_html and 'id="trabajos"' in new_html
+"""
 
-out.write_text(new_html, encoding="utf-8")
-Path("/mnt/data/portafolio_programacion_corregido.txt").write_text(new_html, encoding="utf-8")
+# Sustituir SOLO MATERIAS. Todo lo demás queda byte-a-byte igual.
+modified = original[:materias_start] + new_materias + original[trabajos_start:]
 
-print("LISTO")
-print("Enlaces conservados:", len(new_hrefs), "de", len(orig_hrefs))
-print("Modales conservados:", len(new_modals), "de", len(orig_modals))
-print("Scripts conservados:", new_html.count("<script"), "de", html.count("<script"))
-print("Archivo:", out)
+# Validaciones de conservación.
+assert modified.count("<html") == original.count("<html")
+assert modified.count("</html>") == original.count("</html>")
+assert modified.count("<script") == original.count("<script")
+assert modified.count("href=") == original.count("href=")
+
+for url in re.findall(r'href="([^"]+)"', original):
+    assert modified.count(url) == original.count(url), f"URL alterada: {url}"
+
+for modal_id in re.findall(r"id="(modal-[^"]+)"", original):
+    assert modified.count(f'id="{modal_id}"') == original.count(f'id="{modal_id}"')
+
+# Guardar como HTML listo para GitHub Pages.
+out.write_text(modified, encoding="utf-8")
+
+print(f"Archivo creado: {out}")
+print(f"Tamaño: {out.stat().st_size:,} bytes")
+print("Conservados: estructura general, enlaces href, IDs de modales, onclick y JavaScript.")
+print("Modificado únicamente: sección MATERIAS.")
