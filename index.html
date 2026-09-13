@@ -2,402 +2,219 @@ from pathlib import Path
 import re
 
 src = Path("/mnt/data/Pasted text.txt")
-original = src.read_text(encoding="utf-8")
+out = Path("/mnt/data/portafolio_programacion_corregido.html")
+html = src.read_text(encoding="utf-8")
 
-start_marker = """        <!-- =====================================================
-             MATERIAS
-        ====================================================== -->"""
-end_marker = """  </main>"""
+def extract_balanced(text, start, tag):
+    token_re = re.compile(rf"</?{tag}\b[^>]*>", re.I)
+    depth = 0
+    for m in token_re.finditer(text, start):
+        token = m.group(0)
+        if token.startswith("</"):
+            depth -= 1
+            if depth == 0:
+                return text[start:m.end()]
+        elif not token.rstrip().endswith("/>"):
+            depth += 1
+    raise ValueError(f"No se encontró cierre para {tag}")
 
-start = original.index(start_marker)
-end = original.index(end_marker, start)
+# Locate the original two sections.
+materias_start = html.index('        <article\n          id="materias"')
+materias_end = html.index('\n        </article>', materias_start) + len('\n        </article>')
+trabajos_start = html.index('    <section\n      id="trabajos"', materias_end)
+trabajos_end = html.index('\n    </section>', trabajos_start) + len('\n    </section>')
 
-# Reuse the existing activity cards verbatim so none of their modal references
-# or visible activity information is changed.
-def extract_between(text, a, b):
-    s = text.index(a)
-    e = text.index(b, s)
-    return text[s:e]
+materias = html[materias_start:materias_end]
+trabajos = html[trabajos_start:trabajos_end]
 
-poo1_activity_1 = extract_between(original, "              <!-- ENTREGA 1 -->", "              <!-- ENTREGA 2 -->")
-poo1_activity_2 = extract_between(original, "              <!-- ENTREGA 2 -->", "              <!-- ENTREGA 3 -->")
-poo1_activity_3 = extract_between(original, "              <!-- ENTREGA 3 -->", "            </div>\n\n          </div>\n\n          <!-- POO II -->")
+# Original theory blocks.
+s = materias.index('            <!-- POO I -->')
+p1b = extract_balanced(materias, materias.index('            <button', s), "button")
+p1d = extract_balanced(materias, materias.index('            <div\n              id="poo1"', s), "div")
 
-poo2_activity_1 = extract_between(original, "              <!-- ACTIVIDAD 1 -->", "              <!-- ACTIVIDAD 2 -->")
-poo2_activity_2 = extract_between(original, "              <!-- ACTIVIDAD 2 -->", "              <!-- ACTIVIDAD 3 -->")
-poo2_activity_3 = extract_between(original, "              <!-- ACTIVIDAD 3 -->", "            </div>\n\n          </div>\n\n        </div>\n\n        <!-- Estado de unidades -->")
+s = materias.index('            <!-- POO II -->')
+p2b = extract_balanced(materias, materias.index('            <button', s), "button")
+p2d = extract_balanced(materias, materias.index('            <div\n              id="poo2"', s), "div")
 
-new_section = f"""        <!-- =====================================================
-             CONTENIDO ACADÉMICO ORGANIZADO POR PROGRAMACIÓN 1 Y 2
-             Orden:
-             1. Programación 1 - Teoría / lo visto en clase
-             2. Programación 1 - Actividades académicas
-             3. Programación 2 - Teoría / lo visto en clase
-             4. Programación 2 - Actividades académicas
+# Original activity cards, including every onclick/modal/link inside them.
+s = trabajos.index('          <!-- POO I -->')
+p1card = extract_balanced(
+    trabajos,
+    trabajos.index('          <div class="rounded-2xl border border-cyan-400/35 bg-black/25 p-5">', s),
+    "div"
+)
 
-             IMPORTANTE:
-             Los modales y sus enlaces originales se conservan sin cambios.
-        ====================================================== -->
+s = trabajos.index('          <!-- POO II -->')
+p2card = extract_balanced(
+    trabajos,
+    trabajos.index('          <div class="rounded-2xl border border-cyan-400/35 bg-black/25 p-5">', s),
+    "div"
+)
 
-        <section
+# Only change labels; activity links/modal handlers are untouched.
+p1b = p1b.replace("Programación Orientada a Objetos I (Básica)", "Programación 1 — Orientada a Objetos Básica")
+p1b = p1b.replace("Semestre 2 • IU Digital de Antioquia", "Segundo semestre • IU Digital de Antioquia")
+
+p2b = p2b.replace("Programación Orientada a Objetos II (Avanzada)", "Programación 2 — Orientada a Objetos Avanzada")
+p2b = p2b.replace("Semestre 3 • Asignatura actual", "Tercer semestre • Asignatura actual")
+
+p1card = p1card.replace("Programación Orientada a Objetos I (Básica)", "Programación 1 — Orientada a Objetos Básica")
+p1card = p1card.replace(
+    "Trabajos e iteraciones prácticas desarrolladas de manera individual.",
+    "Actividades académicas y entregables del segundo semestre."
+)
+
+p2card = p2card.replace("Programación Orientada a Objetos II (Avanzada)", "Programación 2 — Orientada a Objetos Avanzada")
+p2card = p2card.replace(
+    "Proyectos, actividades y modelado avanzado de software.",
+    "Actividades académicas y entregables del tercer semestre."
+)
+
+# Keep the original theory content exactly, but place each activity group directly below its subject.
+combined = f'''        <article
           id="materias"
-          class="max-w-7xl mx-auto px-5 py-14"
+          class="glass corner rounded-2xl p-7"
         >
 
-          <div class="glass corner rounded-2xl p-7">
+          <div class="flex items-center gap-4 mb-6">
 
-            <div class="flex items-center gap-4 mb-7">
-              <div class="w-12 h-12 rounded-xl border border-cyan-400/50 flex items-center justify-center text-2xl text-cyan-300">
-                ◇
-              </div>
-
-              <div>
-                <p class="text-cyan-400 font-mono text-sm">
-                  02.
-                </p>
-
-                <h2 class="text-2xl sm:text-3xl font-black">
-                  Contenido Académico
-                </h2>
-
-                <p class="text-slate-400 mt-1">
-                  Teoría vista en clase y actividades académicas organizadas por asignatura.
-                </p>
-              </div>
+            <div class="w-12 h-12 rounded-xl border border-cyan-400/50 flex items-center justify-center text-2xl text-cyan-300">
+              ◇
             </div>
 
-            <!-- =====================================================
-                 PROGRAMACIÓN 1
-            ====================================================== -->
+            <div>
 
-            <div class="rounded-2xl border border-cyan-400/35 bg-black/20 p-6 mb-8">
+              <p class="text-cyan-400 font-mono text-sm">
+                02.
+              </p>
 
-              <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                <div>
-                  <p class="text-cyan-400 font-mono text-xs">
-                    SEMESTRE 2 • IU DIGITAL DE ANTIOQUIA
-                  </p>
+              <h2 class="text-2xl font-black">
+                Materias de Programación
+              </h2>
 
-                  <h3 class="text-2xl font-black mt-1">
-                    Programación 1
-                  </h3>
-
-                  <p class="text-slate-400 text-sm mt-2">
-                    Programación Orientada a Objetos I (Básica)
-                  </p>
-                </div>
-
-                <span class="tag">
-                  TEORÍA + ACTIVIDADES
-                </span>
-              </div>
-
-              <!-- PROGRAMACIÓN 1 - TEORÍA -->
-
-              <div class="rounded-xl border border-cyan-400/25 bg-black/20 p-5">
-                <div class="flex items-center gap-3 mb-5">
-                  <span class="text-cyan-300 text-xl">◈</span>
-                  <div>
-                    <p class="text-cyan-400 text-xs font-bold">
-                      PROGRAMACIÓN 1 • TEORÍA
-                    </p>
-                    <h4 class="text-xl font-bold mt-1">
-                      Lo visto en clases
-                    </h4>
-                  </div>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-3">
-
-                  <div class="rounded-xl border border-cyan-400/20 bg-black/20 p-4">
-                    <p class="text-cyan-400 text-xs font-bold">UNIDAD 1</p>
-                    <h4 class="font-bold mt-2">Fundamentos de POO</h4>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Conceptos iniciales, objetos, clases, atributos y métodos.
-                    </p>
-                  </div>
-
-                  <div class="rounded-xl border border-cyan-400/20 bg-black/20 p-4">
-                    <p class="text-cyan-400 text-xs font-bold">UNIDAD 2</p>
-                    <h4 class="font-bold mt-2">Encapsulamiento</h4>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Estructuración, modificadores de acceso y control de datos.
-                    </p>
-                  </div>
-
-                  <div class="rounded-xl border border-cyan-400/20 bg-black/20 p-4">
-                    <p class="text-cyan-400 text-xs font-bold">UNIDAD 3</p>
-                    <h4 class="font-bold mt-2">Herencia y Polimorfismo</h4>
-                    <p class="text-sm text-slate-400 mt-2">
-                      Relaciones entre clases, herencia y comportamiento polimórfico.
-                    </p>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- PROGRAMACIÓN 1 - ACTIVIDADES -->
-
-              <div id="trabajos" class="mt-6 rounded-xl border border-blue-400/25 bg-black/20 p-5">
-                <div class="flex items-center gap-3 mb-5">
-                  <span class="text-blue-300 text-xl">▣</span>
-                  <div>
-                    <p class="text-blue-300 text-xs font-bold">
-                      PROGRAMACIÓN 1 • ACTIVIDADES ACADÉMICAS
-                    </p>
-                    <h4 class="text-xl font-bold mt-1">
-                      Actividades y entregables
-                    </h4>
-                  </div>
-                </div>
-
-                <div class="space-y-4">
-
-{poo1_activity_1}
-{poo1_activity_2}
-{poo1_activity_3}
-
-                </div>
-              </div>
-
-            </div>
-
-            <!-- =====================================================
-                 PROGRAMACIÓN 2
-            ====================================================== -->
-
-            <div class="rounded-2xl border border-purple-400/35 bg-black/20 p-6">
-
-              <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                <div>
-                  <p class="text-purple-300 font-mono text-xs">
-                    SEMESTRE 3 • ASIGNATURA ACTUAL
-                  </p>
-
-                  <h3 class="text-2xl font-black mt-1">
-                    Programación 2
-                  </h3>
-
-                  <p class="text-slate-400 text-sm mt-2">
-                    Programación Orientada a Objetos II (Avanzada)
-                  </p>
-                </div>
-
-                <span class="tag">
-                  EN CURSO
-                </span>
-              </div>
-
-              <!-- PROGRAMACIÓN 2 - TEORÍA -->
-
-              <div class="rounded-xl border border-purple-400/25 bg-black/20 p-5">
-                <div class="flex items-center gap-3 mb-5">
-                  <span class="text-purple-300 text-xl">◈</span>
-                  <div>
-                    <p class="text-purple-300 text-xs font-bold">
-                      PROGRAMACIÓN 2 • TEORÍA
-                    </p>
-                    <h4 class="text-xl font-bold mt-1">
-                      Lo visto en clases
-                    </h4>
-                  </div>
-                </div>
-
-                <div class="space-y-4">
-
-                  <div class="rounded-xl border border-slate-600/50 bg-black/25 p-5">
-                    <div class="flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-600/40 text-slate-300">
-                          UNIDAD 1 • VISTA
-                        </span>
-                        <h4 class="text-lg font-bold mt-3">
-                          Diseño e Implementación Orientada a Objetos
-                        </h4>
-                      </div>
-                      <span class="text-slate-400 text-xs font-mono">
-                        ESTADO: VISTA
-                      </span>
-                    </div>
-
-                    <p class="text-slate-400 text-sm leading-relaxed mt-3">
-                      Herencia y jerarquías de clases, polimorfismo, sobrescritura,
-                      sobrecarga, clases abstractas, interfaces y relaciones entre objetos.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2 mt-4">
-                      <span class="tag">HERENCIA</span>
-                      <span class="tag">POLIMORFISMO</span>
-                      <span class="tag">INTERFACES</span>
-                      <span class="tag">CLASES ABSTRACTAS</span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-xl border border-emerald-400/50 bg-emerald-400/[.035] p-5">
-                    <div class="flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-400/15 text-emerald-300">
-                          UNIDAD 2 • EN CURSO
-                        </span>
-                        <h4 class="text-lg font-bold mt-3">
-                          Programación Avanzada y Programación Funcional
-                        </h4>
-                      </div>
-                      <span class="text-emerald-300 text-xs font-mono">
-                        ● EN CURSO
-                      </span>
-                    </div>
-
-                    <p class="text-slate-400 text-sm leading-relaxed mt-3">
-                      Implementación de modelos de clases en Java y acercamiento a la
-                      programación funcional mediante funciones, expresiones lambda,
-                      interfaces funcionales, colecciones, Streams, map, filter y reduce.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2 mt-4">
-                      <span class="tag">JAVA</span>
-                      <span class="tag">LAMBDA</span>
-                      <span class="tag">STREAMS</span>
-                      <span class="tag">COLECCIONES</span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-xl border border-blue-400/40 bg-blue-400/[.025] p-5">
-                    <div class="flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-blue-400/15 text-blue-300">
-                          UNIDAD 3 • PRÓXIMAMENTE
-                        </span>
-                        <h4 class="text-lg font-bold mt-3">
-                          Arquitectura, Patrones y Buenas Prácticas
-                        </h4>
-                      </div>
-                      <span class="text-blue-300 text-xs font-mono">
-                        PRÓXIMAMENTE
-                      </span>
-                    </div>
-
-                    <p class="text-slate-400 text-sm leading-relaxed mt-3">
-                      Espacio reservado para los contenidos que se desarrollarán
-                      posteriormente en el recorrido de Programación Orientada a Objetos II.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2 mt-4">
-                      <span class="tag">PATRONES</span>
-                      <span class="tag">ARQUITECTURA</span>
-                      <span class="tag">SOLID</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- PROGRAMACIÓN 2 - ACTIVIDADES -->
-
-              <div class="mt-6 rounded-xl border border-purple-400/25 bg-black/20 p-5">
-                <div class="flex items-center gap-3 mb-5">
-                  <span class="text-purple-300 text-xl">▣</span>
-                  <div>
-                    <p class="text-purple-300 text-xs font-bold">
-                      PROGRAMACIÓN 2 • ACTIVIDADES ACADÉMICAS
-                    </p>
-                    <h4 class="text-xl font-bold mt-1">
-                      Actividades y entregables
-                    </h4>
-                  </div>
-                </div>
-
-                <div class="space-y-4">
-
-{poo2_activity_1}
-{poo2_activity_2}
-{poo2_activity_3}
-
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Estado de unidades -->
-
-            <div class="mt-6 rounded-2xl border border-cyan-400/25 bg-black/25 p-5">
-
-              <div class="flex items-center gap-3 mb-4">
-                <span class="text-cyan-300 text-xl">◇</span>
-                <h3 class="font-bold text-cyan-300">
-                  Estado de unidades de Programación 2
-                </h3>
-              </div>
-
-              <div class="grid md:grid-cols-3 gap-3">
-
-                <div class="rounded-xl border border-slate-600/50 p-4">
-                  <div class="flex justify-between gap-3">
-                    <span class="text-sm">
-                      ● Unidad 1: Diseño e Implementación Orientada a Objetos
-                    </span>
-                    <span class="text-xs text-slate-400">
-                      VISTA
-                    </span>
-                  </div>
-                </div>
-
-                <div class="rounded-xl border border-emerald-400/35 bg-emerald-400/[.025] p-4">
-                  <div class="flex justify-between gap-3">
-                    <span class="text-sm text-emerald-100">
-                      ● Unidad 2: Programación Avanzada y Programación Funcional
-                    </span>
-                    <span class="text-xs text-emerald-300">
-                      EN CURSO
-                    </span>
-                  </div>
-                </div>
-
-                <div class="rounded-xl border border-blue-400/30 p-4">
-                  <div class="flex justify-between gap-3">
-                    <span class="text-sm text-blue-100">
-                      ● Unidad 3: Arquitectura, Patrones y Buenas Prácticas
-                    </span>
-                    <span class="text-xs text-blue-300">
-                      PRÓXIMAMENTE
-                    </span>
-                  </div>
-                </div>
-
-              </div>
             </div>
 
           </div>
 
-        </section>
+          <p class="text-slate-400 mb-7">
+            Información de las materias, contenidos vistos en clase,
+            temas en curso, contenidos próximos y actividades académicas.
+          </p>
 
-"""
+          <div class="space-y-8">
 
-modified = original[:start] + new_section + original[end:]
+            <!-- =====================================================
+                 PROGRAMACIÓN 1 — SEGUNDO SEMESTRE
+            ====================================================== -->
 
-# Safety checks: every original URL remains, every modal id remains,
-# and the rest of the document is preserved outside the replaced academic section.
-original_urls = re.findall(r'href="([^"]+)"', original)
-modified_urls = re.findall(r'href="([^"]+)"', modified)
-missing_urls = [u for u in original_urls if u not in modified_urls]
+            <div class="rounded-2xl border border-cyan-400/35 bg-black/20 p-5">
 
-modal_ids = re.findall(r'id="(modal-[^"]+)"', original)
-missing_modals = [m for m in modal_ids if m not in modified]
+{p1b}
 
-assert not missing_urls, f"Missing URLs: {missing_urls}"
-assert not missing_modals, f"Missing modal IDs: {missing_modals}"
-assert modified.count("<html") == 1 and modified.count("</html>") == 1
-assert modified.count("<script>") == original.count("<script>")
-assert modified.count("abrirModal(") == original.count("abrirModal(")
+              <div class="mt-5">
+                <p class="text-cyan-400 text-xs font-mono font-bold mb-3">
+                  INFORMACIÓN • LO VISTO EN CLASES
+                </p>
 
-out = Path("/mnt/data/portafolio_programacion_separado.html")
-out.write_text(modified, encoding="utf-8")
+{p1d}
+              </div>
 
-# Also provide a backup copy as plain text for easy comparison/editing.
-backup = Path("/mnt/data/portafolio_programacion_separado.txt")
-backup.write_text(modified, encoding="utf-8")
+              <div id="trabajos" class="mt-7 pt-6 border-t border-cyan-400/20">
 
-print("Archivo creado:", out)
-print("URLs originales:", len(original_urls), "| URLs conservadas:", len(modified_urls))
-print("Modales conservados:", len(modal_ids))
-print("Resultado: estructura académica reorganizada sin eliminar enlaces.")
+                <div class="flex items-center gap-3 mb-5">
+
+                  <div class="text-cyan-300 text-2xl">
+                    ◈
+                  </div>
+
+                  <div>
+
+                    <h3 class="font-bold text-lg text-cyan-300">
+                      Actividades académicas — Programación 1
+                    </h3>
+
+                    <p class="text-xs text-slate-400">
+                      Segundo semestre • Entregables y trabajos realizados.
+                    </p>
+
+                  </div>
+
+                </div>
+
+{p1card}
+
+              </div>
+
+            </div>
+
+            <!-- =====================================================
+                 PROGRAMACIÓN 2 — TERCER SEMESTRE
+            ====================================================== -->
+
+            <div class="rounded-2xl border border-cyan-400/35 bg-black/20 p-5">
+
+{p2b}
+
+              <div class="mt-5">
+                <p class="text-cyan-400 text-xs font-mono font-bold mb-3">
+                  INFORMACIÓN • LO VISTO / EN CURSO / PRÓXIMAMENTE
+                </p>
+
+{p2d}
+              </div>
+
+              <div class="mt-7 pt-6 border-t border-cyan-400/20">
+
+                <div class="flex items-center gap-3 mb-5">
+
+                  <div class="text-cyan-300 text-2xl">
+                    ◈
+                  </div>
+
+                  <div>
+
+                    <h3 class="font-bold text-lg text-cyan-300">
+                      Actividades académicas — Programación 2
+                    </h3>
+
+                    <p class="text-xs text-slate-400">
+                      Tercer semestre • Actividades y proyectos de la materia.
+                    </p>
+
+                  </div>
+
+                </div>
+
+{p2card}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>'''
+
+new_html = html[:materias_start] + combined + html[trabajos_end:]
+
+# Verify that nothing outside the academic sections was altered and all activity links remain.
+orig_hrefs = re.findall(r'\bhref="([^"]+)"', html)
+new_hrefs = re.findall(r'\bhref="([^"]+)"', new_html)
+orig_modals = sorted(re.findall(r'\bid="(modal-[^"]+)"', html))
+new_modals = sorted(re.findall(r'\bid="(modal-[^"]+)"', new_html))
+
+assert len(orig_hrefs) == len(new_hrefs)
+assert sorted(orig_hrefs) == sorted(new_hrefs)
+assert orig_modals == new_modals
+assert html.count("<script") == new_html.count("<script")
+assert new_html.count("<html") == 1 and new_html.count("</html>") == 1
+assert 'id="materias"' in new_html and 'id="trabajos"' in new_html
+
+out.write_text(new_html, encoding="utf-8")
+Path("/mnt/data/portafolio_programacion_corregido.txt").write_text(new_html, encoding="utf-8")
+
+print("LISTO")
+print("Enlaces conservados:", len(new_hrefs), "de", len(orig_hrefs))
+print("Modales conservados:", len(new_modals), "de", len(orig_modals))
+print("Scripts conservados:", new_html.count("<script"), "de", html.count("<script"))
+print("Archivo:", out)
