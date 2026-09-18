@@ -4209,7 +4209,16 @@
           String(now.getSeconds()).padStart(2,"0")
         ];
 
-        clock.textContent = parts.join(":");
+        clock.textContent = `${parts.join(":")} // ${getTimeGreeting()}`;
+      }
+
+      // Detecta automáticamente si es de día, tarde o noche según la hora local.
+      function getTimeGreeting(){
+        const hour = new Date().getHours();
+
+        if(hour >= 5 && hour < 12) return "BUENOS DÍAS";
+        if(hour >= 12 && hour < 19) return "BUENAS TARDES";
+        return "BUENAS NOCHES";
       }
 
       function enhanceHero(){
@@ -4405,9 +4414,11 @@
         const guestButton = overlay.querySelector('.jarvis-guest');
 
         function renderGreeting(owner){
+          const greeting = getTimeGreeting();
+
           if(owner){
             message.innerHTML = `
-              Buenas noches, <strong>Jerónimo Zapata Vargas</strong>.<br>
+              ${greeting}, <strong>Jerónimo Zapata Vargas</strong>.<br>
               Soy <strong>J.A.R.V.I.S.</strong>, la inteligencia artificial de tu portafolio.
               El sistema académico está iniciando y la interfaz Stark está lista para mostrar tus proyectos.
             `;
@@ -4417,7 +4428,7 @@
             consoleLine.innerHTML = '&gt; OWNER PROFILE // JERÓNIMO ZAPATA // ACCESS GRANTED';
           }else{
             message.innerHTML = `
-              Bienvenido al <strong>portafolio de Jerónimo Zapata</strong>.<br>
+              ${greeting}, bienvenido al <strong>portafolio de Jerónimo Zapata</strong>.<br>
               Soy <strong>J.A.R.V.I.S.</strong>, la inteligencia artificial del sistema.
               Aquí encontrarás el trabajo académico de un estudiante de Tecnología en Desarrollo de Software.
             `;
@@ -4468,9 +4479,15 @@
 
         window.speechSynthesis.cancel();
 
+        const greeting = getTimeGreeting()
+          .toLowerCase()
+          .replace("buenos días", "Buenos días")
+          .replace("buenas tardes", "Buenas tardes")
+          .replace("buenas noches", "Buenas noches");
+
         const text = isOwner
-          ? 'Buenas noches, Jerónimo Zapata Vargas. Soy Jarvis. Bienvenido de nuevo a tu portafolio. El sistema está en línea y la interfaz Stark está lista.'
-          : 'Bienvenido al portafolio de Jerónimo Zapata, estudiante de Tecnología en Desarrollo de Software. Soy Jarvis y te acompañaré por el sistema.';
+          ? `${greeting}, Jerónimo Zapata Vargas. Soy Jarvis. Bienvenido de nuevo a tu portafolio. El sistema está en línea y la interfaz Stark está lista.`
+          : `${greeting}, bienvenido al portafolio de Jerónimo Zapata, estudiante de Tecnología en Desarrollo de Software. Soy Jarvis y te acompañaré por el sistema.`;
 
         const message = new SpeechSynthesisUtterance(text);
         message.lang = 'es-ES';
