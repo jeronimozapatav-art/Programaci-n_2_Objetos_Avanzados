@@ -781,7 +781,1086 @@
         scroll-behavior:auto!important;
       }
     }
-  </style>
+
+    /* =========================================================
+       STARK / JARVIS UI ENHANCEMENT
+       Capa visual añadida sin eliminar la estructura original.
+       ========================================================= */
+
+    :root{
+      --stark-red:#ff3b30;
+      --stark-red-deep:#7a0f16;
+      --stark-gold:#ffc857;
+      --stark-white:#f4fbff;
+      --hud-blue:#39e7ff;
+      --hud-cyan:rgba(0,217,255,.18);
+      --hud-panel:rgba(1,10,22,.72);
+    }
+
+    html{
+      background:#01040a;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 80% 18%, rgba(0,132,255,.13), transparent 30%),
+        radial-gradient(circle at 15% 70%, rgba(255,59,48,.045), transparent 26%),
+        linear-gradient(135deg,#01040a 0%,#020711 48%,#01040a 100%);
+      letter-spacing:.01em;
+    }
+
+    body::before{
+      background:
+        radial-gradient(circle at 72% 32%, rgba(0,217,255,.08), transparent 22%),
+        radial-gradient(circle at 88% 78%, rgba(255,200,87,.035), transparent 24%),
+        linear-gradient(
+          90deg,
+          rgba(1,7,17,.98) 0%,
+          rgba(1,7,17,.88) 34%,
+          rgba(1,7,17,.5) 70%,
+          rgba(1,7,17,.78) 100%
+        );
+      animation:ambientDrift 14s ease-in-out infinite alternate;
+    }
+
+    body::after{
+      background:
+        linear-gradient(rgba(0,217,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,217,255,.028) 1px,transparent 1px);
+      background-size:42px 42px;
+    }
+
+    ::selection{
+      background:rgba(0,217,255,.22);
+      color:#fff;
+    }
+
+    ::-webkit-scrollbar{
+      width:9px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#01050b;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(var(--stark-red),var(--hud-blue));
+      border-radius:999px;
+      border:2px solid #01050b;
+    }
+
+    @keyframes ambientDrift{
+      from{transform:scale(1) translate3d(0,0,0)}
+      to{transform:scale(1.035) translate3d(-10px,6px,0)}
+    }
+
+    .scanlines{
+      opacity:.035;
+      mix-blend-mode:screen;
+    }
+
+    .nav{
+      background:
+        linear-gradient(180deg,rgba(2,10,20,.94),rgba(1,7,17,.72));
+      border-bottom:1px solid rgba(57,231,255,.28);
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.25),
+        0 0 28px rgba(0,217,255,.045);
+    }
+
+    .nav::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-1px;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,59,48,.85) 18%,
+        rgba(255,200,87,.75) 50%,
+        rgba(57,231,255,.85) 82%,
+        transparent 100%
+      );
+      opacity:.6;
+    }
+
+    .nav-link{
+      font-family:"Courier New",monospace;
+      font-size:.78rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .nav-link::before{
+      content:"";
+      position:absolute;
+      left:-12px;
+      top:50%;
+      width:4px;
+      height:4px;
+      border-radius:50%;
+      background:var(--stark-red);
+      box-shadow:0 0 8px rgba(255,59,48,.75);
+      transform:translateY(-50%) scale(.5);
+      opacity:.5;
+      transition:.25s ease;
+    }
+
+    .nav-link:hover::before{
+      transform:translateY(-50%) scale(1);
+      opacity:1;
+    }
+
+    .hero{
+      min-height:520px;
+      isolation:isolate;
+      border-bottom:1px solid rgba(57,231,255,.24);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:14px 14px 14px auto;
+      width:min(43%,640px);
+      border:1px solid rgba(57,231,255,.13);
+      border-left-color:transparent;
+      clip-path:polygon(
+        12% 0,
+        100% 0,
+        100% 88%,
+        90% 100%,
+        0 100%,
+        0 12%
+      );
+      z-index:1;
+      pointer-events:none;
+      box-shadow:inset 0 0 30px rgba(0,217,255,.025);
+    }
+
+    .hero-grid{
+      opacity:.7;
+      background-size:38px 38px;
+      mask-image:linear-gradient(90deg,black 0%,black 46%,transparent 88%);
+    }
+
+    .hero-robot-layer{
+      width:min(70%,980px);
+      filter:drop-shadow(0 0 18px rgba(0,217,255,.08));
+      transition:transform .18s ease-out;
+      will-change:transform;
+    }
+
+    .hero-robot-layer::before{
+      background:
+        linear-gradient(
+          90deg,
+          #020711 0%,
+          rgba(2,7,17,.76) 18%,
+          rgba(2,7,17,.16) 55%,
+          rgba(2,7,17,.08) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0,217,255,.06),
+          transparent 24%,
+          transparent 78%,
+          rgba(255,59,48,.04)
+        );
+    }
+
+    .hero-robot-layer::after{
+      background:
+        radial-gradient(circle at 70% 48%,rgba(57,231,255,.18),transparent 40%),
+        radial-gradient(circle at 92% 72%,rgba(255,200,87,.06),transparent 22%);
+    }
+
+    .robot-image{
+      filter:
+        drop-shadow(0 0 12px rgba(0,217,255,.18))
+        drop-shadow(10px 0 28px rgba(0,110,255,.13));
+    }
+
+    .ai-label{
+      border-color:rgba(255,200,87,.46);
+      color:#ffe5a3;
+      background:rgba(15,8,2,.62);
+      box-shadow:
+        0 0 18px rgba(255,200,87,.08),
+        inset 0 0 18px rgba(255,200,87,.035);
+    }
+
+    .code-float{
+      border-color:rgba(57,231,255,.22);
+      background:rgba(1,8,19,.48);
+      box-shadow:
+        0 0 18px rgba(0,150,255,.08),
+        inset 0 0 16px rgba(0,217,255,.02);
+      backdrop-filter:blur(8px);
+    }
+
+    .tag{
+      position:relative;
+      overflow:hidden;
+      box-shadow:inset 0 0 12px rgba(0,217,255,.025);
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
+    }
+
+    .tag::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        105deg,
+        transparent 35%,
+        rgba(255,255,255,.13) 48%,
+        transparent 61%
+      );
+      transform:translateX(-120%);
+      transition:transform .55s ease;
+    }
+
+    .tag:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,200,87,.65);
+      box-shadow:
+        0 0 14px rgba(255,200,87,.07),
+        inset 0 0 12px rgba(0,217,255,.03);
+    }
+
+    .tag:hover::after{
+      transform:translateX(120%);
+    }
+
+    .btn{
+      min-height:44px;
+      border-color:rgba(57,231,255,.6);
+      position:relative;
+      box-shadow:
+        0 0 0 1px rgba(0,217,255,.025),
+        inset 0 0 16px rgba(0,217,255,.03);
+    }
+
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:3px;
+      border:1px solid rgba(255,255,255,.035);
+      border-radius:inherit;
+      pointer-events:none;
+    }
+
+    .btn:hover{
+      border-color:rgba(255,200,87,.82);
+      box-shadow:
+        0 0 22px rgba(0,217,255,.16),
+        0 0 14px rgba(255,200,87,.06),
+        inset 0 0 18px rgba(0,217,255,.05);
+    }
+
+    .glass{
+      position:relative;
+      overflow:hidden;
+      border-color:rgba(57,231,255,.34);
+      background:
+        linear-gradient(145deg,rgba(4,20,39,.9),rgba(1,7,17,.82));
+      box-shadow:
+        0 0 35px rgba(0,140,255,.08),
+        inset 0 0 28px rgba(0,217,255,.025);
+    }
+
+    .glass::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:10%;
+      right:10%;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,200,87,.68),
+        rgba(57,231,255,.75),
+        transparent
+      );
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .corner::before,
+    .corner::after{
+      width:30px;
+      height:30px;
+    }
+
+    .corner::before{
+      border-left:2px solid var(--hud-blue);
+      border-top:2px solid var(--hud-blue);
+      box-shadow:-2px -2px 10px rgba(57,231,255,.15);
+    }
+
+    .corner::after{
+      border-right:2px solid var(--stark-gold);
+      border-bottom:2px solid var(--stark-gold);
+      box-shadow:2px 2px 10px rgba(255,200,87,.08);
+    }
+
+    .dashboard{
+      gap:1.25rem;
+    }
+
+    .progress-track{
+      height:9px;
+      background:rgba(255,255,255,.045);
+      box-shadow:inset 0 0 12px rgba(0,0,0,.25);
+    }
+
+    .progress-fill{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(
+          90deg,
+          #006eff,
+          var(--hud-blue),
+          #e8fbff
+        );
+    }
+
+    .progress-fill::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+      );
+      transform:translateX(-100%);
+      animation:progressShine 2.7s linear infinite;
+    }
+
+    @keyframes progressShine{
+      to{transform:translateX(100%)}
+    }
+
+    .status-chip{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(0,217,255,.05),rgba(0,0,0,.18));
+      box-shadow:inset 0 0 18px rgba(0,217,255,.018);
+    }
+
+    .status-chip::after{
+      content:"";
+      position:absolute;
+      left:-10%;
+      right:-10%;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,200,87,.45),
+        transparent
+      );
+      opacity:.6;
+    }
+
+    .activity{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .activity::before{
+      content:"";
+      position:absolute;
+      top:-100%;
+      left:-20%;
+      width:35%;
+      height:300%;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+      );
+      transform:rotate(18deg);
+      transition:left .7s ease;
+    }
+
+    .activity:hover::before{
+      left:120%;
+    }
+
+    .modal-bg{
+      background:
+        radial-gradient(circle at center,rgba(0,145,255,.09),transparent 42%),
+        rgba(0,0,0,.84);
+      backdrop-filter:blur(12px) saturate(1.15);
+    }
+
+    .modal-box{
+      position:relative;
+      overflow:hidden;
+      border-color:rgba(57,231,255,.62);
+      background:
+        linear-gradient(145deg,rgba(5,23,44,.96),rgba(1,7,17,.96));
+      box-shadow:
+        0 0 70px rgba(0,170,255,.16),
+        0 0 18px rgba(255,59,48,.055),
+        inset 0 0 40px rgba(0,217,255,.03);
+      animation:modalBoot .28s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    .modal-box::before{
+      content:"J.A.R.V.I.S. // SECURE CHANNEL";
+      position:absolute;
+      top:10px;
+      right:18px;
+      font:700 9px "Courier New",monospace;
+      letter-spacing:.16em;
+      color:rgba(57,231,255,.45);
+      pointer-events:none;
+    }
+
+    .modal-box::after{
+      content:"";
+      position:absolute;
+      inset:9px;
+      border:1px solid rgba(255,255,255,.025);
+      border-radius:inherit;
+      pointer-events:none;
+    }
+
+    @keyframes modalBoot{
+      from{
+        opacity:0;
+        transform:translateY(10px) scale(.985);
+        filter:blur(4px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
+      }
+    }
+
+    .code-box{
+      box-shadow:inset 0 0 20px rgba(0,217,255,.025);
+    }
+
+    footer{
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 -14px 40px rgba(0,0,0,.18);
+    }
+
+    footer::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:15%;
+      right:15%;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,59,48,.75),
+        rgba(255,200,87,.65),
+        rgba(57,231,255,.8),
+        transparent
+      );
+    }
+
+    /* Painel HUD añadido dinámicamente */
+    .stark-interface{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:70;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 11px;
+      border:1px solid rgba(57,231,255,.22);
+      background:rgba(1,8,17,.62);
+      backdrop-filter:blur(9px);
+      box-shadow:
+        0 0 24px rgba(0,217,255,.06),
+        inset 0 0 18px rgba(0,217,255,.025);
+      color:#8edfff;
+      font:700 9px/1.2 "Courier New",monospace;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      pointer-events:none;
+    }
+
+    .stark-interface .hud-core{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--stark-red);
+      box-shadow:
+        0 0 6px rgba(255,59,48,.9),
+        0 0 14px rgba(255,59,48,.35);
+      animation:hudCorePulse 1.8s ease-in-out infinite;
+    }
+
+    .stark-interface .hud-time{
+      color:#e6fbff;
+      min-width:70px;
+    }
+
+    @keyframes hudCorePulse{
+      0%,100%{opacity:.65;transform:scale(.86)}
+      50%{opacity:1;transform:scale(1.15)}
+    }
+
+    .stark-reactor{
+      position:absolute;
+      right:25%;
+      top:50%;
+      width:180px;
+      aspect-ratio:1;
+      transform:translate(50%,-50%);
+      z-index:1;
+      pointer-events:none;
+      opacity:.55;
+      mix-blend-mode:screen;
+    }
+
+    .stark-reactor::before,
+    .stark-reactor::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:1px solid rgba(57,231,255,.28);
+    }
+
+    .stark-reactor::before{
+      box-shadow:
+        0 0 18px rgba(57,231,255,.1),
+        inset 0 0 20px rgba(57,231,255,.05);
+      animation:reactorSpin 12s linear infinite;
+    }
+
+    .stark-reactor::after{
+      inset:19%;
+      border-color:rgba(255,200,87,.24);
+      border-style:dashed;
+      animation:reactorSpinReverse 8s linear infinite;
+    }
+
+    .stark-reactor-center{
+      position:absolute;
+      inset:34%;
+      border-radius:50%;
+      background:
+        radial-gradient(circle,#f4feff 0%,#7deaff 24%,#17bfff 44%,rgba(0,92,255,.08) 73%,transparent 74%);
+      box-shadow:
+        0 0 16px rgba(57,231,255,.75),
+        0 0 42px rgba(0,128,255,.22);
+      animation:reactorPulse 2.7s ease-in-out infinite;
+    }
+
+    @keyframes reactorSpin{
+      to{transform:rotate(360deg)}
+    }
+
+    @keyframes reactorSpinReverse{
+      to{transform:rotate(-360deg)}
+    }
+
+    @keyframes reactorPulse{
+      0%,100%{transform:scale(.88);opacity:.62}
+      50%{transform:scale(1.08);opacity:1}
+    }
+
+    .hud-reveal{
+      opacity:0;
+      transform:translateY(12px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+
+    .hud-reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .stark-status-line{
+      position:absolute;
+      top:28px;
+      right:28px;
+      z-index:5;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:5px 9px;
+      border:1px solid rgba(57,231,255,.18);
+      background:rgba(0,6,15,.4);
+      color:rgba(185,241,255,.72);
+      font:600 9px "Courier New",monospace;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      pointer-events:none;
+    }
+
+    .stark-status-line::before{
+      content:"";
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:var(--stark-gold);
+      box-shadow:0 0 8px rgba(255,200,87,.8);
+    }
+
+    .stark-circuit-line{
+      position:absolute;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--hud-blue),transparent);
+      box-shadow:0 0 8px rgba(57,231,255,.45);
+      opacity:.42;
+      pointer-events:none;
+    }
+
+    .stark-circuit-line.line-a{
+      width:170px;
+      top:26%;
+      right:5%;
+      transform:rotate(-12deg);
+    }
+
+    .stark-circuit-line.line-b{
+      width:120px;
+      bottom:21%;
+      right:12%;
+      transform:rotate(16deg);
+    }
+
+    @media(max-width:900px){
+      .hero{
+        min-height:640px;
+      }
+
+      .hero::after{
+        inset:auto 12px 14px 12px;
+        width:auto;
+        height:48%;
+        border-left-color:rgba(57,231,255,.13);
+      }
+
+      .hero-robot-layer{
+        width:100%;
+      }
+
+      .stark-reactor{
+        right:50%;
+        top:66%;
+        width:150px;
+        opacity:.33;
+      }
+
+      .stark-status-line{
+        top:16px;
+        right:16px;
+        font-size:8px;
+      }
+    }
+
+    @media(max-width:520px){
+      .stark-interface{
+        right:10px;
+        bottom:10px;
+        padding:7px 8px;
+        font-size:8px;
+      }
+
+      .stark-interface .hud-label{
+        display:none;
+      }
+
+      .stark-reactor{
+        width:125px;
+        top:73%;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      body::before,
+      .stark-interface .hud-core,
+      .progress-fill::after,
+      .stark-reactor::before,
+      .stark-reactor::after,
+      .stark-reactor-center{
+        animation:none!important;
+      }
+
+      .hud-reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+    }
+
+  
+
+    /* =========================================================
+       J.A.R.V.I.S. WELCOME + STARK ARMOR DISPLAY
+       Añadido sobre el diseño existente sin eliminar contenido.
+       ========================================================== */
+
+    .jarvis-welcome{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(0,217,255,.10), transparent 28%),
+        linear-gradient(180deg,rgba(0,4,10,.97),rgba(1,8,18,.985));
+      backdrop-filter:blur(16px);
+      opacity:1;
+      visibility:visible;
+      transition:opacity .7s ease, visibility .7s ease;
+    }
+
+    .jarvis-welcome.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .jarvis-welcome-panel{
+      position:relative;
+      width:min(720px,100%);
+      padding:34px 30px 28px;
+      border:1px solid rgba(57,231,255,.5);
+      background:
+        linear-gradient(145deg,rgba(3,20,38,.92),rgba(1,7,17,.9));
+      box-shadow:
+        0 0 80px rgba(0,145,255,.13),
+        inset 0 0 45px rgba(0,217,255,.035);
+      clip-path:polygon(
+        14px 0, calc(100% - 14px) 0, 100% 14px,
+        100% calc(100% - 14px), calc(100% - 14px) 100%,
+        14px 100%, 0 calc(100% - 14px), 0 14px
+      );
+      overflow:hidden;
+      transform:translateY(0) scale(1);
+      animation:jarvisPanelIn .8s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .jarvis-welcome-panel::before,
+    .jarvis-welcome-panel::after{
+      content:"";
+      position:absolute;
+      pointer-events:none;
+    }
+
+    .jarvis-welcome-panel::before{
+      top:0;
+      left:18%;
+      right:18%;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--hud-blue),transparent);
+      box-shadow:0 0 18px var(--hud-blue);
+    }
+
+    .jarvis-welcome-panel::after{
+      inset:10px;
+      border:1px solid rgba(0,217,255,.08);
+      clip-path:inherit;
+    }
+
+    .jarvis-mark{
+      position:relative;
+      z-index:2;
+      width:88px;
+      height:88px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      border:1px solid rgba(57,231,255,.45);
+      display:grid;
+      place-items:center;
+      background:radial-gradient(circle,rgba(119,245,255,.20) 0 8%,rgba(0,130,255,.11) 9% 35%,transparent 36%);
+      box-shadow:0 0 28px rgba(0,217,255,.22), inset 0 0 24px rgba(0,217,255,.08);
+      animation:jarvisCorePulse 2.4s ease-in-out infinite;
+    }
+
+    .jarvis-mark::before,
+    .jarvis-mark::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(57,231,255,.22);
+    }
+
+    .jarvis-mark::before{ inset:10px; }
+    .jarvis-mark::after{ inset:22px; border-color:rgba(255,200,87,.55); }
+
+    .jarvis-mark-core{
+      width:13px;
+      height:13px;
+      border-radius:50%;
+      background:#eaffff;
+      box-shadow:0 0 8px #fff,0 0 20px var(--hud-blue),0 0 34px var(--hud-blue);
+    }
+
+    .jarvis-kicker{
+      position:relative;
+      z-index:2;
+      text-align:center;
+      color:#6fe7ff;
+      font:700 11px/1.4 "Courier New",monospace;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+    }
+
+    .jarvis-title{
+      position:relative;
+      z-index:2;
+      margin:.5rem 0 0;
+      text-align:center;
+      font-size:clamp(2rem,5vw,3.8rem);
+      line-height:1;
+      font-weight:900;
+      letter-spacing:.08em;
+      color:#ecfbff;
+      text-shadow:0 0 12px rgba(57,231,255,.75),0 0 38px rgba(0,145,255,.28);
+    }
+
+    .jarvis-message{
+      position:relative;
+      z-index:2;
+      max-width:580px;
+      margin:18px auto 0;
+      text-align:center;
+      color:#c7dbe7;
+      line-height:1.7;
+      font-size:.98rem;
+    }
+
+    .jarvis-message strong{ color:#ffe5a3; }
+
+    .jarvis-system-bar{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin:24px 0;
+    }
+
+    .jarvis-system-chip{
+      padding:10px 8px;
+      border:1px solid rgba(57,231,255,.18);
+      background:rgba(0,217,255,.035);
+      text-align:center;
+      font:700 10px/1.3 "Courier New",monospace;
+      color:#86ddeb;
+      letter-spacing:.08em;
+    }
+
+    .jarvis-actions{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .jarvis-enter,
+    .jarvis-voice{
+      min-width:170px;
+      border:1px solid rgba(57,231,255,.55);
+      background:rgba(0,217,255,.06);
+      color:#d8fbff;
+      padding:12px 18px;
+      border-radius:10px;
+      font:800 12px "Courier New",monospace;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .jarvis-enter{
+      border-color:rgba(255,59,48,.65);
+      background:linear-gradient(90deg,rgba(255,59,48,.12),rgba(255,200,87,.08));
+    }
+
+    .jarvis-enter:hover,
+    .jarvis-voice:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 24px rgba(57,231,255,.16);
+      color:white;
+    }
+
+    .jarvis-console{
+      position:relative;
+      z-index:2;
+      margin-top:19px;
+      padding-top:13px;
+      border-top:1px solid rgba(57,231,255,.12);
+      text-align:center;
+      color:#668a99;
+      font:10px/1.5 "Courier New",monospace;
+      letter-spacing:.06em;
+    }
+
+    @keyframes jarvisPanelIn{
+      from{opacity:0;transform:translateY(20px) scale(.96)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+
+    @keyframes jarvisCorePulse{
+      0%,100%{transform:scale(1);box-shadow:0 0 28px rgba(0,217,255,.22),inset 0 0 24px rgba(0,217,255,.08)}
+      50%{transform:scale(1.05);box-shadow:0 0 44px rgba(0,217,255,.34),inset 0 0 28px rgba(0,217,255,.13)}
+    }
+
+    .stark-name-armor{
+      position:relative;
+      margin:20px 0 2px;
+      width:min(390px,100%);
+      height:178px;
+      border:1px solid rgba(57,231,255,.18);
+      background:linear-gradient(145deg,rgba(8,20,34,.7),rgba(1,7,17,.18));
+      clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px);
+      box-shadow:inset 0 0 28px rgba(0,217,255,.025),0 0 30px rgba(0,120,255,.05);
+      overflow:hidden;
+    }
+
+    .stark-name-armor::before{
+      content:"STARK INDUSTRIES // ARMOR INTERFACE";
+      position:absolute;
+      top:10px;
+      left:12px;
+      color:#6fe7ff;
+      font:700 9px "Courier New",monospace;
+      letter-spacing:.13em;
+    }
+
+    .armor-helmet{
+      position:absolute;
+      left:22px;
+      top:30px;
+      width:84px;
+      height:114px;
+      background:linear-gradient(155deg,#7b151c 0%,#d03a2d 35%,#7e1117 66%,#351016 100%);
+      clip-path:polygon(30% 0,70% 0,90% 18%,86% 81%,65% 100%,35% 100%,14% 81%,10% 18%);
+      border:1px solid rgba(255,200,87,.8);
+      box-shadow:0 0 25px rgba(255,59,48,.13),inset -10px -12px 25px rgba(0,0,0,.3);
+    }
+
+    .armor-helmet::before{
+      content:"";
+      position:absolute;
+      left:14px;
+      right:14px;
+      top:34px;
+      height:18px;
+      border:1px solid rgba(255,200,87,.75);
+      background:linear-gradient(90deg,rgba(255,200,87,.12),rgba(255,238,172,.6),rgba(255,200,87,.12));
+      box-shadow:0 0 10px rgba(255,200,87,.22);
+      transform:skewY(-4deg);
+    }
+
+    .armor-helmet::after{
+      content:"";
+      position:absolute;
+      left:33px;
+      top:63px;
+      width:18px;
+      height:10px;
+      border-left:1px solid rgba(255,200,87,.65);
+      border-right:1px solid rgba(255,200,87,.65);
+      background:rgba(0,0,0,.24);
+    }
+
+    .armor-torso{
+      position:absolute;
+      left:135px;
+      top:42px;
+      width:205px;
+      height:105px;
+      background:linear-gradient(145deg,#451218 0%,#9d2021 24%,#d63b2d 48%,#6a1016 76%,#2a0e12 100%);
+      clip-path:polygon(14% 0,86% 0,100% 18%,93% 100%,7% 100%,0 18%);
+      border:1px solid rgba(255,200,87,.55);
+      box-shadow:0 0 26px rgba(255,59,48,.11),inset 0 0 30px rgba(0,0,0,.23);
+    }
+
+    .armor-torso::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:31%;
+      width:38px;
+      height:38px;
+      transform:translate(-50%,-50%);
+      clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+      background:#e8ffff;
+      box-shadow:0 0 12px #fff,0 0 30px #37e8ff,0 0 45px rgba(57,231,255,.55);
+    }
+
+    .armor-torso::after{
+      content:"";
+      position:absolute;
+      left:15%;
+      right:15%;
+      top:11px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,200,87,.9),transparent);
+      box-shadow:0 37px 0 rgba(255,200,87,.28),0 74px 0 rgba(255,200,87,.12);
+    }
+
+    .armor-label{
+      position:absolute;
+      right:12px;
+      bottom:10px;
+      color:#ffe5a3;
+      font:700 9px "Courier New",monospace;
+      letter-spacing:.1em;
+    }
+
+    .armor-hud{
+      position:absolute;
+      right:10px;
+      top:31px;
+      width:120px;
+      color:#7fefff;
+      font:9px/1.55 "Courier New",monospace;
+      letter-spacing:.06em;
+      opacity:.85;
+    }
+
+    .armor-hud span{ display:block; }
+    .armor-hud i{ color:#ffcf67; font-style:normal; }
+
+    @media(max-width:700px){
+      .jarvis-welcome-panel{padding:28px 18px 22px}
+      .jarvis-system-bar{grid-template-columns:1fr}
+      .stark-name-armor{height:150px}
+      .armor-helmet{transform:scale(.85);transform-origin:left top}
+      .armor-torso{transform:scale(.83);transform-origin:left top;left:112px}
+      .armor-hud{right:7px;width:105px;font-size:8px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .jarvis-welcome-panel,.jarvis-mark{animation:none!important}
+      .jarvis-welcome{transition:none!important}
+    }
+</style>
 </head>
 
 <body>
@@ -3013,6 +4092,304 @@
       drawParticles();
 
     }
+
+
+    /* =========================================================
+       STARK / JARVIS INTERACTION LAYER
+       No modifica las funciones originales; agrega UI y microinteracciones.
+       ========================================================== */
+
+    (function(){
+      "use strict";
+
+      const prefersReducedMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function createStarkInterface(){
+        if(document.querySelector(".stark-interface")) return;
+
+        const hud = document.createElement("div");
+        hud.className = "stark-interface";
+        hud.setAttribute("aria-hidden","true");
+        hud.innerHTML = `
+          <span class="hud-core"></span>
+          <span class="hud-label">J.A.R.V.I.S. // DEV CORE</span>
+          <span class="hud-time" id="stark-clock">00:00:00</span>
+        `;
+
+        document.body.appendChild(hud);
+      }
+
+      function updateClock(){
+        const clock = document.getElementById("stark-clock");
+        if(!clock) return;
+
+        const now = new Date();
+        const parts = [
+          String(now.getHours()).padStart(2,"0"),
+          String(now.getMinutes()).padStart(2,"0"),
+          String(now.getSeconds()).padStart(2,"0")
+        ];
+
+        clock.textContent = parts.join(":");
+      }
+
+      function enhanceHero(){
+        const hero = document.querySelector(".hero");
+        if(!hero) return;
+
+        if(!hero.querySelector(".stark-reactor")){
+          const reactor = document.createElement("div");
+          reactor.className = "stark-reactor";
+          reactor.setAttribute("aria-hidden","true");
+
+          const core = document.createElement("div");
+          core.className = "stark-reactor-center";
+
+          reactor.appendChild(core);
+          hero.appendChild(reactor);
+        }
+
+        if(!hero.querySelector(".stark-status-line")){
+          const status = document.createElement("div");
+          status.className = "stark-status-line";
+          status.textContent = "J.A.R.V.I.S. // CORE STABLE";
+          hero.appendChild(status);
+        }
+
+        if(!hero.querySelector(".stark-circuit-line.line-a")){
+          ["line-a","line-b"].forEach(className => {
+            const line = document.createElement("div");
+            line.className = `stark-circuit-line ${className}`;
+            line.setAttribute("aria-hidden","true");
+            hero.appendChild(line);
+          });
+        }
+      }
+
+      function enableParallax(){
+        if(prefersReducedMotion) return;
+
+        const hero = document.querySelector(".hero");
+        const layer = document.querySelector(".hero-robot-layer");
+        if(!hero || !layer) return;
+
+        let raf = 0;
+
+        const move = (event) => {
+          if(raf) cancelAnimationFrame(raf);
+
+          raf = requestAnimationFrame(() => {
+            const rect = hero.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width - .5) * 2;
+            const y = ((event.clientY - rect.top) / rect.height - .5) * 2;
+
+            const px = Math.max(-12, Math.min(12, x * 7));
+            const py = Math.max(-8, Math.min(8, y * 4));
+
+            layer.style.setProperty("--mx", `${px}px`);
+            layer.style.setProperty("--my", `${py}px`);
+            layer.style.transform = `translate3d(var(--mx),var(--my),0)`;
+          });
+        };
+
+        const leave = () => {
+          layer.style.transform = "translate3d(0,0,0)";
+        };
+
+        hero.addEventListener("pointermove", move, {passive:true});
+        hero.addEventListener("pointerleave", leave, {passive:true});
+      }
+
+      function enableReveal(){
+        const candidates = [
+          ...document.querySelectorAll(
+            "#sobre-mi, #materias, #trabajos, .dashboard, footer"
+          )
+        ];
+
+        candidates.forEach((element,index) => {
+          if(element.classList.contains("hud-reveal")) return;
+
+          element.classList.add("hud-reveal");
+          element.style.transitionDelay = `${Math.min(index * 70, 350)}ms`;
+        });
+
+        if(prefersReducedMotion || !("IntersectionObserver" in window)){
+          candidates.forEach(element => {
+            element.classList.add("is-visible");
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        },{
+          threshold:.12,
+          rootMargin:"0px 0px -40px 0px"
+        });
+
+        candidates.forEach(element => observer.observe(element));
+      }
+
+      function improveModalFocus(){
+        document.addEventListener("click", (event) => {
+          const openButton = event.target.closest(
+            'button[onclick^="abrirModal"]'
+          );
+
+          if(!openButton) return;
+
+          const match = openButton.getAttribute("onclick")?.match(
+            /abrirModal\(['"]([^'"]+)['"]\)/
+          );
+
+          if(!match) return;
+
+          const modal = document.getElementById(match[1]);
+          if(!modal) return;
+
+          requestAnimationFrame(() => {
+            const closeButton = modal.querySelector("button");
+            if(closeButton){
+              closeButton.focus({preventScroll:true});
+            }
+          });
+        });
+      }
+
+
+
+      /* =========================================================
+         J.A.R.V.I.S. WELCOME + ARMOR DISPLAY
+         ========================================================== */
+
+      function createJarvisWelcome(){
+        if(document.querySelector('.jarvis-welcome')) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'jarvis-welcome';
+        overlay.innerHTML = `
+          <section class="jarvis-welcome-panel" role="dialog" aria-modal="true" aria-labelledby="jarvis-title">
+            <div class="jarvis-mark" aria-hidden="true">
+              <span class="jarvis-mark-core"></span>
+            </div>
+            <div class="jarvis-kicker">STARK SYSTEMS // ARTIFICIAL INTELLIGENCE</div>
+            <h2 id="jarvis-title" class="jarvis-title">J.A.R.V.I.S.</h2>
+            <p class="jarvis-message">
+              Buenas noches, <strong>Jerónimo Zapata Vargas</strong>.<br>
+              Soy <strong>J.A.R.V.I.S.</strong>, la inteligencia artificial de tu portafolio.
+              El sistema académico está iniciando y la interfaz Stark está lista para mostrar tus proyectos.
+            </p>
+            <div class="jarvis-system-bar">
+              <div class="jarvis-system-chip">CORE<br>ONLINE</div>
+              <div class="jarvis-system-chip">ARMOR<br>READY</div>
+              <div class="jarvis-system-chip">JAVA // POO<br>ACTIVE</div>
+            </div>
+            <div class="jarvis-actions">
+              <button class="jarvis-enter" type="button">ENTRAR AL SISTEMA</button>
+              <button class="jarvis-voice" type="button">ACTIVAR VOZ JARVIS</button>
+            </div>
+            <div class="jarvis-console">&gt; JARVIS BOOT SEQUENCE // SECURE CHANNEL // SYSTEM STABLE</div>
+          </section>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        const close = () => {
+          overlay.classList.add('hide');
+          document.body.style.overflow = '';
+          window.setTimeout(() => overlay.remove(), 750);
+        };
+
+        overlay.querySelector('.jarvis-enter').addEventListener('click', close);
+
+        overlay.querySelector('.jarvis-voice').addEventListener('click', () => {
+          speakJarvis();
+        });
+
+        setTimeout(() => {
+          if(!overlay.classList.contains('hide')) close();
+        }, 7000);
+
+        // Intentar la bienvenida por voz; algunos navegadores exigen interacción.
+        setTimeout(speakJarvis, 500);
+      }
+
+      function speakJarvis(){
+        if(!('speechSynthesis' in window)) return;
+
+        window.speechSynthesis.cancel();
+        const message = new SpeechSynthesisUtterance(
+          'Buenas noches, Jerónimo Zapata Vargas. Soy Jarvis. Bienvenido a tu portafolio. El sistema está en línea y la interfaz Stark está lista.'
+        );
+        message.lang = 'es-ES';
+        message.rate = 0.92;
+        message.pitch = 0.82;
+        message.volume = 0.95;
+
+        const voices = window.speechSynthesis.getVoices();
+        const spanishVoice = voices.find(v => /^es(-|_)/i.test(v.lang));
+        if(spanishVoice) message.voice = spanishVoice;
+
+        window.speechSynthesis.speak(message);
+      }
+
+      function addArmorToName(){
+        const heroName = document.querySelector('.hero h1');
+        if(!heroName || document.querySelector('.stark-name-armor')) return;
+
+        const armor = document.createElement('div');
+        armor.className = 'stark-name-armor';
+        armor.setAttribute('aria-label','Interfaz de armadura Stark');
+        armor.innerHTML = `
+          <div class="armor-helmet" aria-hidden="true"></div>
+          <div class="armor-torso" aria-hidden="true"></div>
+          <div class="armor-hud">
+            <span>MODEL: <i>MARK-DEV</i></span>
+            <span>CORE: <i>ONLINE</i></span>
+            <span>ENERGY: <i>98%</i></span>
+            <span>JARVIS: <i>READY</i></span>
+          </div>
+          <div class="armor-label">STARK ARMOR // DEVELOPER MODE</div>
+        `;
+
+        heroName.insertAdjacentElement('afterend', armor);
+      }
+
+      function preloadVoices(){
+        if(!('speechSynthesis' in window)) return;
+        window.speechSynthesis.getVoices();
+      }
+
+      function init(){
+        createStarkInterface();
+        enhanceHero();
+        addArmorToName();
+        preloadVoices();
+        createJarvisWelcome();
+        updateClock();
+        setInterval(updateClock,1000);
+        enableParallax();
+        enableReveal();
+        improveModalFocus();
+
+        document.documentElement.classList.add("stark-ready");
+      }
+
+      if(document.readyState === "loading"){
+        document.addEventListener("DOMContentLoaded", init, {once:true});
+      }else{
+        init();
+      }
+    })();
 
   </script>
 
