@@ -1204,11 +1204,17 @@
         radial-gradient(circle at center,rgba(0,145,255,.09),transparent 42%),
         rgba(0,0,0,.84);
       backdrop-filter:blur(12px) saturate(1.15);
+      overflow-y:auto;
+      overscroll-behavior:contain;
     }
 
     .modal-box{
       position:relative;
-      overflow:hidden;
+      overflow-x:hidden;
+      overflow-y:auto;
+      max-height:90vh;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
       border-color:rgba(57,231,255,.62);
       background:
         linear-gradient(145deg,rgba(5,23,44,.96),rgba(1,7,17,.96));
@@ -1237,6 +1243,31 @@
       border:1px solid rgba(255,255,255,.025);
       border-radius:inherit;
       pointer-events:none;
+    }
+
+    /* ===== SCROLL INTERNO DE LOS MODALES ===== */
+    .modal-box::-webkit-scrollbar{
+      width:8px;
+    }
+
+    .modal-box::-webkit-scrollbar-track{
+      background:rgba(0,217,255,.035);
+      border-radius:10px;
+    }
+
+    .modal-box::-webkit-scrollbar-thumb{
+      background:linear-gradient(180deg,rgba(0,217,255,.75),rgba(139,92,246,.7));
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .modal-box::-webkit-scrollbar-thumb:hover{
+      background:linear-gradient(180deg,rgba(0,217,255,.95),rgba(139,92,246,.9));
+    }
+
+    .modal-box{
+      scrollbar-width:thin;
+      scrollbar-color:rgba(0,217,255,.75) rgba(0,217,255,.035);
     }
 
     @keyframes modalBoot{
