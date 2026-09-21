@@ -1915,6 +1915,16 @@
       .jarvis-welcome{transition:none!important}
     }
 </style>
+
+<style id="clickable-links-style">
+  /* Enlaces añadidos/convertidos automáticamente */
+  .auto-clickable-link {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+
 </head>
 
 <body>
@@ -3825,7 +3835,7 @@
             Espacio para colocar el enlace del video de la Actividad 2.
           </p>
           <p class="text-slate-400 text-sm mt-2 break-all">
-            Enlace: _________________________________________________ aqui vien el enlace del video
+            Enlace: https://youtu.be/yneOzVhRDIo 
           </p>
         </div>
 
@@ -4594,6 +4604,100 @@
     })();
 
   </script>
+
+
+<script id="auto-clickable-links">
+(function () {
+  'use strict';
+
+  const URL_RE = /https?:\/\/[^\s<>"'`)\]}]+/g;
+  const SKIP_TAGS = new Set([
+    'A', 'SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT',
+    'SELECT', 'OPTION', 'CODE', 'PRE', 'SVG'
+  ]);
+
+  function makeLinks(root) {
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || SKIP_TAGS.has(parent.tagName)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return URL_RE.test(node.nodeValue)
+            ? NodeFilter.FILTER_ACCEPT
+            : NodeFilter.FILTER_REJECT;
+        }
+      }
+    );
+
+    const nodes = [];
+    let node;
+    while ((node = walker.nextNode())) nodes.push(node);
+
+    nodes.forEach(textNode => {
+      const text = textNode.nodeValue;
+      URL_RE.lastIndex = 0;
+
+      let match;
+      let lastIndex = 0;
+      const fragment = document.createDocumentFragment();
+      let found = false;
+
+      while ((match = URL_RE.exec(text)) !== null) {
+        found = true;
+
+        const start = match.index;
+        let url = match[0];
+        let trailing = '';
+
+        // Remove common punctuation that should remain outside the link.
+        while (/[.,!?;:]+$/.test(url)) {
+          trailing = url.slice(-1) + trailing;
+          url = url.slice(0, -1);
+        }
+
+        if (start > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex, start)));
+        }
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'auto-clickable-link';
+        a.textContent = url;
+        fragment.appendChild(a);
+
+        if (trailing) {
+          fragment.appendChild(document.createTextNode(trailing));
+        }
+
+        lastIndex = match.index + match[0].length;
+      }
+
+      if (found) {
+        if (lastIndex < text.length) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+        }
+        textNode.parentNode.replaceChild(fragment, textNode);
+      }
+    });
+  }
+
+  function initClickableLinks() {
+    makeLinks(document.body);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initClickableLinks);
+  } else {
+    initClickableLinks();
+  }
+})();
+</script>
 
 </body>
 </html>
