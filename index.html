@@ -3908,7 +3908,8 @@
 
   <!-- =========================================================
        MODAL ACTIVIDAD 3
-       SIN ENLACES.
+       PROGRAMACIÓN FUNCIONAL
+       Espacios para PDF, video, código, GitHub y evidencias.
   ========================================================== -->
 
   <div
@@ -3925,7 +3926,6 @@
       <div class="flex items-start justify-between gap-4 mb-6">
 
         <div>
-
           <p class="text-purple-300 font-mono text-xs">
             POO II • ACTIVIDAD N.º 3
           </p>
@@ -3934,11 +3934,15 @@
             Programación Funcional
           </h3>
 
+          <p class="text-xs text-slate-500 mt-1 font-mono">
+            F30 • EA3 • PROGRAMACIÓN FUNCIONAL EN JAVA
+          </p>
         </div>
 
         <button
           onclick="cerrarModal('modal-evidencia3')"
           class="text-2xl text-slate-400 hover:text-white"
+          aria-label="Cerrar actividad 3"
         >
           ×
         </button>
@@ -3946,22 +3950,244 @@
       </div>
 
       <p class="text-slate-400 leading-relaxed">
-
-        Estudio e implementación del paradigma de Programación Funcional en Java,
-        incluyendo funciones, expresiones lambda, colecciones y Streams.
-
+        Aplicación del paradigma de Programación Funcional en Java mediante
+        funciones puras, inmutabilidad, expresiones lambda, funciones de orden
+        superior, Streams, operaciones map/filter/reduce y composición de funciones.
       </p>
 
-      <div class="mt-6 rounded-xl border border-purple-400/20 bg-black/25 p-5">
-
-        <p class="text-purple-300 font-semibold">
-          Recursos y enlaces
+      <!-- RESUMEN DE LA ACTIVIDAD -->
+      <div class="mt-6 rounded-xl border border-purple-400/25 bg-purple-400/[.025] p-5">
+        <p class="text-purple-300 font-semibold mb-3">
+          ◆ Desarrollo de la actividad
         </p>
 
-        <p class="text-slate-500 text-sm mt-2">
-          Aún no se han agregado enlaces para esta actividad.
+        <div class="grid md:grid-cols-2 gap-3 text-sm">
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Objetivo:</span>
+            <span class="text-slate-400">
+              resolver un caso de estudio aplicando programación funcional de forma declarativa.
+            </span>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Lenguaje:</span>
+            <span class="text-slate-400">Java, sin frameworks externos.</span>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Conceptos:</span>
+            <span class="text-slate-400">funciones puras, inmutabilidad y composición.</span>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Procesamiento:</span>
+            <span class="text-slate-400">lambdas, funciones de orden superior y Streams.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECURSOS PRINCIPALES -->
+      <div class="mt-5">
+        <p class="text-purple-300 font-semibold mb-3">
+          ◆ Entregables y recursos
         </p>
 
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <!-- DOCUMENTO PDF -->
+          <div class="rounded-xl border border-cyan-400/25 bg-cyan-400/[.025] p-4">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">📄</span>
+              <div>
+                <p class="text-cyan-300 font-semibold">Documento PDF</p>
+                <p class="text-xs text-slate-500">Informe de la Actividad 3</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Espacio destinado al documento final con portada, introducción,
+              objetivos, desarrollo, evidencias y conclusiones.
+            </p>
+
+            <!-- REEMPLAZAR # POR EL ENLACE DEL PDF -->
+            <a
+              href="#"
+              class="block text-center rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition"
+              onclick="return avisarRecurso('Documento PDF')"
+            >
+              ABRIR DOCUMENTO PDF ↗
+            </a>
+          </div>
+
+          <!-- VIDEO -->
+          <div class="rounded-xl border border-red-400/25 bg-red-400/[.025] p-4">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">🎥</span>
+              <div>
+                <p class="text-red-300 font-semibold">Video de sustentación</p>
+                <p class="text-xs text-slate-500">Presentación de la Actividad 3</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Espacio destinado al video donde se explica la solución,
+              los conceptos funcionales y la ejecución del proyecto.
+            </p>
+
+            <!-- REEMPLAZAR # POR EL ENLACE DE YOUTUBE/DRIVE -->
+            <a
+              href="#"
+              class="block text-center rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-2 text-sm text-red-300 hover:bg-red-400/20 hover:text-white transition"
+              onclick="return avisarRecurso('Video de sustentación')"
+            >
+              VER VIDEO DE SUSTENTACIÓN ▶
+            </a>
+          </div>
+
+          <!-- CÓDIGO / ZIP -->
+          <div class="rounded-xl border border-emerald-400/25 bg-emerald-400/[.025] p-4">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">💻</span>
+              <div>
+                <p class="text-emerald-300 font-semibold">Código fuente / ZIP</p>
+                <p class="text-xs text-slate-500">Proyecto Java</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Espacio para el proyecto comprimido solicitado en la actividad.
+            </p>
+
+            <!-- REEMPLAZAR # POR EL ENLACE DEL ZIP -->
+            <a
+              href="#"
+              class="block text-center rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-300 hover:bg-emerald-400/20 hover:text-white transition"
+              onclick="return avisarRecurso('Código fuente / ZIP')"
+            >
+              DESCARGAR PROYECTO ↧
+            </a>
+          </div>
+
+          <!-- GITHUB -->
+          <div class="rounded-xl border border-slate-500/40 bg-slate-400/[.025] p-4">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">⌘</span>
+              <div>
+                <p class="text-slate-200 font-semibold">Repositorio GitHub</p>
+                <p class="text-xs text-slate-500">Código y control de versiones</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Espacio para el repositorio donde se aloja la solución de la Actividad 3.
+            </p>
+
+            <!-- REEMPLAZAR # POR EL REPOSITORIO DE LA ACTIVIDAD 3 -->
+            <a
+              href="#"
+              class="block text-center rounded-lg border border-slate-500/50 bg-slate-400/10 px-4 py-2 text-sm text-slate-300 hover:bg-slate-400/20 hover:text-white transition"
+              onclick="return avisarRecurso('Repositorio GitHub')"
+            >
+              ABRIR REPOSITORIO ↗
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONTENIDO ACADÉMICO -->
+      <div class="mt-5 rounded-xl border border-blue-400/25 bg-blue-400/[.025] p-5">
+        <p class="text-blue-300 font-semibold mb-3">
+          ◆ Contenido desarrollado
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-3 text-sm">
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-blue-300 font-semibold">01 • Funciones puras</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Funciones cuyo resultado depende únicamente de sus entradas y que evitan efectos secundarios.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-blue-300 font-semibold">02 • Inmutabilidad</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Tratamiento de los datos evitando modificaciones innecesarias del estado original.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-blue-300 font-semibold">03 • Lambdas</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Expresiones funcionales para representar operaciones de forma concisa.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-blue-300 font-semibold">04 • Streams</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Procesamiento declarativo de colecciones mediante operaciones encadenadas.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-blue-300 font-semibold">05 • map / filter / reduce</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Transformación, filtrado y reducción de conjuntos de datos.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-blue-300 font-semibold">06 • Orden superior</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Funciones que reciben otras funciones como parámetros o producen funciones.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EVIDENCIAS -->
+      <div class="mt-5 rounded-xl border border-yellow-400/20 bg-yellow-400/[.02] p-5">
+        <p class="text-yellow-300 font-semibold mb-3">
+          ◆ Evidencias de ejecución
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-sm text-slate-200 font-semibold">Capturas del programa</p>
+            <p class="text-xs text-slate-500 mt-1">
+              Espacio para evidencias de compilación, ejecución y resultados.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-sm text-slate-200 font-semibold">Diagrama / explicación</p>
+            <p class="text-xs text-slate-500 mt-1">
+              Espacio para diagrama del funcionamiento y explicación técnica.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCLUSIONES -->
+      <div class="mt-5 rounded-xl border border-purple-400/20 bg-black/25 p-5">
+        <p class="text-purple-300 font-semibold mb-2">
+          ◆ Conclusiones
+        </p>
+
+        <p class="text-sm text-slate-400 leading-relaxed">
+          En esta sección se presenta el aprendizaje obtenido durante la implementación
+          de la programación funcional en Java, destacando el uso de funciones puras,
+          inmutabilidad, lambdas, Streams y operaciones declarativas.
+        </p>
+      </div>
+
+      <div class="mt-5 text-center">
+        <p class="text-[11px] text-slate-600 font-mono">
+          J.A.R.V.I.S. // EA3 • PROGRAMACIÓN FUNCIONAL • RECURSOS PENDIENTES DE ENLACE
+        </p>
       </div>
 
     </div>
@@ -4056,6 +4282,138 @@
 
       }
     );
+
+    /* =========================================================
+       NIEVE AZUL GLOBAL
+       Capa visual independiente: no bloquea botones, modales ni enlaces.
+       ========================================================== */
+
+    (function(){
+      "use strict";
+
+      if(document.getElementById("blue-snow-canvas")) return;
+
+      const snowCanvas = document.createElement("canvas");
+      snowCanvas.id = "blue-snow-canvas";
+      snowCanvas.setAttribute("aria-hidden","true");
+
+      Object.assign(snowCanvas.style, {
+        position: "fixed",
+        inset: "0",
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        zIndex: "40"
+      });
+
+      document.body.appendChild(snowCanvas);
+
+      const snowCtx = snowCanvas.getContext("2d");
+      if(!snowCtx) return;
+
+      const reduceMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      let flakes = [];
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+
+      function resizeBlueSnow(){
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        snowCanvas.width = Math.floor(width * dpr);
+        snowCanvas.height = Math.floor(height * dpr);
+        snowCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        if(reduceMotion){
+          flakes = [];
+          return;
+        }
+
+        const count = Math.min(
+          125,
+          Math.max(
+            45,
+            Math.floor(width * height / 11500)
+          )
+        );
+
+        flakes = Array.from({length: count}, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 0.7,
+          vy: Math.random() * 1.25 + 0.35,
+          vx: (Math.random() - 0.5) * 0.45,
+          sway: Math.random() * Math.PI * 2,
+          swaySpeed: Math.random() * 0.018 + 0.006,
+          alpha: Math.random() * 0.55 + 0.3
+        }));
+      }
+
+      function drawBlueSnow(){
+        snowCtx.clearRect(0, 0, width, height);
+
+        for(const flake of flakes){
+          flake.sway += flake.swaySpeed;
+          flake.x += flake.vx + Math.sin(flake.sway) * 0.25;
+          flake.y += flake.vy;
+
+          if(flake.y > height + 8){
+            flake.y = -8;
+            flake.x = Math.random() * width;
+          }
+
+          if(flake.x > width + 8) flake.x = -8;
+          if(flake.x < -8) flake.x = width + 8;
+
+          snowCtx.beginPath();
+          snowCtx.arc(
+            flake.x,
+            flake.y,
+            flake.r,
+            0,
+            Math.PI * 2
+          );
+
+          snowCtx.fillStyle =
+            `rgba(75,185,255,${flake.alpha})`;
+
+          snowCtx.shadowBlur = 9;
+          snowCtx.shadowColor = "rgba(0,155,255,.95)";
+          snowCtx.fill();
+        }
+
+        snowCtx.shadowBlur = 0;
+
+        if(!reduceMotion){
+          requestAnimationFrame(drawBlueSnow);
+        }
+      }
+
+      window.addEventListener("resize", resizeBlueSnow, {passive:true});
+      resizeBlueSnow();
+      drawBlueSnow();
+
+    })();
+
+    /* Aviso para recursos que todavía no tienen enlace */
+    function avisarRecurso(nombre){
+      if(!event || !event.currentTarget || event.currentTarget.getAttribute("href") !== "#"){
+        return true;
+      }
+
+      alert(
+        nombre +
+        " todavía está pendiente de agregar.\n\n" +
+        "Reemplaza el href=\"#\" de este botón por el enlace correspondiente."
+      );
+
+      return false;
+    }
 
     /* Partículas azules de fondo */
 
