@@ -781,7 +781,1150 @@
         scroll-behavior:auto!important;
       }
     }
-  </style>
+
+    /* =========================================================
+       STARK / JARVIS UI ENHANCEMENT
+       Capa visual añadida sin eliminar la estructura original.
+       ========================================================= */
+
+    :root{
+      --stark-red:#ff3b30;
+      --stark-red-deep:#7a0f16;
+      --stark-gold:#ffc857;
+      --stark-white:#f4fbff;
+      --hud-blue:#39e7ff;
+      --hud-cyan:rgba(0,217,255,.18);
+      --hud-panel:rgba(1,10,22,.72);
+    }
+
+    html{
+      background:#01040a;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 80% 18%, rgba(0,132,255,.13), transparent 30%),
+        radial-gradient(circle at 15% 70%, rgba(255,59,48,.045), transparent 26%),
+        linear-gradient(135deg,#01040a 0%,#020711 48%,#01040a 100%);
+      letter-spacing:.01em;
+    }
+
+    body::before{
+      background:
+        radial-gradient(circle at 72% 32%, rgba(0,217,255,.08), transparent 22%),
+        radial-gradient(circle at 88% 78%, rgba(255,200,87,.035), transparent 24%),
+        linear-gradient(
+          90deg,
+          rgba(1,7,17,.98) 0%,
+          rgba(1,7,17,.88) 34%,
+          rgba(1,7,17,.5) 70%,
+          rgba(1,7,17,.78) 100%
+        );
+      animation:ambientDrift 14s ease-in-out infinite alternate;
+    }
+
+    body::after{
+      background:
+        linear-gradient(rgba(0,217,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,217,255,.028) 1px,transparent 1px);
+      background-size:42px 42px;
+    }
+
+    ::selection{
+      background:rgba(0,217,255,.22);
+      color:#fff;
+    }
+
+    ::-webkit-scrollbar{
+      width:9px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#01050b;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(var(--stark-red),var(--hud-blue));
+      border-radius:999px;
+      border:2px solid #01050b;
+    }
+
+    @keyframes ambientDrift{
+      from{transform:scale(1) translate3d(0,0,0)}
+      to{transform:scale(1.035) translate3d(-10px,6px,0)}
+    }
+
+    .scanlines{
+      opacity:.035;
+      mix-blend-mode:screen;
+    }
+
+    .nav{
+      background:
+        linear-gradient(180deg,rgba(2,10,20,.94),rgba(1,7,17,.72));
+      border-bottom:1px solid rgba(57,231,255,.28);
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.25),
+        0 0 28px rgba(0,217,255,.045);
+    }
+
+    .nav::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-1px;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,59,48,.85) 18%,
+        rgba(255,200,87,.75) 50%,
+        rgba(57,231,255,.85) 82%,
+        transparent 100%
+      );
+      opacity:.6;
+    }
+
+    .nav-link{
+      font-family:"Courier New",monospace;
+      font-size:.78rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .nav-link::before{
+      content:"";
+      position:absolute;
+      left:-12px;
+      top:50%;
+      width:4px;
+      height:4px;
+      border-radius:50%;
+      background:var(--stark-red);
+      box-shadow:0 0 8px rgba(255,59,48,.75);
+      transform:translateY(-50%) scale(.5);
+      opacity:.5;
+      transition:.25s ease;
+    }
+
+    .nav-link:hover::before{
+      transform:translateY(-50%) scale(1);
+      opacity:1;
+    }
+
+    .hero{
+      min-height:520px;
+      isolation:isolate;
+      border-bottom:1px solid rgba(57,231,255,.24);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:14px 14px 14px auto;
+      width:min(43%,640px);
+      border:1px solid rgba(57,231,255,.13);
+      border-left-color:transparent;
+      clip-path:polygon(
+        12% 0,
+        100% 0,
+        100% 88%,
+        90% 100%,
+        0 100%,
+        0 12%
+      );
+      z-index:1;
+      pointer-events:none;
+      box-shadow:inset 0 0 30px rgba(0,217,255,.025);
+    }
+
+    .hero-grid{
+      opacity:.7;
+      background-size:38px 38px;
+      mask-image:linear-gradient(90deg,black 0%,black 46%,transparent 88%);
+    }
+
+    .hero-robot-layer{
+      width:min(70%,980px);
+      filter:drop-shadow(0 0 18px rgba(0,217,255,.08));
+      transition:transform .18s ease-out;
+      will-change:transform;
+    }
+
+    .hero-robot-layer::before{
+      background:
+        linear-gradient(
+          90deg,
+          #020711 0%,
+          rgba(2,7,17,.76) 18%,
+          rgba(2,7,17,.16) 55%,
+          rgba(2,7,17,.08) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0,217,255,.06),
+          transparent 24%,
+          transparent 78%,
+          rgba(255,59,48,.04)
+        );
+    }
+
+    .hero-robot-layer::after{
+      background:
+        radial-gradient(circle at 70% 48%,rgba(57,231,255,.18),transparent 40%),
+        radial-gradient(circle at 92% 72%,rgba(255,200,87,.06),transparent 22%);
+    }
+
+    .robot-image{
+      filter:
+        drop-shadow(0 0 12px rgba(0,217,255,.18))
+        drop-shadow(10px 0 28px rgba(0,110,255,.13));
+    }
+
+    .ai-label{
+      border-color:rgba(255,200,87,.46);
+      color:#ffe5a3;
+      background:rgba(15,8,2,.62);
+      box-shadow:
+        0 0 18px rgba(255,200,87,.08),
+        inset 0 0 18px rgba(255,200,87,.035);
+    }
+
+    .code-float{
+      border-color:rgba(57,231,255,.22);
+      background:rgba(1,8,19,.48);
+      box-shadow:
+        0 0 18px rgba(0,150,255,.08),
+        inset 0 0 16px rgba(0,217,255,.02);
+      backdrop-filter:blur(8px);
+    }
+
+    .tag{
+      position:relative;
+      overflow:hidden;
+      box-shadow:inset 0 0 12px rgba(0,217,255,.025);
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
+    }
+
+    .tag::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        105deg,
+        transparent 35%,
+        rgba(255,255,255,.13) 48%,
+        transparent 61%
+      );
+      transform:translateX(-120%);
+      transition:transform .55s ease;
+    }
+
+    .tag:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,200,87,.65);
+      box-shadow:
+        0 0 14px rgba(255,200,87,.07),
+        inset 0 0 12px rgba(0,217,255,.03);
+    }
+
+    .tag:hover::after{
+      transform:translateX(120%);
+    }
+
+    .btn{
+      min-height:44px;
+      border-color:rgba(57,231,255,.6);
+      position:relative;
+      box-shadow:
+        0 0 0 1px rgba(0,217,255,.025),
+        inset 0 0 16px rgba(0,217,255,.03);
+    }
+
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:3px;
+      border:1px solid rgba(255,255,255,.035);
+      border-radius:inherit;
+      pointer-events:none;
+    }
+
+    .btn:hover{
+      border-color:rgba(255,200,87,.82);
+      box-shadow:
+        0 0 22px rgba(0,217,255,.16),
+        0 0 14px rgba(255,200,87,.06),
+        inset 0 0 18px rgba(0,217,255,.05);
+    }
+
+    .glass{
+      position:relative;
+      overflow:hidden;
+      border-color:rgba(57,231,255,.34);
+      background:
+        linear-gradient(145deg,rgba(4,20,39,.9),rgba(1,7,17,.82));
+      box-shadow:
+        0 0 35px rgba(0,140,255,.08),
+        inset 0 0 28px rgba(0,217,255,.025);
+    }
+
+    .glass::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:10%;
+      right:10%;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,200,87,.68),
+        rgba(57,231,255,.75),
+        transparent
+      );
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .corner::before,
+    .corner::after{
+      width:30px;
+      height:30px;
+    }
+
+    .corner::before{
+      border-left:2px solid var(--hud-blue);
+      border-top:2px solid var(--hud-blue);
+      box-shadow:-2px -2px 10px rgba(57,231,255,.15);
+    }
+
+    .corner::after{
+      border-right:2px solid var(--stark-gold);
+      border-bottom:2px solid var(--stark-gold);
+      box-shadow:2px 2px 10px rgba(255,200,87,.08);
+    }
+
+    .dashboard{
+      gap:1.25rem;
+    }
+
+    .progress-track{
+      height:9px;
+      background:rgba(255,255,255,.045);
+      box-shadow:inset 0 0 12px rgba(0,0,0,.25);
+    }
+
+    .progress-fill{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(
+          90deg,
+          #006eff,
+          var(--hud-blue),
+          #e8fbff
+        );
+    }
+
+    .progress-fill::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+      );
+      transform:translateX(-100%);
+      animation:progressShine 2.7s linear infinite;
+    }
+
+    @keyframes progressShine{
+      to{transform:translateX(100%)}
+    }
+
+    .status-chip{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(0,217,255,.05),rgba(0,0,0,.18));
+      box-shadow:inset 0 0 18px rgba(0,217,255,.018);
+    }
+
+    .status-chip::after{
+      content:"";
+      position:absolute;
+      left:-10%;
+      right:-10%;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,200,87,.45),
+        transparent
+      );
+      opacity:.6;
+    }
+
+    .activity{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .activity::before{
+      content:"";
+      position:absolute;
+      top:-100%;
+      left:-20%;
+      width:35%;
+      height:300%;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+      );
+      transform:rotate(18deg);
+      transition:left .7s ease;
+    }
+
+    .activity:hover::before{
+      left:120%;
+    }
+
+    .modal-bg{
+      background:
+        radial-gradient(circle at center,rgba(0,145,255,.09),transparent 42%),
+        rgba(0,0,0,.84);
+      backdrop-filter:blur(12px) saturate(1.15);
+      overflow-y:auto;
+      overscroll-behavior:contain;
+    }
+
+    .modal-box{
+      position:relative;
+      overflow-x:hidden;
+      overflow-y:auto;
+      max-height:90vh;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      border-color:rgba(57,231,255,.62);
+      background:
+        linear-gradient(145deg,rgba(5,23,44,.96),rgba(1,7,17,.96));
+      box-shadow:
+        0 0 70px rgba(0,170,255,.16),
+        0 0 18px rgba(255,59,48,.055),
+        inset 0 0 40px rgba(0,217,255,.03);
+      animation:modalBoot .28s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    .modal-box::before{
+      content:"J.A.R.V.I.S. // SECURE CHANNEL";
+      position:absolute;
+      top:10px;
+      right:18px;
+      font:700 9px "Courier New",monospace;
+      letter-spacing:.16em;
+      color:rgba(57,231,255,.45);
+      pointer-events:none;
+    }
+
+    .modal-box::after{
+      content:"";
+      position:absolute;
+      inset:9px;
+      border:1px solid rgba(255,255,255,.025);
+      border-radius:inherit;
+      pointer-events:none;
+    }
+
+    /* ===== SCROLL INTERNO DE LOS MODALES ===== */
+    .modal-box::-webkit-scrollbar{
+      width:8px;
+    }
+
+    .modal-box::-webkit-scrollbar-track{
+      background:rgba(0,217,255,.035);
+      border-radius:10px;
+    }
+
+    .modal-box::-webkit-scrollbar-thumb{
+      background:linear-gradient(180deg,rgba(0,217,255,.75),rgba(139,92,246,.7));
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .modal-box::-webkit-scrollbar-thumb:hover{
+      background:linear-gradient(180deg,rgba(0,217,255,.95),rgba(139,92,246,.9));
+    }
+
+    .modal-box{
+      scrollbar-width:thin;
+      scrollbar-color:rgba(0,217,255,.75) rgba(0,217,255,.035);
+    }
+
+    @keyframes modalBoot{
+      from{
+        opacity:0;
+        transform:translateY(10px) scale(.985);
+        filter:blur(4px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
+      }
+    }
+
+    .code-box{
+      box-shadow:inset 0 0 20px rgba(0,217,255,.025);
+    }
+
+    footer{
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 -14px 40px rgba(0,0,0,.18);
+    }
+
+    footer::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:15%;
+      right:15%;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,59,48,.75),
+        rgba(255,200,87,.65),
+        rgba(57,231,255,.8),
+        transparent
+      );
+    }
+
+    /* Painel HUD añadido dinámicamente */
+    .stark-interface{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:70;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 11px;
+      border:1px solid rgba(57,231,255,.22);
+      background:rgba(1,8,17,.62);
+      backdrop-filter:blur(9px);
+      box-shadow:
+        0 0 24px rgba(0,217,255,.06),
+        inset 0 0 18px rgba(0,217,255,.025);
+      color:#8edfff;
+      font:700 9px/1.2 "Courier New",monospace;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      pointer-events:none;
+    }
+
+    .stark-interface .hud-core{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--stark-red);
+      box-shadow:
+        0 0 6px rgba(255,59,48,.9),
+        0 0 14px rgba(255,59,48,.35);
+      animation:hudCorePulse 1.8s ease-in-out infinite;
+    }
+
+    .stark-interface .hud-time{
+      color:#e6fbff;
+      min-width:70px;
+    }
+
+    @keyframes hudCorePulse{
+      0%,100%{opacity:.65;transform:scale(.86)}
+      50%{opacity:1;transform:scale(1.15)}
+    }
+
+    .stark-reactor{
+      position:absolute;
+      right:25%;
+      top:50%;
+      width:180px;
+      aspect-ratio:1;
+      transform:translate(50%,-50%);
+      z-index:1;
+      pointer-events:none;
+      opacity:.55;
+      mix-blend-mode:screen;
+    }
+
+    .stark-reactor::before,
+    .stark-reactor::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:1px solid rgba(57,231,255,.28);
+    }
+
+    .stark-reactor::before{
+      box-shadow:
+        0 0 18px rgba(57,231,255,.1),
+        inset 0 0 20px rgba(57,231,255,.05);
+      animation:reactorSpin 12s linear infinite;
+    }
+
+    .stark-reactor::after{
+      inset:19%;
+      border-color:rgba(255,200,87,.24);
+      border-style:dashed;
+      animation:reactorSpinReverse 8s linear infinite;
+    }
+
+    .stark-reactor-center{
+      position:absolute;
+      inset:34%;
+      border-radius:50%;
+      background:
+        radial-gradient(circle,#f4feff 0%,#7deaff 24%,#17bfff 44%,rgba(0,92,255,.08) 73%,transparent 74%);
+      box-shadow:
+        0 0 16px rgba(57,231,255,.75),
+        0 0 42px rgba(0,128,255,.22);
+      animation:reactorPulse 2.7s ease-in-out infinite;
+    }
+
+    @keyframes reactorSpin{
+      to{transform:rotate(360deg)}
+    }
+
+    @keyframes reactorSpinReverse{
+      to{transform:rotate(-360deg)}
+    }
+
+    @keyframes reactorPulse{
+      0%,100%{transform:scale(.88);opacity:.62}
+      50%{transform:scale(1.08);opacity:1}
+    }
+
+    .hud-reveal{
+      opacity:0;
+      transform:translateY(12px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+
+    .hud-reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .stark-status-line{
+      position:absolute;
+      top:28px;
+      right:28px;
+      z-index:5;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:5px 9px;
+      border:1px solid rgba(57,231,255,.18);
+      background:rgba(0,6,15,.4);
+      color:rgba(185,241,255,.72);
+      font:600 9px "Courier New",monospace;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      pointer-events:none;
+    }
+
+    .stark-status-line::before{
+      content:"";
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:var(--stark-gold);
+      box-shadow:0 0 8px rgba(255,200,87,.8);
+    }
+
+    .stark-circuit-line{
+      position:absolute;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--hud-blue),transparent);
+      box-shadow:0 0 8px rgba(57,231,255,.45);
+      opacity:.42;
+      pointer-events:none;
+    }
+
+    .stark-circuit-line.line-a{
+      width:170px;
+      top:26%;
+      right:5%;
+      transform:rotate(-12deg);
+    }
+
+    .stark-circuit-line.line-b{
+      width:120px;
+      bottom:21%;
+      right:12%;
+      transform:rotate(16deg);
+    }
+
+    @media(max-width:900px){
+      .hero{
+        min-height:640px;
+      }
+
+      .hero::after{
+        inset:auto 12px 14px 12px;
+        width:auto;
+        height:48%;
+        border-left-color:rgba(57,231,255,.13);
+      }
+
+      .hero-robot-layer{
+        width:100%;
+      }
+
+      .stark-reactor{
+        right:50%;
+        top:66%;
+        width:150px;
+        opacity:.33;
+      }
+
+      .stark-status-line{
+        top:16px;
+        right:16px;
+        font-size:8px;
+      }
+    }
+
+    @media(max-width:520px){
+      .stark-interface{
+        right:10px;
+        bottom:10px;
+        padding:7px 8px;
+        font-size:8px;
+      }
+
+      .stark-interface .hud-label{
+        display:none;
+      }
+
+      .stark-reactor{
+        width:125px;
+        top:73%;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      body::before,
+      .stark-interface .hud-core,
+      .progress-fill::after,
+      .stark-reactor::before,
+      .stark-reactor::after,
+      .stark-reactor-center{
+        animation:none!important;
+      }
+
+      .hud-reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+    }
+
+  
+
+    /* =========================================================
+       J.A.R.V.I.S. WELCOME + STARK ARMOR DISPLAY
+       Añadido sobre el diseño existente sin eliminar contenido.
+       ========================================================== */
+
+    .jarvis-welcome{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(0,217,255,.10), transparent 28%),
+        linear-gradient(180deg,rgba(0,4,10,.97),rgba(1,8,18,.985));
+      backdrop-filter:blur(16px);
+      opacity:1;
+      visibility:visible;
+      transition:opacity .7s ease, visibility .7s ease;
+    }
+
+    .jarvis-welcome.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .jarvis-welcome-panel{
+      position:relative;
+      width:min(720px,100%);
+      padding:34px 30px 28px;
+      border:1px solid rgba(57,231,255,.5);
+      background:
+        linear-gradient(145deg,rgba(3,20,38,.92),rgba(1,7,17,.9));
+      box-shadow:
+        0 0 80px rgba(0,145,255,.13),
+        inset 0 0 45px rgba(0,217,255,.035);
+      clip-path:polygon(
+        14px 0, calc(100% - 14px) 0, 100% 14px,
+        100% calc(100% - 14px), calc(100% - 14px) 100%,
+        14px 100%, 0 calc(100% - 14px), 0 14px
+      );
+      overflow:hidden;
+      transform:translateY(0) scale(1);
+      animation:jarvisPanelIn .8s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .jarvis-welcome-panel::before,
+    .jarvis-welcome-panel::after{
+      content:"";
+      position:absolute;
+      pointer-events:none;
+    }
+
+    .jarvis-welcome-panel::before{
+      top:0;
+      left:18%;
+      right:18%;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--hud-blue),transparent);
+      box-shadow:0 0 18px var(--hud-blue);
+    }
+
+    .jarvis-welcome-panel::after{
+      inset:10px;
+      border:1px solid rgba(0,217,255,.08);
+      clip-path:inherit;
+    }
+
+    .jarvis-mark{
+      position:relative;
+      z-index:2;
+      width:88px;
+      height:88px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      border:1px solid rgba(57,231,255,.45);
+      display:grid;
+      place-items:center;
+      background:radial-gradient(circle,rgba(119,245,255,.20) 0 8%,rgba(0,130,255,.11) 9% 35%,transparent 36%);
+      box-shadow:0 0 28px rgba(0,217,255,.22), inset 0 0 24px rgba(0,217,255,.08);
+      animation:jarvisCorePulse 2.4s ease-in-out infinite;
+    }
+
+    .jarvis-mark::before,
+    .jarvis-mark::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(57,231,255,.22);
+    }
+
+    .jarvis-mark::before{ inset:10px; }
+    .jarvis-mark::after{ inset:22px; border-color:rgba(255,200,87,.55); }
+
+    .jarvis-mark-core{
+      width:13px;
+      height:13px;
+      border-radius:50%;
+      background:#eaffff;
+      box-shadow:0 0 8px #fff,0 0 20px var(--hud-blue),0 0 34px var(--hud-blue);
+    }
+
+    .jarvis-kicker{
+      position:relative;
+      z-index:2;
+      text-align:center;
+      color:#6fe7ff;
+      font:700 11px/1.4 "Courier New",monospace;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+    }
+
+    .jarvis-title{
+      position:relative;
+      z-index:2;
+      margin:.5rem 0 0;
+      text-align:center;
+      font-size:clamp(2rem,5vw,3.8rem);
+      line-height:1;
+      font-weight:900;
+      letter-spacing:.08em;
+      color:#ecfbff;
+      text-shadow:0 0 12px rgba(57,231,255,.75),0 0 38px rgba(0,145,255,.28);
+    }
+
+    .jarvis-message{
+      position:relative;
+      z-index:2;
+      max-width:580px;
+      margin:18px auto 0;
+      text-align:center;
+      color:#c7dbe7;
+      line-height:1.7;
+      font-size:.98rem;
+    }
+
+    .jarvis-message strong{ color:#ffe5a3; }
+
+    .jarvis-system-bar{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin:24px 0;
+    }
+
+    .jarvis-system-chip{
+      padding:10px 8px;
+      border:1px solid rgba(57,231,255,.18);
+      background:rgba(0,217,255,.035);
+      text-align:center;
+      font:700 10px/1.3 "Courier New",monospace;
+      color:#86ddeb;
+      letter-spacing:.08em;
+    }
+
+    .jarvis-actions{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .jarvis-enter,
+    .jarvis-owner,
+    .jarvis-guest,
+    .jarvis-voice{
+      min-width:170px;
+      border:1px solid rgba(57,231,255,.55);
+      background:rgba(0,217,255,.06);
+      color:#d8fbff;
+      padding:12px 18px;
+      border-radius:10px;
+      font:800 12px "Courier New",monospace;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .jarvis-enter{
+      border-color:rgba(255,59,48,.65);
+      background:linear-gradient(90deg,rgba(255,59,48,.12),rgba(255,200,87,.08));
+    }
+
+    .jarvis-owner{
+      border-color:rgba(255,200,87,.58);
+      background:rgba(255,200,87,.055);
+      color:#ffe7a6;
+    }
+
+    .jarvis-owner-active{
+      border-color:rgba(0,229,168,.75)!important;
+      background:rgba(0,229,168,.08)!important;
+      color:#8fffe0!important;
+      box-shadow:0 0 18px rgba(0,229,168,.12);
+    }
+
+    .jarvis-guest{
+      border-color:rgba(180,200,215,.38);
+      background:rgba(180,200,215,.035);
+      color:#b8c9d4;
+    }
+
+    .jarvis-enter:hover,
+    .jarvis-owner:hover,
+    .jarvis-guest:hover,
+    .jarvis-voice:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 24px rgba(57,231,255,.16);
+      color:white;
+    }
+
+    .jarvis-console{
+      position:relative;
+      z-index:2;
+      margin-top:19px;
+      padding-top:13px;
+      border-top:1px solid rgba(57,231,255,.12);
+      text-align:center;
+      color:#668a99;
+      font:10px/1.5 "Courier New",monospace;
+      letter-spacing:.06em;
+    }
+
+    @keyframes jarvisPanelIn{
+      from{opacity:0;transform:translateY(20px) scale(.96)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+
+    @keyframes jarvisCorePulse{
+      0%,100%{transform:scale(1);box-shadow:0 0 28px rgba(0,217,255,.22),inset 0 0 24px rgba(0,217,255,.08)}
+      50%{transform:scale(1.05);box-shadow:0 0 44px rgba(0,217,255,.34),inset 0 0 28px rgba(0,217,255,.13)}
+    }
+
+    .stark-name-armor{
+      position:relative;
+      margin:20px 0 2px;
+      width:min(390px,100%);
+      height:178px;
+      border:1px solid rgba(57,231,255,.18);
+      background:linear-gradient(145deg,rgba(8,20,34,.7),rgba(1,7,17,.18));
+      clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px);
+      box-shadow:inset 0 0 28px rgba(0,217,255,.025),0 0 30px rgba(0,120,255,.05);
+      overflow:hidden;
+    }
+
+    .stark-name-armor::before{
+      content:"STARK INDUSTRIES // ARMOR INTERFACE";
+      position:absolute;
+      top:10px;
+      left:12px;
+      color:#6fe7ff;
+      font:700 9px "Courier New",monospace;
+      letter-spacing:.13em;
+    }
+
+    .armor-helmet{
+      position:absolute;
+      left:22px;
+      top:30px;
+      width:84px;
+      height:114px;
+      background:linear-gradient(155deg,#7b151c 0%,#d03a2d 35%,#7e1117 66%,#351016 100%);
+      clip-path:polygon(30% 0,70% 0,90% 18%,86% 81%,65% 100%,35% 100%,14% 81%,10% 18%);
+      border:1px solid rgba(255,200,87,.8);
+      box-shadow:0 0 25px rgba(255,59,48,.13),inset -10px -12px 25px rgba(0,0,0,.3);
+    }
+
+    .armor-helmet::before{
+      content:"";
+      position:absolute;
+      left:14px;
+      right:14px;
+      top:34px;
+      height:18px;
+      border:1px solid rgba(255,200,87,.75);
+      background:linear-gradient(90deg,rgba(255,200,87,.12),rgba(255,238,172,.6),rgba(255,200,87,.12));
+      box-shadow:0 0 10px rgba(255,200,87,.22);
+      transform:skewY(-4deg);
+    }
+
+    .armor-helmet::after{
+      content:"";
+      position:absolute;
+      left:33px;
+      top:63px;
+      width:18px;
+      height:10px;
+      border-left:1px solid rgba(255,200,87,.65);
+      border-right:1px solid rgba(255,200,87,.65);
+      background:rgba(0,0,0,.24);
+    }
+
+    .armor-torso{
+      position:absolute;
+      left:135px;
+      top:42px;
+      width:205px;
+      height:105px;
+      background:linear-gradient(145deg,#451218 0%,#9d2021 24%,#d63b2d 48%,#6a1016 76%,#2a0e12 100%);
+      clip-path:polygon(14% 0,86% 0,100% 18%,93% 100%,7% 100%,0 18%);
+      border:1px solid rgba(255,200,87,.55);
+      box-shadow:0 0 26px rgba(255,59,48,.11),inset 0 0 30px rgba(0,0,0,.23);
+    }
+
+    .armor-torso::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:31%;
+      width:38px;
+      height:38px;
+      transform:translate(-50%,-50%);
+      clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+      background:#e8ffff;
+      box-shadow:0 0 12px #fff,0 0 30px #37e8ff,0 0 45px rgba(57,231,255,.55);
+    }
+
+    .armor-torso::after{
+      content:"";
+      position:absolute;
+      left:15%;
+      right:15%;
+      top:11px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,200,87,.9),transparent);
+      box-shadow:0 37px 0 rgba(255,200,87,.28),0 74px 0 rgba(255,200,87,.12);
+    }
+
+    .armor-label{
+      position:absolute;
+      right:12px;
+      bottom:10px;
+      color:#ffe5a3;
+      font:700 9px "Courier New",monospace;
+      letter-spacing:.1em;
+    }
+
+    .armor-hud{
+      position:absolute;
+      right:10px;
+      top:31px;
+      width:120px;
+      color:#7fefff;
+      font:9px/1.55 "Courier New",monospace;
+      letter-spacing:.06em;
+      opacity:.85;
+    }
+
+    .armor-hud span{ display:block; }
+    .armor-hud i{ color:#ffcf67; font-style:normal; }
+
+    @media(max-width:700px){
+      .jarvis-welcome-panel{padding:28px 18px 22px}
+      .jarvis-system-bar{grid-template-columns:1fr}
+      .stark-name-armor{height:150px}
+      .armor-helmet{transform:scale(.85);transform-origin:left top}
+      .armor-torso{transform:scale(.83);transform-origin:left top;left:112px}
+      .armor-hud{right:7px;width:105px;font-size:8px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .jarvis-welcome-panel,.jarvis-mark{animation:none!important}
+      .jarvis-welcome{transition:none!important}
+    }
+</style>
+
+<style id="clickable-links-style">
+  /* Enlaces añadidos/convertidos automáticamente */
+  .auto-clickable-link {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+
 </head>
 
 <body>
@@ -2627,6 +3770,48 @@
           Recursos y enlaces
         </p>
 
+        ```html
+<!-- =========================================================
+     CORRECCIÓN DEL DIAGRAMA DE LA ACTIVIDAD 1
+========================================================== -->
+
+<div class="mt-6 rounded-xl border border-cyan-400/20 bg-black/20 p-5">
+
+  <p class="text-cyan-300 font-semibold">
+    📐 Corrección del diagrama de la Actividad 1
+  </p>
+
+  <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+    En esta segunda entrega se presenta la corrección y actualización
+    del diagrama UML desarrollado inicialmente en la Actividad 1,
+    teniendo en cuenta las observaciones realizadas para mejorar la
+    representación de las clases y sus relaciones.
+  </p>
+
+  <div class="mt-4 rounded-xl border border-purple-400/20 bg-purple-400/[.025] p-4">
+
+    <p class="text-slate-200 font-semibold">
+      Nuevo diagrama UML
+    </p>
+
+    <p class="text-slate-400 text-sm mt-2">
+      Corrección del diagrama de la Actividad 1
+    </p>
+
+    <a
+      class="block mt-3 text-sm text-cyan-400 hover:text-white break-all transition"
+      href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/nuevo%20diagrama%20UML.jpeg"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ver nuevo diagrama UML en GitHub
+    </a>
+
+  </div>
+
+</div>
+```
+
         <!-- ENLACE DEL DOCUMENTO -->
         <div class="mt-4 rounded-xl border border-cyan-400/20 bg-black/20 p-4">
           <p class="text-cyan-300 font-semibold">
@@ -2636,7 +3821,8 @@
             Espacio para colocar el enlace del documento de la Actividad 2.
           </p>
           <p class="text-slate-400 text-sm mt-2 break-all">
-            Enlace: _________________________________________________ aqui viene el enlace del docuento 
+            Enlace: https://docs.google.com/document/d/1MLkBMeDfGMyZWMZ-MqeZqNCNHgZV72fJ_wmiV3UkWqA/edit?tab=t.0#heading=h.g52hfkot36m0 
+            
           </p>
         </div>
 
@@ -2649,50 +3835,72 @@
             Espacio para colocar el enlace del video de la Actividad 2.
           </p>
           <p class="text-slate-400 text-sm mt-2 break-all">
-            Enlace: _________________________________________________ aqui vien el enlace del video
+            Enlace: https://youtu.be/yneOzVhRDIo 
           </p>
         </div>
 
         <!-- CLASES DEL PROYECTO -->
-        <div class="mt-4 rounded-xl border border-slate-500/20 bg-black/20 p-4">
-          <p class="text-slate-300 font-semibold">
-            💻 Clases del proyecto
-          </p>
+        <div class="mt-5 rounded-2xl border border-cyan-400/20 bg-black/25 p-5 shadow-[inset_0_0_25px_rgba(0,217,255,.025)]">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <div>
+              <p class="text-cyan-300 font-mono text-xs tracking-widest">PROJECT SOURCE // JAVA</p>
+              <p class="text-slate-200 font-semibold text-lg">💻 Clases del proyecto</p>
+            </div>
+            <span class="tag">10 CLASES</span>
+          </div>
 
-          <div class="mt-3 space-y-2 text-sm text-slate-400">
-            <p>1. Biblioteca.java</p> realizado por Cristian
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Biblioteca.java 
-            
-            <p>2. Libro.java</p> realizado por Franklin
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Libro.java 
-            
-            <p>3. LibroFisico.java</p> realizado por Franklin
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/LibroFisico.java 
-            
-            <p>4. LibroDigital.java</p> realizado por Franklin
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/LibroDigital.java 
-            
-            <p>5. Autor.java</p> realizado por Jerónimo
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Autor.java  
-            
-            <p>6. Categoria.java</p> realizado por Cristian
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Categoria.java 
-            
-            <p>7. Usuario.java</p> realizado por Jerónimo
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Usuario.java 
-            
-            <p>8. Prestamo.java</p> realizado por Cristian
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Prestamo.java 
-            
-            <p>9. Multa.java</p> realizado por Cristian
-            https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Multa.java 
-            
-            <p>10. Main.java</p> realizado por Jerónimo
-          https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Main.java 
-            
-        </div>
+          <div class="space-y-3">
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">1. Biblioteca.java <span class="text-cyan-300 font-normal">— realizado por Cristian</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Biblioteca.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Biblioteca.java</a>
+            </div>
 
-      </div>
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">2. Libro.java <span class="text-cyan-300 font-normal">— realizado por Franklin</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Libro.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Libro.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">3. LibroFisico.java <span class="text-cyan-300 font-normal">— realizado por Franklin</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/LibroFisico.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/LibroFisico.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">4. LibroDigital.java <span class="text-cyan-300 font-normal">— realizado por Franklin</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/LibroDigital.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/LibroDigital.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">5. Autor.java <span class="text-cyan-300 font-normal">— realizado por Jerónimo</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Autor.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Autor.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">6. Categoria.java <span class="text-cyan-300 font-normal">— realizado por Cristian</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Categoria.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Categoria.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">7. Usuario.java <span class="text-cyan-300 font-normal">— realizado por Jerónimo</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Usuario.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Usuario.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">8. Prestamo.java <span class="text-cyan-300 font-normal">— realizado por Cristian</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Prestamo.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Prestamo.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">9. Multa.java <span class="text-cyan-300 font-normal">— realizado por Cristian</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Multa.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Multa.java</a>
+            </div>
+
+            <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4 hover:border-cyan-400/45 transition">
+              <p class="text-slate-200 font-semibold">10. Main.java <span class="text-cyan-300 font-normal">— realizado por Jerónimo</span></p>
+              <a class="block mt-1 text-xs text-cyan-400 hover:text-white break-all transition" href="https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Main.java" target="_blank" rel="noopener noreferrer">https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/main/Main.java</a>
+            </div>
+          </div>
+        </div>      </div>
 
     </div>
 
@@ -2700,7 +3908,9 @@
 
   <!-- =========================================================
        MODAL ACTIVIDAD 3
-       SIN ENLACES.
+       PROGRAMACIÓN FUNCIONAL - TECNOMOVIL DATA
+       Adaptación de la entrega original sin modificar
+       la estructura general del portafolio.
   ========================================================== -->
 
   <div
@@ -2714,10 +3924,10 @@
       onclick="event.stopPropagation()"
     >
 
+      <!-- ENCABEZADO -->
       <div class="flex items-start justify-between gap-4 mb-6">
 
         <div>
-
           <p class="text-purple-300 font-mono text-xs">
             POO II • ACTIVIDAD N.º 3
           </p>
@@ -2726,34 +3936,505 @@
             Programación Funcional
           </h3>
 
+          <p class="text-xs text-slate-500 mt-1 font-mono">
+            F30 • EA3 • TECNOMOVIL DATA
+          </p>
         </div>
 
         <button
           onclick="cerrarModal('modal-evidencia3')"
           class="text-2xl text-slate-400 hover:text-white"
+          aria-label="Cerrar actividad 3"
         >
           ×
         </button>
 
       </div>
 
+      <!-- DESCRIPCIÓN -->
       <p class="text-slate-400 leading-relaxed">
-
-        Estudio e implementación del paradigma de Programación Funcional en Java,
-        incluyendo funciones, expresiones lambda, colecciones y Streams.
-
+        Implementación del paradigma de Programación Funcional en Java para
+        el procesamiento de datos de un sistema de gestión de transporte urbano.
+        La solución utiliza funciones puras, inmutabilidad, expresiones lambda,
+        interfaces funcionales, funciones de orden superior, Streams y composición
+        de funciones para analizar los registros generados por TecnoMovil Data.
       </p>
 
-      <div class="mt-6 rounded-xl border border-purple-400/20 bg-black/25 p-5">
+      <!-- CASO DE ESTUDIO -->
+      <div class="mt-6 rounded-xl border border-purple-400/25 bg-purple-400/[.025] p-5">
 
-        <p class="text-purple-300 font-semibold">
-          Recursos y enlaces
+        <p class="text-purple-300 font-semibold mb-3">
+          ◆ Caso de estudio: TecnoMovil Data
         </p>
 
-        <p class="text-slate-500 text-sm mt-2">
-          Aún no se han agregado enlaces para esta actividad.
+        <p class="text-sm text-slate-400 leading-relaxed mb-4">
+          TecnoMovil Data representa un sistema de procesamiento de información
+          para transporte urbano. Los registros pueden provenir de validadores
+          de tarjetas, sensores de estaciones, aplicaciones móviles y dispositivos
+          IoT. La solución permite procesar los datos de manera declarativa y
+          organizada mediante las herramientas funcionales de Java.
         </p>
 
+        <div class="grid md:grid-cols-2 gap-3 text-sm">
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Registro:</span>
+            <span class="text-slate-400">
+              usuario, ruta, estación, acción y fecha/hora.
+            </span>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Acciones:</span>
+            <span class="text-slate-400">
+              entrada y salida.
+            </span>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Lenguaje:</span>
+            <span class="text-slate-400">
+              Java, sin frameworks externos.
+            </span>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 bg-black/20 p-3">
+            <span class="text-purple-300 font-semibold">Enfoque:</span>
+            <span class="text-slate-400">
+              procesamiento declarativo y reducción de efectos secundarios.
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- OPERACIONES SOLICITADAS -->
+      <div class="mt-5 rounded-xl border border-blue-400/25 bg-blue-400/[.025] p-5">
+
+        <p class="text-blue-300 font-semibold mb-3">
+          ◆ Operaciones implementadas
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-3 text-sm">
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-blue-300 font-semibold">01 • Afluencia por estación</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Cuenta los usuarios que registran entradas en cada estación.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-blue-300 font-semibold">02 • Horas pico</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Agrupa los registros por hora para analizar el flujo.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-blue-300 font-semibold">03 • Rutas más utilizadas</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Agrupa los registros por ruta y calcula su volumen de utilización.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-blue-300 font-semibold">04 • Patrones de viaje</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Ordena las estaciones visitadas por usuario según el tiempo.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-blue-300 font-semibold">05 • Tiempo promedio</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Estima el tiempo entre registros consecutivos de cada usuario.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-blue-300 font-semibold">06 • Sobrecarga de rutas</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Compara el volumen de una ruta con un umbral simulado y marca las críticas.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONCEPTOS FUNCIONALES -->
+      <div class="mt-5 rounded-xl border border-emerald-400/25 bg-emerald-400/[.025] p-5">
+
+        <p class="text-emerald-300 font-semibold mb-3">
+          ◆ Conceptos de Programación Funcional aplicados
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-3 text-sm">
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">01 • Funciones puras</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Las operaciones dependen de sus entradas y devuelven resultados sin modificar el estado externo.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">02 • Inmutabilidad</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Los registros originales no se modifican durante el procesamiento.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">03 • Lambdas</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Se utilizan expresiones lambda para filtros, transformaciones y operaciones de Stream.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">04 • Streams</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Las colecciones se procesan mediante pipelines declarativos.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">05 • map / filter / reduce</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Se aplican operaciones de filtrado, transformación y reducción de datos.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">06 • Orden superior</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Se utiliza Function&lt;T,R&gt; para recibir funciones como parámetros.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">07 • Composición</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Las funciones se combinan mediante composición para reutilizar operaciones.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">08 • Parallel Stream</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Se contempla el procesamiento paralelo para escenarios con grandes volúmenes de datos.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-3">
+            <p class="text-emerald-300 font-semibold">09 • Programación declarativa</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Se expresa qué transformación realizar sobre los datos, reduciendo código imperativo innecesario.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ESTRUCTURA DEL PROYECTO -->
+      <div class="mt-5 rounded-2xl border border-cyan-400/20 bg-black/25 p-5 shadow-[inset_0_0_25px_rgba(0,217,255,.025)]">
+
+        <div class="flex items-center justify-between gap-4 mb-4">
+
+          <div>
+            <p class="text-cyan-300 font-mono text-xs tracking-widest">
+              PROJECT SOURCE // JAVA
+            </p>
+
+            <p class="text-slate-200 font-semibold text-lg">
+              💻 Archivos de la Actividad 3
+            </p>
+          </div>
+
+          <span class="tag">
+            4 ARCHIVOS
+          </span>
+
+        </div>
+
+        <div class="space-y-3">
+
+          <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4">
+            <p class="text-slate-200 font-semibold">
+              1. RegistroTransporte.java
+            </p>
+            <p class="text-xs text-slate-400 mt-1">
+              Modelo inmutable de cada registro mediante record.
+            </p>
+            <p class="text-xs text-cyan-400 mt-2 font-mono">
+              src/tecnomovil/modelo/RegistroTransporte.java
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4">
+            <p class="text-slate-200 font-semibold">
+              2. DatosSimulados.java  
+            </p>
+            <p class="text-xs text-slate-400 mt-1">
+              Generación de registros de prueba para ejecutar el caso de estudio.
+            </p>
+            <p class="text-xs text-cyan-400 mt-2 font-mono">
+              https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/ACTIVIDAD-2/actividad3/DatosSimulados.java
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4">
+            <p class="text-slate-200 font-semibold">
+              3. ProcesadorTransporte.java
+            </p>
+            <p class="text-xs text-slate-400 mt-1">
+              Contiene las operaciones funcionales, Streams, lambdas, funciones de orden superior, composición y procesamiento paralelo.
+            </p>
+            <p class="text-xs text-cyan-400 mt-2 font-mono">
+              src/tecnomovil/servicio/ProcesadorTransporte.java
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-cyan-400/15 bg-cyan-400/[.025] p-4">
+            <p class="text-slate-200 font-semibold">
+              4. Main.java 
+            </p>
+            <p class="text-xs text-slate-400 mt-1">
+              Ejecuta el procesamiento y presenta los resultados en la consola.
+            </p>
+            <p class="text-xs text-cyan-400 mt-2 font-mono">
+              https://github.com/jeronimozapatav-art/Programaci-n_2_Objetos_Avanzados/blob/ACTIVIDAD-2/actividad3/Main.java 
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RECURSOS PRINCIPALES -->
+      <div class="mt-5">
+
+        <p class="text-purple-300 font-semibold mb-3">
+          ◆ Entregables y recursos
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <!-- DOCUMENTO PDF -->
+          <div class="rounded-xl border border-cyan-400/25 bg-cyan-400/[.025] p-4">
+
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">📄</span>
+              <div>
+                <p class="text-cyan-300 font-semibold">
+                  Documento PDF
+                </p>
+                <p class="text-xs text-slate-500">
+                  Informe de la Actividad 3
+                </p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Informe con portada, introducción, objetivos, descripción del caso TecnoMovil Data,
+              implementación funcional, operaciones, código, evidencias y conclusiones.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/1P3N_sJ1mslfxax_CaUMWy2dnPTsydTBM9EskGSfQjXA/edit?tab=t.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block text-center rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition"
+            >
+              ABRIR DOCUMENTO ↗
+            </a>
+
+            <div class="mt-4 rounded-lg border border-cyan-400/15 bg-black/20 p-3">
+              <p class="text-cyan-300 font-semibold text-sm mb-2">
+                💻 Código de la Actividad 3
+              </p>
+              <p class="text-xs text-slate-400">
+                El código fuente forma parte de la documentación de la actividad y corresponde
+                a los cuatro archivos Java descritos en la estructura del proyecto.
+              </p>
+              <div class="mt-3 space-y-1 text-xs font-mono text-cyan-400">
+                <p>RegistroTransporte.java</p>
+                <p>DatosSimulados.java</p>
+                <p>ProcesadorTransporte.java</p>
+                <p>Main.java</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- VIDEO -->
+          <div class="rounded-xl border border-red-400/25 bg-red-400/[.025] p-4">
+
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">🎥</span>
+              <div>
+                <p class="text-red-300 font-semibold">
+                  Video de sustentación
+                </p>
+                <p class="text-xs text-slate-500">
+                  Presentación de la Actividad 3
+                </p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Espacio para el video de máximo 7 minutos, mostrando el caso de estudio,
+              código, conceptos funcionales, ejecución y resultados.
+            </p>
+
+            <!-- REEMPLAZAR # POR EL ENLACE DE YOUTUBE/DRIVE -->
+            <a
+              href="#"
+              class="block text-center rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-2 text-sm text-red-300 hover:bg-red-400/20 hover:text-white transition"
+              onclick="return avisarRecurso('Video de sustentación')"
+            >
+              VER VIDEO DE SUSTENTACIÓN ▶
+            </a>
+
+          </div>
+
+          <!-- CÓDIGO / ZIP -->
+          <div class="rounded-xl border border-emerald-400/25 bg-emerald-400/[.025] p-4">
+
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">💻</span>
+              <div>
+                <p class="text-emerald-300 font-semibold">
+                  Código fuente / ZIP
+                </p>
+                <p class="text-xs text-slate-500">
+                  Proyecto Java TecnoMovil Data
+                </p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mb-3">
+              Proyecto con los cuatro archivos Java organizados por paquetes y listo para ejecutar desde Visual Studio Code.
+            </p>
+
+            <!-- REEMPLAZAR # POR EL ENLACE DEL ZIP -->
+            <a
+              href="#"
+              class="block text-center rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-300 hover:bg-emerald-400/20 hover:text-white transition"
+              onclick="return avisarRecurso('Código fuente / ZIP')"
+            >
+              DESCARGAR PROYECTO ↧
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EVIDENCIAS -->
+      <div class="mt-5 rounded-xl border border-yellow-400/20 bg-yellow-400/[.02] p-5">
+
+        <p class="text-yellow-300 font-semibold mb-3">
+          ◆ Evidencias que deben acompañar la entrega
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-3">
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-sm text-slate-200 font-semibold">
+              01 • Estructura del proyecto
+            </p>
+            <p class="text-xs text-slate-500 mt-1">
+              Captura de Visual Studio Code mostrando los paquetes y archivos Java.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-sm text-slate-200 font-semibold">
+              02 • Implementación funcional
+            </p>
+            <p class="text-xs text-slate-500 mt-1">
+              Evidencia de lambdas, Streams, filter, map, reduce y funciones.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-slate-700/60 p-4">
+            <p class="text-sm text-slate-200 font-semibold">
+              03 • Ejecución
+            </p>
+            <p class="text-xs text-slate-500 mt-1">
+              Terminal mostrando el resultado de las seis operaciones del caso.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ESTADO DE LOS CONCEPTOS -->
+      <div class="mt-5 rounded-xl border border-cyan-400/20 bg-black/25 p-5">
+
+        <p class="text-cyan-300 font-semibold mb-3">
+          ◆ Checklist funcional
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Funciones puras</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Inmutabilidad</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Lambdas</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Streams</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ map / filter / reduce</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Orden superior</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Composición</p>
+          </div>
+
+          <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/[.025] p-3">
+            <p class="text-emerald-300 text-sm font-semibold">✓ Parallel Stream</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONCLUSIONES -->
+      <div class="mt-5 rounded-xl border border-purple-400/20 bg-black/25 p-5">
+
+        <p class="text-purple-300 font-semibold mb-2">
+          ◆ Enfoque de la entrega
+        </p>
+
+        <p class="text-sm text-slate-400 leading-relaxed">
+          La Actividad 3 aplica la programación funcional como estrategia para
+          transformar y analizar los registros de TecnoMovil Data mediante operaciones
+          declarativas. La implementación separa el modelo de datos, la generación de
+          información y el procesamiento funcional, facilitando la comprensión,
+          reutilización y mantenimiento del código.
+        </p>
+
+      </div>
+
+      <div class="mt-5 text-center">
+        <p class="text-[11px] text-slate-600 font-mono">
+          J.A.R.V.I.S. // F30 • EA3 • TECNOMOVIL DATA • PROGRAMACIÓN FUNCIONAL
+        </p>
       </div>
 
     </div>
@@ -2848,6 +4529,138 @@
 
       }
     );
+
+    /* =========================================================
+       NIEVE AZUL GLOBAL
+       Capa visual independiente: no bloquea botones, modales ni enlaces.
+       ========================================================== */
+
+    (function(){
+      "use strict";
+
+      if(document.getElementById("blue-snow-canvas")) return;
+
+      const snowCanvas = document.createElement("canvas");
+      snowCanvas.id = "blue-snow-canvas";
+      snowCanvas.setAttribute("aria-hidden","true");
+
+      Object.assign(snowCanvas.style, {
+        position: "fixed",
+        inset: "0",
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        zIndex: "40"
+      });
+
+      document.body.appendChild(snowCanvas);
+
+      const snowCtx = snowCanvas.getContext("2d");
+      if(!snowCtx) return;
+
+      const reduceMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      let flakes = [];
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+
+      function resizeBlueSnow(){
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        snowCanvas.width = Math.floor(width * dpr);
+        snowCanvas.height = Math.floor(height * dpr);
+        snowCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        if(reduceMotion){
+          flakes = [];
+          return;
+        }
+
+        const count = Math.min(
+          125,
+          Math.max(
+            45,
+            Math.floor(width * height / 11500)
+          )
+        );
+
+        flakes = Array.from({length: count}, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 0.7,
+          vy: Math.random() * 1.25 + 0.35,
+          vx: (Math.random() - 0.5) * 0.45,
+          sway: Math.random() * Math.PI * 2,
+          swaySpeed: Math.random() * 0.018 + 0.006,
+          alpha: Math.random() * 0.55 + 0.3
+        }));
+      }
+
+      function drawBlueSnow(){
+        snowCtx.clearRect(0, 0, width, height);
+
+        for(const flake of flakes){
+          flake.sway += flake.swaySpeed;
+          flake.x += flake.vx + Math.sin(flake.sway) * 0.25;
+          flake.y += flake.vy;
+
+          if(flake.y > height + 8){
+            flake.y = -8;
+            flake.x = Math.random() * width;
+          }
+
+          if(flake.x > width + 8) flake.x = -8;
+          if(flake.x < -8) flake.x = width + 8;
+
+          snowCtx.beginPath();
+          snowCtx.arc(
+            flake.x,
+            flake.y,
+            flake.r,
+            0,
+            Math.PI * 2
+          );
+
+          snowCtx.fillStyle =
+            `rgba(75,185,255,${flake.alpha})`;
+
+          snowCtx.shadowBlur = 9;
+          snowCtx.shadowColor = "rgba(0,155,255,.95)";
+          snowCtx.fill();
+        }
+
+        snowCtx.shadowBlur = 0;
+
+        if(!reduceMotion){
+          requestAnimationFrame(drawBlueSnow);
+        }
+      }
+
+      window.addEventListener("resize", resizeBlueSnow, {passive:true});
+      resizeBlueSnow();
+      drawBlueSnow();
+
+    })();
+
+    /* Aviso para recursos que todavía no tienen enlace */
+    function avisarRecurso(nombre){
+      if(!event || !event.currentTarget || event.currentTarget.getAttribute("href") !== "#"){
+        return true;
+      }
+
+      alert(
+        nombre +
+        " todavía está pendiente de agregar.\n\n" +
+        "Reemplaza el href=\"#\" de este botón por el enlace correspondiente."
+      );
+
+      return false;
+    }
 
     /* Partículas azules de fondo */
 
@@ -3014,7 +4827,482 @@
 
     }
 
+
+    /* =========================================================
+       STARK / JARVIS INTERACTION LAYER
+       No modifica las funciones originales; agrega UI y microinteracciones.
+       ========================================================== */
+
+    (function(){
+      "use strict";
+
+      const prefersReducedMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function createStarkInterface(){
+        if(document.querySelector(".stark-interface")) return;
+
+        const hud = document.createElement("div");
+        hud.className = "stark-interface";
+        hud.setAttribute("aria-hidden","true");
+        hud.innerHTML = `
+          <span class="hud-core"></span>
+          <span class="hud-label">J.A.R.V.I.S. // DEV CORE</span>
+          <span class="hud-time" id="stark-clock">00:00:00</span>
+        `;
+
+        document.body.appendChild(hud);
+      }
+
+      function updateClock(){
+        const clock = document.getElementById("stark-clock");
+        if(!clock) return;
+
+        const now = new Date();
+        const parts = [
+          String(now.getHours()).padStart(2,"0"),
+          String(now.getMinutes()).padStart(2,"0"),
+          String(now.getSeconds()).padStart(2,"0")
+        ];
+
+        clock.textContent = `${parts.join(":")} // ${getTimeGreeting()}`;
+      }
+
+      // Detecta automáticamente si es de día, tarde o noche según la hora local.
+      function getTimeGreeting(){
+        const hour = new Date().getHours();
+
+        if(hour >= 5 && hour < 12) return "BUENOS DÍAS";
+        if(hour >= 12 && hour < 19) return "BUENAS TARDES";
+        return "BUENAS NOCHES";
+      }
+
+      function enhanceHero(){
+        const hero = document.querySelector(".hero");
+        if(!hero) return;
+
+        if(!hero.querySelector(".stark-reactor")){
+          const reactor = document.createElement("div");
+          reactor.className = "stark-reactor";
+          reactor.setAttribute("aria-hidden","true");
+
+          const core = document.createElement("div");
+          core.className = "stark-reactor-center";
+
+          reactor.appendChild(core);
+          hero.appendChild(reactor);
+        }
+
+        if(!hero.querySelector(".stark-status-line")){
+          const status = document.createElement("div");
+          status.className = "stark-status-line";
+          status.textContent = "J.A.R.V.I.S. // CORE STABLE";
+          hero.appendChild(status);
+        }
+
+        if(!hero.querySelector(".stark-circuit-line.line-a")){
+          ["line-a","line-b"].forEach(className => {
+            const line = document.createElement("div");
+            line.className = `stark-circuit-line ${className}`;
+            line.setAttribute("aria-hidden","true");
+            hero.appendChild(line);
+          });
+        }
+      }
+
+      function enableParallax(){
+        if(prefersReducedMotion) return;
+
+        const hero = document.querySelector(".hero");
+        const layer = document.querySelector(".hero-robot-layer");
+        if(!hero || !layer) return;
+
+        let raf = 0;
+
+        const move = (event) => {
+          if(raf) cancelAnimationFrame(raf);
+
+          raf = requestAnimationFrame(() => {
+            const rect = hero.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width - .5) * 2;
+            const y = ((event.clientY - rect.top) / rect.height - .5) * 2;
+
+            const px = Math.max(-12, Math.min(12, x * 7));
+            const py = Math.max(-8, Math.min(8, y * 4));
+
+            layer.style.setProperty("--mx", `${px}px`);
+            layer.style.setProperty("--my", `${py}px`);
+            layer.style.transform = `translate3d(var(--mx),var(--my),0)`;
+          });
+        };
+
+        const leave = () => {
+          layer.style.transform = "translate3d(0,0,0)";
+        };
+
+        hero.addEventListener("pointermove", move, {passive:true});
+        hero.addEventListener("pointerleave", leave, {passive:true});
+      }
+
+      function enableReveal(){
+        const candidates = [
+          ...document.querySelectorAll(
+            "#sobre-mi, #materias, #trabajos, .dashboard, footer"
+          )
+        ];
+
+        candidates.forEach((element,index) => {
+          if(element.classList.contains("hud-reveal")) return;
+
+          element.classList.add("hud-reveal");
+          element.style.transitionDelay = `${Math.min(index * 70, 350)}ms`;
+        });
+
+        if(prefersReducedMotion || !("IntersectionObserver" in window)){
+          candidates.forEach(element => {
+            element.classList.add("is-visible");
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        },{
+          threshold:.12,
+          rootMargin:"0px 0px -40px 0px"
+        });
+
+        candidates.forEach(element => observer.observe(element));
+      }
+
+      function improveModalFocus(){
+        document.addEventListener("click", (event) => {
+          const openButton = event.target.closest(
+            'button[onclick^="abrirModal"]'
+          );
+
+          if(!openButton) return;
+
+          const match = openButton.getAttribute("onclick")?.match(
+            /abrirModal\(['"]([^'"]+)['"]\)/
+          );
+
+          if(!match) return;
+
+          const modal = document.getElementById(match[1]);
+          if(!modal) return;
+
+          requestAnimationFrame(() => {
+            const closeButton = modal.querySelector("button");
+            if(closeButton){
+              closeButton.focus({preventScroll:true});
+            }
+          });
+        });
+      }
+
+
+
+      /* =========================================================
+         J.A.R.V.I.S. WELCOME + ARMOR DISPLAY
+         ========================================================== */
+
+      function getJarvisVisitorMode(){
+        try{
+          return localStorage.getItem('jarvis_owner_mode') === 'jeronimo';
+        }catch(error){
+          return false;
+        }
+      }
+
+      function setJarvisVisitorMode(isOwner){
+        try{
+          if(isOwner){
+            localStorage.setItem('jarvis_owner_mode','jeronimo');
+          }else{
+            localStorage.removeItem('jarvis_owner_mode');
+          }
+        }catch(error){
+          // Si el navegador bloquea localStorage, JARVIS sigue funcionando en esta sesión.
+        }
+      }
+
+      function createJarvisWelcome(){
+        if(document.querySelector('.jarvis-welcome')) return;
+
+        const isOwner = getJarvisVisitorMode();
+        const overlay = document.createElement('div');
+        overlay.className = 'jarvis-welcome';
+        overlay.innerHTML = `
+          <section class="jarvis-welcome-panel" role="dialog" aria-modal="true" aria-labelledby="jarvis-title">
+            <div class="jarvis-mark" aria-hidden="true">
+              <span class="jarvis-mark-core"></span>
+            </div>
+            <div class="jarvis-kicker">STARK SYSTEMS // ARTIFICIAL INTELLIGENCE</div>
+            <h2 id="jarvis-title" class="jarvis-title">J.A.R.V.I.S.</h2>
+            <p class="jarvis-message" id="jarvis-message"></p>
+            <div class="jarvis-system-bar">
+              <div class="jarvis-system-chip">CORE<br>ONLINE</div>
+              <div class="jarvis-system-chip">ARMOR<br>READY</div>
+              <div class="jarvis-system-chip">JAVA // POO<br>ACTIVE</div>
+            </div>
+            <div class="jarvis-actions">
+              <button class="jarvis-enter" type="button">ENTRAR AL SISTEMA</button>
+              <button class="jarvis-owner" type="button">SOY JERÓNIMO</button>
+              <button class="jarvis-guest" type="button">ENTRAR COMO VISITANTE</button>
+              <button class="jarvis-voice" type="button">ACTIVAR VOZ JARVIS</button>
+            </div>
+            <div class="jarvis-console" id="jarvis-console">&gt; JARVIS BOOT SEQUENCE // SECURE CHANNEL // SYSTEM STABLE</div>
+          </section>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        const message = overlay.querySelector('#jarvis-message');
+        const consoleLine = overlay.querySelector('#jarvis-console');
+        const ownerButton = overlay.querySelector('.jarvis-owner');
+        const guestButton = overlay.querySelector('.jarvis-guest');
+
+        function renderGreeting(owner){
+          const greeting = getTimeGreeting();
+
+          if(owner){
+            message.innerHTML = `
+              ${greeting}, <strong>Jerónimo Zapata Vargas</strong>.<br>
+              Soy <strong>J.A.R.V.I.S.</strong>, la inteligencia artificial de tu portafolio.
+              El sistema académico está iniciando y la interfaz Stark está lista para mostrar tus proyectos.
+            `;
+            ownerButton.textContent = 'JERÓNIMO RECONOCIDO';
+            ownerButton.classList.add('jarvis-owner-active');
+            guestButton.textContent = 'CAMBIAR A VISITANTE';
+            consoleLine.innerHTML = '&gt; OWNER PROFILE // JERÓNIMO ZAPATA // ACCESS GRANTED';
+          }else{
+            message.innerHTML = `
+              ${greeting}, bienvenido al <strong>portafolio de Jerónimo Zapata</strong>.<br>
+              Soy <strong>J.A.R.V.I.S.</strong>, la inteligencia artificial del sistema.
+              Aquí encontrarás el trabajo académico de un estudiante de Tecnología en Desarrollo de Software.
+            `;
+            ownerButton.textContent = 'SOY JERÓNIMO';
+            ownerButton.classList.remove('jarvis-owner-active');
+            guestButton.textContent = 'ENTRAR COMO VISITANTE';
+            consoleLine.innerHTML = '&gt; VISITOR PROFILE // GUEST ACCESS // WELCOME TO JERÓNIMO\'S PORTFOLIO';
+          }
+        }
+
+        renderGreeting(isOwner);
+
+        const close = () => {
+          overlay.classList.add('hide');
+          document.body.style.overflow = '';
+          window.setTimeout(() => overlay.remove(), 750);
+        };
+
+        overlay.querySelector('.jarvis-enter').addEventListener('click', close);
+
+        ownerButton.addEventListener('click', () => {
+          const nowOwner = !getJarvisVisitorMode();
+          setJarvisVisitorMode(nowOwner);
+          renderGreeting(nowOwner);
+          speakJarvis(nowOwner);
+        });
+
+        guestButton.addEventListener('click', () => {
+          setJarvisVisitorMode(false);
+          renderGreeting(false);
+          speakJarvis(false);
+        });
+
+        overlay.querySelector('.jarvis-voice').addEventListener('click', () => {
+          speakJarvis(getJarvisVisitorMode());
+        });
+
+        setTimeout(() => {
+          if(!overlay.classList.contains('hide')) close();
+        }, 9500);
+
+        // Intentar la bienvenida por voz; algunos navegadores exigen interacción.
+        setTimeout(() => speakJarvis(isOwner), 500);
+      }
+
+      function speakJarvis(isOwner = getJarvisVisitorMode()){
+        if(!('speechSynthesis' in window)) return;
+
+        window.speechSynthesis.cancel();
+
+        const greeting = getTimeGreeting()
+          .toLowerCase()
+          .replace("buenos días", "Buenos días")
+          .replace("buenas tardes", "Buenas tardes")
+          .replace("buenas noches", "Buenas noches");
+
+        const text = isOwner
+          ? `${greeting}, Jerónimo Zapata Vargas. Soy Jarvis. Bienvenido de nuevo a tu portafolio. El sistema está en línea y la interfaz Stark está lista.`
+          : `${greeting}, bienvenido al portafolio de Jerónimo Zapata, estudiante de Tecnología en Desarrollo de Software. Soy Jarvis y te acompañaré por el sistema.`;
+
+        const message = new SpeechSynthesisUtterance(text);
+        message.lang = 'es-ES';
+        message.rate = 0.92;
+        message.pitch = 0.82;
+        message.volume = 0.95;
+
+        const voices = window.speechSynthesis.getVoices();
+        const spanishVoice = voices.find(v => /^es(-|_)/i.test(v.lang));
+        if(spanishVoice) message.voice = spanishVoice;
+
+        window.speechSynthesis.speak(message);
+      }
+
+      function addArmorToName(){
+        const heroName = document.querySelector('.hero h1');
+        if(!heroName || document.querySelector('.stark-name-armor')) return;
+
+        const armor = document.createElement('div');
+        armor.className = 'stark-name-armor';
+        armor.setAttribute('aria-label','Interfaz de armadura Stark');
+        armor.innerHTML = `
+          <div class="armor-helmet" aria-hidden="true"></div>
+          <div class="armor-torso" aria-hidden="true"></div>
+          <div class="armor-hud">
+            <span>MODEL: <i>MARK-DEV</i></span>
+            <span>CORE: <i>ONLINE</i></span>
+            <span>ENERGY: <i>98%</i></span>
+            <span>JARVIS: <i>READY</i></span>
+          </div>
+          <div class="armor-label">STARK ARMOR // DEVELOPER MODE</div>
+        `;
+
+        heroName.insertAdjacentElement('afterend', armor);
+      }
+
+      function preloadVoices(){
+        if(!('speechSynthesis' in window)) return;
+        window.speechSynthesis.getVoices();
+      }
+
+      function init(){
+        createStarkInterface();
+        enhanceHero();
+        addArmorToName();
+        preloadVoices();
+        createJarvisWelcome();
+        updateClock();
+        setInterval(updateClock,1000);
+        enableParallax();
+        enableReveal();
+        improveModalFocus();
+
+        document.documentElement.classList.add("stark-ready");
+      }
+
+      if(document.readyState === "loading"){
+        document.addEventListener("DOMContentLoaded", init, {once:true});
+      }else{
+        init();
+      }
+    })();
+
   </script>
+
+
+<script id="auto-clickable-links">
+(function () {
+  'use strict';
+
+  const URL_RE = /https?:\/\/[^\s<>"'`)\]}]+/g;
+  const SKIP_TAGS = new Set([
+    'A', 'SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT',
+    'SELECT', 'OPTION', 'CODE', 'PRE', 'SVG'
+  ]);
+
+  function makeLinks(root) {
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || SKIP_TAGS.has(parent.tagName)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return URL_RE.test(node.nodeValue)
+            ? NodeFilter.FILTER_ACCEPT
+            : NodeFilter.FILTER_REJECT;
+        }
+      }
+    );
+
+    const nodes = [];
+    let node;
+    while ((node = walker.nextNode())) nodes.push(node);
+
+    nodes.forEach(textNode => {
+      const text = textNode.nodeValue;
+      URL_RE.lastIndex = 0;
+
+      let match;
+      let lastIndex = 0;
+      const fragment = document.createDocumentFragment();
+      let found = false;
+
+      while ((match = URL_RE.exec(text)) !== null) {
+        found = true;
+
+        const start = match.index;
+        let url = match[0];
+        let trailing = '';
+
+        // Remove common punctuation that should remain outside the link.
+        while (/[.,!?;:]+$/.test(url)) {
+          trailing = url.slice(-1) + trailing;
+          url = url.slice(0, -1);
+        }
+
+        if (start > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex, start)));
+        }
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'auto-clickable-link';
+        a.textContent = url;
+        fragment.appendChild(a);
+
+        if (trailing) {
+          fragment.appendChild(document.createTextNode(trailing));
+        }
+
+        lastIndex = match.index + match[0].length;
+      }
+
+      if (found) {
+        if (lastIndex < text.length) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+        }
+        textNode.parentNode.replaceChild(fragment, textNode);
+      }
+    });
+  }
+
+  function initClickableLinks() {
+    makeLinks(document.body);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initClickableLinks);
+  } else {
+    initClickableLinks();
+  }
+})();
+</script>
 
 </body>
 </html>
