@@ -1,0 +1,25 @@
+package tecnomovil.datos;
+
+import tecnomovil.modelo.RegistroTransporte;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public final class DatosSimulados {
+    private DatosSimulados() {}
+    public static List<RegistroTransporte> generarRegistros() {
+        return List.of(
+            new RegistroTransporte("U001","R10","EstacionCentral","entrada",LocalDateTime.of(2026,9,25,7,30)),
+            new RegistroTransporte("U001","R10","EstacionNorte","salida",LocalDateTime.of(2026,9,25,7,50)),
+            new RegistroTransporte("U002","R20","EstacionSur","entrada",LocalDateTime.of(2026,9,25,8,10)),
+            new RegistroTransporte("U002","R20","EstacionUniversidad","salida",LocalDateTime.of(2026,9,25,8,35)),
+            new RegistroTransporte("U003","R10","EstacionCentral","entrada",LocalDateTime.of(2026,9,25,8,15)),
+            new RegistroTransporte("U003","R10","EstacionUniversidad","salida",LocalDateTime.of(2026,9,25,8,40)),
+            new RegistroTransporte("U004","R30","EstacionNorte","entrada",LocalDateTime.of(2026,9,25,9,0)),
+            new RegistroTransporte("U004","R30","EstacionSur","salida",LocalDateTime.of(2026,9,25,9,30)),
+            new RegistroTransporte("U005","R20","EstacionSur","entrada",LocalDateTime.of(2026,9,25,10,0)),
+            new RegistroTransporte("U005","R20","EstacionCentral","salida",LocalDateTime.of(2026,9,25,10,25)),
+            new RegistroTransporte("U006","R10","EstacionCentral","entrada",LocalDateTime.of(2026,9,25,11,15)),
+            new RegistroTransporte("U006","R10","EstacionNorte","salida",LocalDateTime.of(2026,9,25,11,40))
+        );
+    }
+}
