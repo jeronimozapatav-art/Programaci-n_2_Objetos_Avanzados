@@ -1,8 +1,10 @@
+```java
 public class LibroFisico extends Libro {
 
     private int numeroEjemplares;
     private String ubicacion;
 
+    // Constructor
     public LibroFisico(String isbn, String titulo, int anioPublicado,
                        EstadoLibro estado, Categoria categoria,
                        int numeroEjemplares, String ubicacion) {
@@ -12,6 +14,10 @@ public class LibroFisico extends Libro {
         this.numeroEjemplares = numeroEjemplares;
         this.ubicacion = ubicacion;
     }
+
+    // =====================================================
+    // SOBRESCRITURA DEL MÉTODO PRESTAR
+    // =====================================================
 
     @Override
     public void Prestar() {
@@ -23,31 +29,55 @@ public class LibroFisico extends Libro {
             setEstado(EstadoLibro.PRESTADO);
 
             System.out.println(
-                "Libro físico prestado: " + getTitulo()
+                "Libro físico '" + getTitulo() +
+                "' prestado correctamente."
             );
 
         } else {
 
             System.out.println(
-                "No hay ejemplares disponibles de: " + getTitulo()
+                "No hay ejemplares disponibles de: " +
+                getTitulo()
             );
         }
     }
+
+    // =====================================================
+    // RESERVAR
+    // =====================================================
 
     public void Reservar() {
 
-        if (getEstado() == EstadoLibro.DISPONIBLE) {
+        if (getEstado() == EstadoLibro.DISPONIBLE &&
+            numeroEjemplares > 0) {
+
             setEstado(EstadoLibro.RESERVADO);
 
             System.out.println(
-                "Libro físico reservado: " + getTitulo()
+                "Libro físico '" + getTitulo() +
+                "' reservado correctamente."
+            );
+
+        } else {
+
+            System.out.println(
+                "El libro físico '" + getTitulo() +
+                "' no está disponible para reserva."
             );
         }
     }
+
+    // =====================================================
+    // OBTENER DISPONIBILIDAD
+    // =====================================================
 
     public int ObtenerDisponibilidad() {
         return numeroEjemplares;
     }
+
+    // =====================================================
+    // GETTERS Y SETTERS
+    // =====================================================
 
     public int getNumeroEjemplares() {
         return numeroEjemplares;
@@ -65,3 +95,4 @@ public class LibroFisico extends Libro {
         this.ubicacion = ubicacion;
     }
 }
+

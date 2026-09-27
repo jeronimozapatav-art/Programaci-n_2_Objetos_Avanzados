@@ -1,9 +1,11 @@
+```java
 public class LibroDigital extends Libro {
 
     private String formato;
     private double tamanioArchivo;
     private String urlDescarga;
 
+    // Constructor
     public LibroDigital(String isbn, String titulo, int anioPublicado,
                         EstadoLibro estado, Categoria categoria,
                         String formato, double tamanioArchivo,
@@ -16,6 +18,10 @@ public class LibroDigital extends Libro {
         this.urlDescarga = urlDescarga;
     }
 
+    // =====================================================
+    // SOBRESCRITURA DEL MÉTODO PRESTAR
+    // =====================================================
+
     @Override
     public void Prestar() {
 
@@ -24,24 +30,43 @@ public class LibroDigital extends Libro {
             setEstado(EstadoLibro.PRESTADO);
 
             System.out.println(
-                "Libro digital prestado: " + getTitulo()
+                "Libro digital '" + getTitulo() +
+                "' prestado correctamente."
             );
 
         } else {
 
             System.out.println(
-                "El libro digital no está disponible."
+                "El libro digital '" + getTitulo() +
+                "' no está disponible."
             );
         }
     }
 
+    // =====================================================
+    // DESCARGAR LIBRO DIGITAL
+    // =====================================================
+
     public void Descargar() {
+
+        if (urlDescarga == null || urlDescarga.trim().isEmpty()) {
+
+            System.out.println(
+                "No existe una URL de descarga para este libro."
+            );
+
+            return;
+        }
 
         System.out.println(
             "Descargando '" + getTitulo() +
             "' desde: " + urlDescarga
         );
     }
+
+    // =====================================================
+    // GETTERS Y SETTERS
+    // =====================================================
 
     public String getFormato() {
         return formato;

@@ -1,3 +1,4 @@
+```java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,10 @@ public abstract class Libro {
     private EstadoLibro estado;
     private Categoria categoria;
 
-    private static List<Libro> catalogo = new ArrayList<>();
+    // Catálogo general de libros
+    private static final List<Libro> catalogo = new ArrayList<>();
 
+    // Constructor
     public Libro(String isbn, String titulo, int anioPublicado,
                  EstadoLibro estado, Categoria categoria) {
 
@@ -23,37 +26,79 @@ public abstract class Libro {
         catalogo.add(this);
     }
 
+    // =====================================================
+    // PRESTAR
+    // =====================================================
+
     public void Prestar() {
+
         if (estado == EstadoLibro.DISPONIBLE) {
             estado = EstadoLibro.PRESTADO;
-            System.out.println("El libro '" + titulo + "' ha sido prestado.");
+
+            System.out.println(
+                "El libro '" + titulo + "' ha sido prestado."
+            );
+
         } else {
-            System.out.println("El libro '" + titulo + "' no está disponible.");
+
+            System.out.println(
+                "El libro '" + titulo + "' no está disponible."
+            );
         }
     }
 
+    // =====================================================
+    // DEVOLVER
+    // =====================================================
+
     public void Devolver() {
+
         estado = EstadoLibro.DISPONIBLE;
-        System.out.println("El libro '" + titulo + "' ha sido devuelto.");
+
+        System.out.println(
+            "El libro '" + titulo + "' ha sido devuelto."
+        );
     }
+
+    // =====================================================
+    // OBTENER INFORMACIÓN
+    // =====================================================
 
     public String ObtenerInformacion() {
-        return "ISBN: " + isbn +
-               ", Título: " + titulo +
-               ", Año: " + anioPublicado +
-               ", Estado: " + estado +
-               ", Categoría: " + categoria.getNombre();
+
+        String nombreCategoria =
+                (categoria != null)
+                ? categoria.getNombre()
+                : "Sin categoría";
+
+        return "ISBN: " + isbn
+                + ", Título: " + titulo
+                + ", Año: " + anioPublicado
+                + ", Estado: " + estado
+                + ", Categoría: " + nombreCategoria;
     }
 
+    // =====================================================
     // SOBRECARGA 1
+    // Buscar por palabra clave
+    // =====================================================
+
     public List<Libro> Buscar(String palabraClave) {
 
         List<Libro> resultados = new ArrayList<>();
 
+        if (palabraClave == null || palabraClave.trim().isEmpty()) {
+            return resultados;
+        }
+
+        String criterio = palabraClave.toLowerCase();
+
         for (Libro libro : catalogo) {
-            if (libro.titulo.toLowerCase()
-                    .contains(palabraClave.toLowerCase())
-                    || libro.isbn.equalsIgnoreCase(palabraClave)) {
+
+            if ((libro.titulo != null
+                    && libro.titulo.toLowerCase().contains(criterio))
+                    || (libro.isbn != null
+                    && libro.isbn.equalsIgnoreCase(palabraClave))) {
 
                 resultados.add(libro);
             }
@@ -62,19 +107,34 @@ public abstract class Libro {
         return resultados;
     }
 
+    // =====================================================
     // SOBRECARGA 2
+    // Buscar por autor
+    // =====================================================
+
     public List<Libro> Buscar(Autor autor) {
 
         List<Libro> resultados = new ArrayList<>();
 
+        if (autor == null) {
+            return resultados;
+        }
+
         for (Libro libro : catalogo) {
-            if (autor != null && autor.getLibros().contains(libro)) {
+
+            if (autor.getLibros() != null
+                    && autor.getLibros().contains(libro)) {
+
                 resultados.add(libro);
             }
         }
 
         return resultados;
     }
+
+    // =====================================================
+    // GETTERS Y SETTERS
+    // =====================================================
 
     public String getIsbn() {
         return isbn;
@@ -120,3 +180,4 @@ public abstract class Libro {
         return catalogo;
     }
 }
+
